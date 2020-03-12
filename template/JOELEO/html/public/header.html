@@ -1,0 +1,190 @@
+{include file="public/include"}
+{include file="module/sousou"}
+<div class="leo-container"> 
+{if$maccms.aid==2}
+<header class="leo-po-re leo-h-l leo-color-a leo-col-12">
+	<div class="leo-col-12 leo-po-fi leo-bg-b">
+    	<a class="leo-left leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" onclick="LeoBack();">
+    		<span class="iconfont icon-back leo-fs-icon-s leo-color-a"></span>
+    	</a>
+    	<font class="leo-left leo-col-6 leo-lh-l leo-fs-l leo-ellipsis-1">在线音乐</font>
+		{if$user.user_id!=''}
+		<a class="leo-right leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" href="{:mac_url('user/index')}" tapmode onclick="showDefault('loading')">
+	        <img class="leo-radius-m leo-mt-20 leo-aimg-s" id="leo-head-avatar">
+	    </a>
+	    {else}
+		<a class="leo-right leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" href="{:mac_url('user/login')}" tapmode onclick="showDefault('loading')">
+	        <span class="iconfont icon-people leo-fs-icon-s leo-color-a"></span>
+	    </a>
+	    {/if}
+		<a class="leo-right leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl mac_history" href="javascript:;" >
+	        <span class="iconfont icon-time leo-fs-icon-s leo-color-a"></span>
+	   	</a>
+		<a class="leo-right leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" href="{:mac_url('label/top')}" tapmode onclick="showDefault('loading')">
+	        <span class="iconfont icon-hot leo-fs-icon-s leo-color-a"></span>
+	   	</a>
+	</div>
+</header>
+<div class="center">
+{elseif$maccms.aid==14||$maccms.aid==15||$maccms.aid==16}
+<header class="leo-po-re leo-h-l leo-color-a leo-col-12">
+	<div class="leo-col-12 leo-po-fi leo-bg-b">
+    	<a class="leo-left leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" onclick="LeoBack();">
+    		<span class="iconfont icon-back leo-fs-icon-s leo-color-a"></span>
+    	</a>
+    	<font class="leo-left leo-col-6 leo-lh-l leo-fs-l leo-ellipsis-1">{$obj.vod_name}</font>
+		{if$user.user_id!=''}
+		<a class="leo-right leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" href="{:mac_url('user/index')}" tapmode onclick="showDefault('loading')">
+	        <img class="leo-radius-m leo-mt-20 leo-aimg-s" id="leo-head-avatar">
+	    </a>
+	    {else}
+		<a class="leo-right leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" href="{:mac_url('user/login')}" tapmode onclick="showDefault('loading')">
+	        <span class="iconfont icon-people leo-fs-icon-s leo-color-a"></span>
+	    </a>
+	    {/if}
+		<a class="leo-right leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl mac_history" href="javascript:;" >
+	        <span class="iconfont icon-time leo-fs-icon-s leo-color-a"></span>
+	   	</a>
+		<a class="leo-right leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl mac_ulog" data-type="2" data-mid="{$maccms.mid}" data-id="{$obj.vod_id}" href="javascript:;">
+	        <span class="iconfont icon-like leo-fs-icon-s leo-color-a"></span>
+	    </a>
+	</div>
+</header>
+{elseif$maccms.aid==20}
+<header class="leo-po-re leo-h-l leo-color-a leo-col-12">
+	<div class="leo-col-12 leo-po-fi leo-bg-b">
+	<a class="leo-left leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" onclick="LeoBack();">
+		<span class="iconfont icon-back leo-fs-icon-s leo-color-a"></span>
+	</a>
+	<font class="leo-left leo-col-6 leo-lh-l leo-fs-l leo-ellipsis-1">资讯文章</font>
+		{if$user.user_id!=''}
+		<a class="leo-right leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" href="{:mac_url('user/index')}" tapmode onclick="showDefault('loading')">
+	        <img class="leo-radius-m leo-mt-20 leo-aimg-s" id="leo-head-avatar">
+	    </a>
+	    {else}
+		<a class="leo-right leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" href="{:mac_url('user/login')}" tapmode onclick="showDefault('loading')">
+	        <span class="iconfont icon-people leo-fs-icon-s leo-color-a"></span>
+	    </a>
+	    {/if}
+		<a class="leo-right leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl mac_history" href="javascript:;" >
+	        <span class="iconfont icon-time leo-fs-icon-s leo-color-a"></span>
+	   	</a>
+		<a class="leo-right leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" href="{:mac_url('label/top')}" tapmode onclick="showDefault('loading')">
+	        <span class="iconfont icon-hot leo-fs-icon-s leo-color-a"></span>
+	   	</a>
+	</div>
+</header>
+{elseif$maccms.aid==21||$maccms.aid==22||$maccms.aid==23||$maccms.aid==24}
+<header class="leo-po-re leo-h-l leo-color-a leo-col-12">
+	<div class="leo-col-12 leo-po-fi leo-bg-b">
+    	<a class="leo-left leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" onclick="LeoBack();">
+    		<span class="iconfont icon-back leo-fs-icon-s leo-color-a"></span>
+    	</a>
+    	<font class="leo-left leo-col-6 leo-lh-l leo-fs-l leo-ellipsis-1">{if$maccms.aid==23||$maccms.aid==24}{$obj.art_name}{elseif$maccms.aid==21||$maccms.aid==22}{$obj.type_name}{/if}</font>
+		{if$user.user_id!=''}
+		<a class="leo-right leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" href="{:mac_url('user/index')}" tapmode onclick="showDefault('loading')">
+	        <img class="leo-radius-m leo-mt-20 leo-aimg-s" id="leo-head-avatar">
+	    </a>
+	    {else}
+		<a class="leo-right leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" href="{:mac_url('user/login')}" tapmode onclick="showDefault('loading')">
+	        <span class="iconfont icon-people leo-fs-icon-s leo-color-a"></span>
+	    </a>
+	    {/if}
+		<a class="leo-right leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl mac_history" href="javascript:;" >
+	        <span class="iconfont icon-time leo-fs-icon-s leo-color-a"></span>
+	   	</a>
+	   	{if$maccms.aid==23||$maccms.aid==24}
+		<a class="leo-right leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl mac_ulog" href="javascript:void(0)" data-type="2" data-mid="{$maccms.mid}" data-id="{$obj.art_id}">
+	        <span class="iconfont icon-like leo-fs-icon-s leo-color-a"></span>
+	    </a>
+	    {elseif$maccms.aid==21||$maccms.aid==22}
+	    <a class="leo-right leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" href="{:mac_url('label/top')}" tapmode onclick="showDefault('loading')">
+	        <span class="iconfont icon-hot leo-fs-icon-s leo-color-a"></span>
+	   	</a>
+	   	{/if}
+	</div>
+</header>
+{elseif$maccms.aid==34}
+<header class="leo-po-re leo-h-l leo-color-a leo-col-12">
+	<div class="leo-col-12 leo-po-fi leo-bg-b">
+    	<a class="leo-left leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" onclick="LeoBack();">
+    		<span class="iconfont icon-back leo-fs-icon-s leo-color-a"></span>
+    	</a>
+    	<font class="leo-left leo-col-6 leo-lh-l leo-fs-l leo-ellipsis-1">{$obj.topic_name}</font>
+		{if$user.user_id!=''}
+		<a class="leo-right leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" href="{:mac_url('user/index')}" tapmode onclick="showDefault('loading')">
+	        <img class="leo-radius-m leo-mt-20 leo-aimg-s" id="leo-head-avatar">
+	    </a>
+	    {else}
+		<a class="leo-right leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" href="{:mac_url('user/login')}" tapmode onclick="showDefault('loading')">
+	        <span class="iconfont icon-people leo-fs-icon-s leo-color-a"></span>
+	    </a>
+	    {/if}
+		<a class="leo-right leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl mac_history" href="javascript:;" >
+	        <span class="iconfont icon-time leo-fs-icon-s leo-color-a"></span>
+	   	</a>
+		<a class="leo-right leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl mac_ulog" href="javascript:void(0)" data-type="2" data-mid="{$maccms.mid}" data-id="{$obj.topic_id}">
+	        <span class="iconfont icon-like leo-fs-icon-s leo-color-a"></span>
+	    </a>
+	</div>
+</header>
+{else/}
+<header class="leo-po-re leo-h-l leo-color-a leo-col-12">
+	<div class="leo-col-12 leo-po-fi leo-bg-b">
+		<div class="leo-left leo-lh-l leo-ml-20 leo-fs-xl">
+		    {if$muchoConfig['logo']==""}<img width="120" height="50" alt="{$maccms.site_name}" src="{$maccms.site_logo|mac_url_img}"/>{else}{$muchoConfig['logo']}{/if}
+		</div>
+		{if$user.user_id!=''}
+		<a class="leo-right leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" href="{:mac_url('user/index')}" tapmode onclick="showDefault('loading')">
+	        <img class="leo-radius-m leo-mt-20 leo-aimg-s" id="leo-head-avatar">
+	    </a>
+	    {else}
+		<a class="leo-right leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" href="{:mac_url('user/login')}" tapmode onclick="showDefault('loading')">
+	        <span class="iconfont icon-people leo-fs-icon-s leo-color-a"></span>
+	    </a>
+	    {/if}
+		<a class="leo-right leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl mac_history" href="javascript:;" >
+	        <span class="iconfont icon-time leo-fs-icon-s leo-color-a"></span>
+	   	</a>
+   	
+	   	
+	   
+	    <a class="leo-right leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl leo-head-search" href="javascript:;" onclick="LeoOpenSearcho()">
+	        <input type="search" name="wd" placeholder="请输入关键字" class="leo-fs-m leo-po-ab leo-radius-m leo-pl-20 ;ep-pr-20 leo-bg-o">
+	        <span class="iconfont icon-search leo-fs-icon-s leo-color-d leo-po-ab"></span>
+	    </a>
+	    
+	    
+	    
+	</div>
+</header>
+<div class="leo-nav-wrap leo-col-12 leo-po-fi ">
+	<div class="leo-col-12 leo-bg-x">
+		<div id="leo-head-nav" class="leo-pr-20 leo-pl-20">
+			<ul class="swiper-wrapper clearfix">
+				<li class="swiper-slide leo-col-0 {if$maccms.aid==1}leo-active-nav{/if}">
+				    <a class="leo-show leo-mr-20 leo-ml-20 leo-lh-l leo-fs-m " href="/" tapmode onclick="showDefault('loading')">首页</a>
+				</li>
+                {maccms:type ids="parent" order="asc" by="sort" flag="vod"}
+                <li class="swiper-slide leo-col-0 {if$vo.type_id==$obj.type_id||$vo.type_id==$obj.type_1.type_id||$vo.type_id==$obj.parent.type_id}leo-active-nav{/if}" tapmode onclick="showDefault('loading')">
+                    <a class="leo-show leo-mr-20 leo-ml-20 leo-lh-l leo-fs-m " href="{:mac_url_type($vo)}">{$vo.type_name}</a>
+                </li>
+                {/maccms:type}
+                {maccms:topic num="1"}
+                <li class="swiper-slide leo-col-0 {if$maccms.aid==30}leo-active-nav{/if}" tapmode onclick="showDefault('loading')">
+    			    <a class="leo-show leo-mr-20 leo-ml-20 leo-lh-l leo-fs-m " href="{:mac_url('topic/index')}">专题</a>
+    			</li>
+    			{/maccms:topic}
+                <?php $leeleo = require ('application/extra/maccms.php'); ?>
+    			<?php if($leeleo['gbook']['status']=='1') { ?>
+    			<li class="swiper-slide leo-col-0 {if$maccms.aid==4}leo-active-nav{/if}" tapmode onclick="showDefault('loading')">
+    			    <a class="leo-show leo-mr-20 leo-ml-20 leo-lh-l leo-fs-m " href="{:mac_url('gbook/index')}">求片</a>
+    			</li>
+                <?php } ?>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="leo-mt-ok"></div>
+{/if}
+<script>var leo_avatar = MAC.Cookie.Get("leo-avatar");if(leo_avatar == "" || leo_avatar == null){$("#leo-head-avatar").attr("src", "/template/JOELEO/asset/img/mucho.png?v={:time()}");}else{$("#leo-head-avatar").attr("src", leo_avatar+"?v={:time()}");}</script>

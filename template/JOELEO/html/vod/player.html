@@ -1,0 +1,41 @@
+{include file="public/include"}
+<section class="leo-player">
+    {$player_data}
+    {$player_js}
+</section>
+{if condition="$popedom.code gt 1"/}
+<div class="player_showtry" style="display:none;">
+<div class="leo-col-12 leo-pt-30 leo-pb-30">
+	<div class="leo-pl-30 leo-pr-30 leo-mt-30 leo-mb-30 leo-pt-30">
+	    {if condition="$obj.vod_points_play eq 0"}
+		<h2 class="leo-fs-l">试看{$popedom.trysee}分钟结束，完整观看本影片需要升级会员组，请升级后观看。</h2>
+		<p class="leo-txt-c leo-fs-m">提示：购买VIP会员组，享受超级权限，谢谢支持。</p>
+		<div class="leo-txt-c">
+			<a class="leo-col-4 leo-dis-ib leo-mt-30 leo-txt-c leo-fs-m leo-radius-m leo-lh-m leo-color-a leo-bg-b" href="{:url('user/index')}" target="_blank"><span class="iconfont icon-people leo-fs-m"></span>&nbsp;会员中心</a>
+            <a class="leo-col-4 leo-dis-ib leo-mt-30 leo-txt-c leo-fs-m leo-radius-m leo-lh-m leo-color-a leo-bg-b" href="{:url('user/upgrade')}" target="_blank"><span class="iconfont icon-crown leo-fs-m"></span>&nbsp;马上升级</a>
+		</div>
+		{else/}
+		<h2 class="leo-fs-l">试看{$popedom.trysee}分钟结束，完整观看本影片需要花费{$obj.vod_points_play}积分，请支付后观看。</h2>
+		<p class="leo-txt-c leo-fs-m">提示：一次支付，永久观看，不重复扣费，谢谢支持。</p>
+		<div class="leo-txt-c">
+			{if condition="$user.group.group_id eq 1"}
+			<a class="mac_user leo-col-6 leo-dis-ib leo-mt-30 leo-txt-c leo-fs-m leo-radius-m leo-lh-m leo-color-a leo-bg-b" href="javascript:;" target="_blank"><span class="iconfont icon-people leo-fs-m"></span>&nbsp;马上登录</a>
+			{else}
+			<a class="leo-col-4 leo-dis-ib leo-mt-30 leo-txt-c leo-fs-m leo-radius-m leo-lh-m leo-color-a leo-bg-b" href="{:url('user/buy')}" target="_blank"><span class="iconfont icon-goodsnew leo-fs-m"></span>&nbsp;马上充值</a>
+            <a class="leo-col-4 leo-dis-ib leo-mt-30 leo-txt-c leo-fs-m leo-radius-m leo-lh-m leo-color-a leo-bg-b" href="javascript:;" onclick="window.parent.MAC.User.BuyPopedom(this)" data-id="{$obj.vod_id}" data-sid="{$param.sid}" data-nid="{$param.nid}" data-type="4" ><span class="iconfont icon-sponsor leo-fs-m"></span>&nbsp;确认购买</a>
+			{/if}
+		</div>
+		{/if}
+	</div>
+</div>
+</div>
+
+<script>
+     window.setTimeout(function(){
+     $('.MacPlayer').html( $('.player_showtry').html() );
+     },1000*60*{$popedom.trysee});
+</script>
+{/if}
+</body>
+</html>
+

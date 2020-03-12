@@ -1,0 +1,25 @@
+{include file="public/include"}
+    <div class="leo-auth-wrap leo-po-ab leo-bg-o">
+        <div class="leo-auth-index leo-over-hd leo-bg-b leo-color-a">
+		<a class="leo-left leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" onclick="LeoBack();">
+			<span class="iconfont icon-back  leo-fs-icon-s leo-color-a"></span>
+		</a>
+		<font class="leo-left leo-col-6 leo-lh-l leo-fs-l leo-ellipsis-1">小应用</font>
+		<a class="leo-right leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" href="{:url('user/info')}" tapmode onclick="showDefault('loading')">
+		    <span class="iconfont icon-settings leo-fs-icon-s leo-color-a"></span>
+		</a>
+        <a class="leo-right username leo-mt-20 leo-dis-fl" href="{:url('user/index')}" rel="nofollow">
+            <span class="leo-user-name leo-fs-m leo-pr-30 leo-pl-30 leo-radius-m leo-col-0 leo-txt-c leo-color-a leo-lh-vs">
+                {$obj.user_name}
+            </span>
+        </a>
+		</div>
+        <div class="leo-form-box leo-po-ab leo-bg-a">
+            {include file="user/head"}
+                <div class="leo-pr-20 leo-pl-20">
+                    <iframe src="http://ai.sm.cn/" height="300" width="100%" frameborder="0"></iframe>
+                </div>
+            {include file="user/foot"}
+		</div>
+	</div>
+{include file="public/footer"}

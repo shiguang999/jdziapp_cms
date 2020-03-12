@@ -1,0 +1,8 @@
+更新日志,//www.maccms.com/doc/v10/log.html
+视频管理,vod/data
+文章管理,art/data
+测试插件文件菜单,/application/xxxx.html
+主题设置,/index.php/label/admin
+资源采集,/index.php/label/union
+海螺主题设置,/admin.php/admin/conch/theme
+ISR.Yun资源库,/addons/isryun/isryunzyk.php

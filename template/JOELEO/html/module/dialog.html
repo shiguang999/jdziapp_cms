@@ -1,0 +1,17 @@
+{maccms:art num="1"  level="8"}
+<div class="tan-mask" id="tongzhi-mask"></div>
+<div class="tan-dialog" id="tongzhi-body" style="margin-top:-15%;">
+    <div class="tan-dialog-header">
+        --== {$vo.art_name} ==--
+    </div>
+    <div class="tan-dialog-body">
+        <a href="{if$vo.art_jumpurl==''}{:mac_url_art_detail($vo)}{else}{$vo.art_jumpurl}{/if}">
+            <img src="{$vo.art_pic_slide|mac_default=$vo.art_pic|mac_url_img}" style="width: 100%;">
+        </a>
+    </div>
+    <div class="tan-dialog-footer">
+        <div class="tan-dialog-btn" id="tongzhi-btn" tapmode="" button-index="0">朕已阅</div>
+    </div>
+</div>
+{/maccms:art}
+{if$muchoConfig['islazy']==0}<script>$("img").on("error", function(){$(this).attr("src","{$maccms.path_tpl}asset/img/lazy.png");});</script>{/if}{if$muchoConfig['isload']==1}<script>function showDefault(type){showDefaults(type);}</script>{else}<script>function showDefault(type){console.log(type)}</script>{/if}

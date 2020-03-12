@@ -1,0 +1,59 @@
+{include file="public/include"}
+    <div class="leo-auth-wrap leo-po-ab leo-bg-o">
+        <div class="leo-auth-index leo-over-hd leo-bg-b leo-color-a">
+		<a class="leo-left leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" href="{:url('user/ajax_info')}">
+			<span class="iconfont icon-back  leo-fs-icon-s leo-color-a"></span>
+		</a>
+		<font class="leo-left leo-col-6 leo-lh-l leo-fs-l leo-ellipsis-1">我的权限</font>
+		<a class="leo-right leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" href="{:url('user/info')}" tapmode onclick="showDefault('loading')">
+		    <span class="iconfont icon-settings leo-fs-icon-s leo-color-a"></span>
+		</a>
+        <a class="leo-right username leo-mt-20 leo-dis-fl" href="{:url('user/index')}" rel="nofollow">
+            <span class="leo-user-name leo-fs-m leo-pr-30 leo-pl-30 leo-radius-m leo-col-0 leo-txt-c leo-color-a leo-lh-vs">
+                {$obj.user_name}
+            </span>
+        </a>
+		</div>
+        <div class="leo-form-box leo-po-ab leo-bg-a">
+            {include file="user/head"}
+            <div class="leo-auth-form">
+                <div class="leo-auth-info leo-fs-m leo-mt-20 leo-mb-10 leo-mr-20 leo-ml-20 leo-pb-30">
+                    <span>所属会员组:</span>
+                    <span class="leo-color-c leo-right">{$obj.group.group_name}</span>
+                </div>
+                <div class="leo-auth-info leo-fs-m leo-mt-20 leo-mb-10 leo-mr-20 leo-ml-20 leo-pb-30">
+                    <span>会员期限:</span>
+                    <span class="leo-color-c leo-right">{if condition="$obj.group_id lt 3"}无限期{else} {$obj.user_end_time|mac_day}{/if}</span>
+                </div>
+                {volist name="type_tree" id="vo"}
+        		    <div class="leo-auth-info leo-fs-m leo-mt-15 leo-mb-10 leo-mr-20 leo-ml-20 leo-pb-20">
+        			    <span>|-{$vo.type_name}</span>
+		        	</div>
+        			<div class="leo-auth-info leo-fs-m leo-mt-15 leo-mb-10 leo-mr-20 leo-ml-20 leo-pb-20">
+        			    <span class="leo-color-e leo-lh-vs">
+            			{foreach name="$vo.popedom" id="v2"}
+                			    {$key}{if condition="$v2 eq 1"}√{else}×{/if}
+                		{/foreach}
+            			</span>
+            		</div>
+        			{volist name="vo.child" id="child"}
+        			<div class="leo-auth-info leo-fs-m leo-mt-15 leo-mb-10 leo-mr-20 leo-ml-20 leo-pb-20">
+        			    <span>|--{$child.type_name}</span>
+    	        	</div>
+        			<div class="leo-auth-info leo-fs-m leo-mt-15 leo-mb-10 leo-mr-20 leo-ml-20 leo-pb-20">
+        			    <span class="leo-color-e leo-lh-vs">
+        				{foreach name="$child.popedom" id="v2"}
+                			    {$key}{if condition="$v2 eq 1"}√{else}×{/if}
+        				{/foreach}
+    			        </span>
+    			    </div>
+
+			{/volist}
+		{/volist}
+		       
+        </div>
+        {include file="user/foot"}
+        </div>
+	</div>
+{include file="public/footer"}
+

@@ -1,0 +1,55 @@
+{include file="public/include"}
+    <div class="leo-auth-wrap leo-po-ab leo-bg-o">
+        <div class="leo-auth-index leo-over-hd leo-bg-b leo-color-a">
+		<a class="leo-left leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" href="{:url('user/ajax_info')}">
+			<span class="iconfont icon-back  leo-fs-icon-s leo-color-a"></span>
+		</a>
+		<font class="leo-left leo-col-6 leo-lh-l leo-fs-l leo-ellipsis-1">在线充值记录</font>
+		<a class="leo-right leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" href="{:url('user/info')}" tapmode onclick="showDefault('loading')">
+		    <span class="iconfont icon-settings leo-fs-icon-s leo-color-a"></span>
+		</a>
+        <a class="leo-right username leo-mt-20 leo-dis-fl" href="{:url('user/index')}" rel="nofollow">
+            <span class="leo-user-name leo-fs-m leo-pr-30 leo-pl-30 leo-radius-m leo-col-0 leo-txt-c leo-color-a leo-lh-vs">
+                {$obj.user_name}
+            </span>
+        </a>
+		</div>
+        <div class="leo-form-box leo-po-ab leo-bg-a">
+            {include file="user/head"}
+            <div class="leo-auth-form">
+                <div class="leo-auth-info leo-fs-m leo-mt-20 leo-mb-10 leo-mr-20 leo-ml-20 leo-pb-60">
+                <a class="leo-left leo-fs-m leo-active-font">在线充值记录</a>
+                <a class="leo-right leo-fs-m" href="{:url('user/cards')}">充值卡记录</a>
+                </div>
+		    {volist name="list" id="vo"}
+                    <div class="leo-auth-info leo-fs-m leo-mt-15 leo-mb-10 leo-mr-20 leo-ml-20 leo-pb-30">
+                        <span>编号:</span>
+                        <span class="leo-right leo-color-e leo-lh-vs">{$vo.order_code}</span>
+                    </div>
+                    <div class="leo-auth-info leo-fs-m leo-mt-20 leo-mb-10 leo-mr-20 leo-ml-20 leo-pb-30">
+                        <span>订单状态：</span>
+                        <span class="leo-right leo-color-c leo-lh-vs">{if condition="$vo.order_status eq 1"}已支付{else}未支付{/if}</span>
+                    </div>
+                    <div class="leo-auth-info leo-fs-m leo-mt-20 leo-mb-10 leo-mr-20 leo-ml-20 leo-pb-30">
+                        <span>订单金额：</span>
+                        <span class="leo-right leo-color-e leo-lh-vs">￥{$vo.order_price}元</span>
+                    </div>
+                    <div class="leo-auth-info leo-fs-m leo-mt-20 leo-mb-10 leo-mr-20 leo-ml-20 leo-pb-30">
+                        <span>创建时间：</span>
+                        <span class="leo-right leo-color-e leo-lh-vs">{$vo.order_time|mac_day}</span>
+                    </div>
+                    <div class="leo-auth-info leo-fs-m leo-mt-20 leo-mb-10 leo-mr-20 leo-ml-20 leo-pb-30">
+                        <span>订单操作：</span>
+                        <span class="leo-right leo-lh-vs">
+                            {if condition="$vo.order_status eq 0"}
+				            <a href="{:url('user/pay')}?order_code={$vo.order_code}" class="leo-color-c">马上支付</a>
+				            {/if}
+				        </span>
+                    </div>
+                   <div class="leo-auth-info leo-fs-m leo-mt-20 leo-mb-10 leo-mr-20 leo-ml-20 leo-pb-30"></div>
+                {/volist}
+            </div>
+        {include file="user/foot"}
+        </div>
+	</div>
+{include file="public/footer"}

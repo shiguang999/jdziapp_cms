@@ -1,0 +1,86 @@
+{if$maccms.aid!=''}
+{include file="public/include"}
+{include file="module/sousou"}
+<header class="leo-po-re leo-h-l leo-color-a leo-col-12">
+	<div class="leo-col-12 leo-po-fi leo-bg-b">
+		<div class="leo-left leo-lh-l leo-ml-20 leo-fs-xl" >购买观看</div>
+		{if$user.user_id!=''}
+		<a class="leo-right leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" href="{:mac_url('user/index')}" tapmode onclick="showDefault('loading')">
+	        <img class="leo-radius-m leo-mt-20 leo-aimg-s" id="leo-head-avatar">
+	    </a>
+	    {else/}
+		<a class="leo-right leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" href="{:mac_url('user/login')}" tapmode onclick="showDefault('loading')">
+	        <span class="iconfont icon-people leo-fs-icon-s leo-color-a"></span>
+	    </a>
+	    {/if}
+		<a class="leo-right leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl mac_history" href="javascript:;" >
+	        <span class="iconfont icon-time leo-fs-icon-s leo-color-a"></span>
+	   	</a>
+	    <a class="leo-right leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" href="javascript:;" onclick="LeoOpenSearcho()">
+	        <span class="iconfont icon-search leo-fs-icon-s leo-color-a"></span>
+	    </a>
+	</div>
+</header>
+<div class="leo-nav-wrap leo-col-12 leo-po-fi ">
+	<div class="leo-col-12 leo-bg-x">
+		<div id="leo-head-nav" class="leo-pr-20 leo-pl-20">
+			<ul class="swiper-wrapper clearfix">
+				<li class="swiper-slide leo-col-0 {if$maccms.aid==1}leo-active-nav{/if}">
+				    <a class="leo-show leo-mr-20 leo-ml-20 leo-lh-l leo-fs-m " href="/" tapmode onclick="showDefault('loading')">首页</a>
+				</li>
+                {maccms:type ids="parent" order="asc" by="sort" flag="vod"}
+                <li class="swiper-slide leo-col-0 {if$vo.type_id==$obj.type_id||$vo.type_id==$obj.type_1.type_id||$vo.type_id==$obj.parent.type_id}leo-active-nav{/if}" tapmode onclick="showDefault('loading')">
+                    <a class="leo-show leo-mr-20 leo-ml-20 leo-lh-l leo-fs-m " href="{:mac_url_type($vo)}">{$vo.type_name}</a>
+                </li>
+                {/maccms:type}
+                <?php $leeleo = require ('application/extra/maccms.php'); ?>
+    			<?php if($leeleo['gbook']['status']=='1') { ?>
+    			<li class="swiper-slide leo-col-0 {if$maccms.aid==4}leo-active-nav{/if}" tapmode onclick="showDefault('loading')">
+    			    <a class="leo-show leo-mr-20 leo-ml-20 leo-lh-l leo-fs-m " href="{:mac_url('gbook/index')}">求片</a>
+    			</li>
+                <?php } ?>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="leo-mt-ok"></div>
+<script>var leo_avatar = MAC.Cookie.Get("leo-avatar");if(leo_avatar == "" || leo_avatar == null){$("#leo-head-avatar").attr("src", "{$maccms.path}template/JOELEO/asset/img/mucho.png?v={:time()}");}else{$("#leo-head-avatar").attr("src", leo_avatar+"?v={:time()}");}</script>
+{else/}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>使用积分购买权限</title>
+<meta name="viewport" content="initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<style>a {text-decoration: none;outline: none;}a:hover, a:active {outline: 0}.leo-jump-wrap{margin: 0 auto;padding-top: 40px;padding-bottom: 40px;text-align: center;}.leo-jump-wrap img {margin-bottom: 40px;width: 180px;}.leo-jump-msg {display: block;padding: 0 40px;font-size: 22px;}.leo-jump-msg strong {display: block;background: linear-gradient(-95deg, #FF813A, #FF3F3D 60%, #FF3D3D);-webkit-background-clip: text;color: transparent;}.leo-jump-btn {width: 140px;display: inline-block;margin-top: 40px;font-size: 18px;border-radius: 40px;margin-right: 20px;margin-left: 20px;line-height: 40px;color: #fff;background: linear-gradient(-95deg, #FF813A, #FF3F3D 60%, #FF3D3D);}
+</style>
+<script src="{$maccms.path}static/js/jquery.js"></script>
+</head>
+<body>
+{/if}
+<div class="leo-jump-wrap">
+    <img src="{$maccms.path}template/JOELEO/asset/img/not.png" />
+    
+    <p class="leo-jump-msg"><strong>{$popedom.msg}</strong></p>
+    <p class="leo-jump-msg"><b style="font-size:.2rem;color:#666;">提示：一次支付，永久观看，不重复扣费，谢谢支持。</b></p>
+    <p>
+        {if$user.group.group_id==1}
+        <a class="leo-jump-btn mac_user" href="javascript:;">马上登陆</a>
+        <a class="leo-jump-btn" href="{:mac_url('index/index')}">返回首页</a>
+        {else/}
+        <a class="leo-jump-btn" href="{:url('user/buy')}">马上充值</a>
+        <a class="leo-jump-btn" href="javascript:;" onclick="MAC.User.BuyPopedom(this)" data-id="{$obj.art_id}" data-sid="{$param.page}" data-nid="0" data-mid="2" data-type="1">确认购买</a>
+        {/if}
+    </p>
+</div>    
+
+{if$maccms.aid!=''}
+{include file="public/footer"}
+{else/}
+</body>
+</html>
+{/if}
+
+
+
+

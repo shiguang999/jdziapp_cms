@@ -1,0 +1,137 @@
+{if$muchoConfig['isweekday']==1}
+<section class="leo-mod leo-left leo-col-12 ">
+	<div class="leo-bg-a leo-lh-l leo-fs-l">
+		<div class="leo-mod-title">
+			<svg class="icon leo-fs-icon-xl" aria-hidden="true">
+			    <use xlink:href="#icon-dong"></use>
+            </svg>一周放送表
+            <a href="javascript:;" class="leo-more leo-po-ab leo-color-b leo-lh-l leo-fs-m" tapmode onclick="showDefault('loading')">
+			    <span class="iconfont icon-location leo-fs-m"></span>&nbsp;安排的明明白白&nbsp;
+			</a>
+		</div>
+	</div>
+	<div class="leo-po-re leo-bg-a leo-left leo-col-12">
+        <ul class="leo-week-ul">
+            <li id="week1"><a class="normal_a_color" onclick="weekdata(1);" target="_self">周一</a></li>
+            <li id="week2"><a class="normal_a_color"  onclick="weekdata(2);" target="_self">周二</a></li>
+            <li id="week3"><a class="normal_a_color"  onclick="weekdata(3);" target="_self">周三</a></li>
+            <li id="week4"><a class="normal_a_color"  onclick="weekdata(4);" target="_self">周四</a></li>
+            <li id="week5"><a class="normal_a_color"  onclick="weekdata(5);" target="_self">周五</a></li>
+            <li id="week6"><a class="normal_a_color"  onclick="weekdata(6);" target="_self">周六</a></li>
+            <li id="week0"><a class="normal_a_color"  onclick="weekdata(0);" target="_self">周日</a></li>
+        </ul>
+    </div>
+	<div class="leo-po-re leo-bg-a leo-left leo-col-12 leo-hide" id="weekdiv0">
+		<div class="leo-pr-20 leo-pl-20">
+		    <ul>{maccms:vod num="6" type="all" order="desc" by="time" weekday="日"}
+				<li class="leo-video-item leo-col-4 leo-left leo-mb-30 leo-mr-20" tapmode onclick="showDefault('loading')">
+					<a class="leo-show" href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}">
+						<div class="leo-video-tips leo-po-ab leo-fs-s leo-color-a leo-pl-20 leo-bg-b">评分：{$vo.vod_score|mac_default='暂无'}</div>
+					    <img class="leo-lazy leo-pic leo-radius-s" src={if$muchoConfig['islazy']==1}"{$maccms.path_tpl}asset/img/lazy.png" data-original={/if}"{$vo.vod_pic|mac_url_img}">
+                        <div class="leo-video-remark leo-po-re leo-fs-s leo-color-a leo-right leo-ellipsis-1">{$vo.vod_remarks|mac_default='内详'}</div>
+						<div class="leo-mt-15">
+							<h2 class="leo-fs-m leo-ellipsis-1">{$vo.vod_name}</h2>
+						</div>
+					</a>
+				</li>{/maccms:vod}
+			</ul>
+		</div>
+	</div>
+	<div class="leo-po-re leo-bg-a leo-left leo-col-12 leo-hide" id="weekdiv1">
+		<div class="leo-pr-20 leo-pl-20">
+		    <ul>{maccms:vod num="6" type="all" order="desc" by="time" weekday="一"}
+				<li class="leo-video-item leo-col-4 leo-left leo-mb-30 leo-mr-20" tapmode onclick="showDefault('loading')">
+					<a class="leo-show" href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}">
+						<div class="leo-video-tips leo-po-ab leo-fs-s leo-color-a leo-pl-20 leo-bg-b">评分：{$vo.vod_score|mac_default='暂无'}</div>
+					    <img class="leo-lazy leo-pic leo-radius-s" src={if$muchoConfig['islazy']==1}"{$maccms.path_tpl}asset/img/lazy.png" data-original={/if}"{$vo.vod_pic|mac_url_img}">
+                        <div class="leo-video-remark leo-po-re leo-fs-s leo-color-a leo-right leo-ellipsis-1">{$vo.vod_remarks|mac_default='内详'}</div>
+						<div class="leo-mt-15">
+							<h2 class="leo-fs-m leo-ellipsis-1">{$vo.vod_name}</h2>
+						</div>
+					</a>
+				</li>{/maccms:vod}
+			</ul>
+		</div>
+	</div>
+	<div class="leo-po-re leo-bg-a leo-left leo-col-12 leo-hide" id="weekdiv2">
+		<div class="leo-pr-20 leo-pl-20">
+		    <ul>{maccms:vod num="6" type="all" order="desc" by="time" weekday="二"}
+				<li class="leo-video-item leo-col-4 leo-left leo-mb-30 leo-mr-20" tapmode onclick="showDefault('loading')">
+					<a class="leo-show" href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}">
+						<div class="leo-video-tips leo-po-ab leo-fs-s leo-color-a leo-pl-20 leo-bg-b">评分：{$vo.vod_score|mac_default='暂无'}</div>
+					    <img class="leo-lazy leo-pic leo-radius-s" src={if$muchoConfig['islazy']==1}"{$maccms.path_tpl}asset/img/lazy.png" data-original={/if}"{$vo.vod_pic|mac_url_img}">
+                        <div class="leo-video-remark leo-po-re leo-fs-s leo-color-a leo-right leo-ellipsis-1">{$vo.vod_remarks|mac_default='内详'}</div>
+						<div class="leo-mt-15">
+							<h2 class="leo-fs-m leo-ellipsis-1">{$vo.vod_name}</h2>
+						</div>
+					</a>
+				</li>{/maccms:vod}
+			</ul>
+		</div>
+	</div>
+	<div class="leo-po-re leo-bg-a leo-left leo-col-12 leo-hide" id="weekdiv3">
+		<div class="leo-pr-20 leo-pl-20">
+		    <ul>{maccms:vod num="6" type="all" order="desc" by="time" weekday="三"}
+				<li class="leo-video-item leo-col-4 leo-left leo-mb-30 leo-mr-20" tapmode onclick="showDefault('loading')">
+					<a class="leo-show" href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}">
+						<div class="leo-video-tips leo-po-ab leo-fs-s leo-color-a leo-pl-20 leo-bg-b">评分：{$vo.vod_score|mac_default='暂无'}</div>
+					    <img class="leo-lazy leo-pic leo-radius-s" src={if$muchoConfig['islazy']==1}"{$maccms.path_tpl}asset/img/lazy.png" data-original={/if}"{$vo.vod_pic|mac_url_img}">
+                        <div class="leo-video-remark leo-po-re leo-fs-s leo-color-a leo-right leo-ellipsis-1">{$vo.vod_remarks|mac_default='内详'}</div>
+						<div class="leo-mt-15">
+							<h2 class="leo-fs-m leo-ellipsis-1">{$vo.vod_name}</h2>
+						</div>
+					</a>
+				</li>{/maccms:vod}
+			</ul>
+		</div>
+	</div>
+	<div class="leo-po-re leo-bg-a leo-left leo-col-12 leo-hide" id="weekdiv4">
+		<div class="leo-pr-20 leo-pl-20">
+		    <ul>{maccms:vod num="6" type="all" order="desc" by="time" weekday="四"}
+				<li class="leo-video-item leo-col-4 leo-left leo-mb-30 leo-mr-20" tapmode onclick="showDefault('loading')">
+					<a class="leo-show" href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}">
+						<div class="leo-video-tips leo-po-ab leo-fs-s leo-color-a leo-pl-20 leo-bg-b">评分：{$vo.vod_score|mac_default='暂无'}</div>
+					    <img class="leo-lazy leo-pic leo-radius-s" src={if$muchoConfig['islazy']==1}"{$maccms.path_tpl}asset/img/lazy.png" data-original={/if}"{$vo.vod_pic|mac_url_img}">
+                        <div class="leo-video-remark leo-po-re leo-fs-s leo-color-a leo-right leo-ellipsis-1">{$vo.vod_remarks|mac_default='内详'}</div>
+						<div class="leo-mt-15">
+							<h2 class="leo-fs-m leo-ellipsis-1">{$vo.vod_name}</h2>
+						</div>
+					</a>
+				</li>{/maccms:vod}
+			</ul>
+		</div>
+	</div>
+	<div class="leo-po-re leo-bg-a leo-left leo-col-12 leo-hide" id="weekdiv5">
+		<div class="leo-pr-20 leo-pl-20">
+		    <ul>{maccms:vod num="6" type="all" order="desc" by="time" weekday="五"}
+				<li class="leo-video-item leo-col-4 leo-left leo-mb-30 leo-mr-20" tapmode onclick="showDefault('loading')">
+					<a class="leo-show" href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}">
+						<div class="leo-video-tips leo-po-ab leo-fs-s leo-color-a leo-pl-20 leo-bg-b">评分：{$vo.vod_score|mac_default='暂无'}</div>
+					    <img class="leo-lazy leo-pic leo-radius-s" src={if$muchoConfig['islazy']==1}"{$maccms.path_tpl}asset/img/lazy.png" data-original={/if}"{$vo.vod_pic|mac_url_img}">
+                        <div class="leo-video-remark leo-po-re leo-fs-s leo-color-a leo-right leo-ellipsis-1">{$vo.vod_remarks|mac_default='内详'}</div>
+						<div class="leo-mt-15">
+							<h2 class="leo-fs-m leo-ellipsis-1">{$vo.vod_name}</h2>
+						</div>
+					</a>
+				</li>{/maccms:vod}
+			</ul>
+		</div>
+	</div>
+	<div class="leo-po-re leo-bg-a leo-left leo-col-12 leo-hide" id="weekdiv6">
+		<div class="leo-pr-20 leo-pl-20">
+		    <ul>{maccms:vod num="6" type="all" order="desc" by="time" weekday="六"}
+				<li class="leo-video-item leo-col-4 leo-left leo-mb-30 leo-mr-20" tapmode onclick="showDefault('loading')">
+					<a class="leo-show" href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}">
+						<div class="leo-video-tips leo-po-ab leo-fs-s leo-color-a leo-pl-20 leo-bg-b">评分：{$vo.vod_score|mac_default='暂无'}</div>
+					    <img class="leo-lazy leo-pic leo-radius-s" src={if$muchoConfig['islazy']==1}"{$maccms.path_tpl}asset/img/lazy.png" data-original={/if}"{$vo.vod_pic|mac_url_img}">
+                        <div class="leo-video-remark leo-po-re leo-fs-s leo-color-a leo-right leo-ellipsis-1">{$vo.vod_remarks|mac_default='内详'}</div>
+						<div class="leo-mt-15">
+							<h2 class="leo-fs-m leo-ellipsis-1">{$vo.vod_name}</h2>
+						</div>
+					</a>
+				</li>{/maccms:vod}
+			</ul>
+		</div>
+	</div>
+</section>
+{/if}

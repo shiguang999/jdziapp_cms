@@ -1,0 +1,97 @@
+{include file="public/include"}
+    <div class="leo-auth-wrap leo-po-ab leo-bg-o">
+        <div class="leo-auth-index leo-over-hd leo-bg-b leo-color-a">
+		<a class="leo-left leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" href="{:url('user/index')}">
+			<span class="iconfont icon-back  leo-fs-icon-s leo-color-a"></span>
+		</a>
+		<font class="leo-left leo-col-6 leo-lh-l leo-fs-l leo-ellipsis-1">充值中心</font>
+		<a class="leo-right leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" href="{:url('user/info')}" tapmode onclick="showDefault('loading')">
+		    <span class="iconfont icon-settings leo-fs-icon-s leo-color-a"></span>
+		</a>
+        <a class="leo-right username leo-mt-15 leo-dis-fl" href="{:url('user/index')}" rel="nofollow">
+            <span class="leo-user-name leo-fs-m leo-pr-30 leo-pl-30 leo-radius-m leo-col-0 leo-txt-c leo-color-a leo-mt-10">
+                {$obj.user_name}
+            </span>
+        </a>
+		</div>
+        <div class="leo-form-box leo-po-ab leo-bg-a">
+            {include file="user/head"}
+            <div class="leo-auth-form">
+                <div class="leo-txt-c leo-mt-15">
+                    <span class="leo-fs-l leo-active-font">在线充值</span>
+                </div>
+                <div class="leo-auth-input leo-po-re leo-mt-20 leo-radius-m leo-bg-o">
+                    <span class="iconfont icon-recharge leo-color-e leo-fs-m leo-po-ab"></span>
+                    <input type="text" name="price" value="{$config.min}" size="22" maxlength="12"  placeholder="充值金额" class="leo-show leo-fs-s leo-radius-m leo-bg-o"/>
+                    <p class="leo-fs-m leo-txt-c leo-active-font leo-left leo-pl-20 leo-mt-20 leo-mb-10"><small>*（最小充值金额为{$config.min}元，1元={$config.scale}积分）</small></p>
+                </div>
+                
+                <a class="leo-col-12 leo-dis-ib leo-mt-30 leo-txt-c leo-fs-m leo-radius-m leo-lh-l leo-color-a leo-bg-b" id="leo-buy-submit" tapmode onclick="showDefault('loading')"><span class="iconfont icon-sponsor leo-fs-m"></span>&nbsp;确认充值</a>
+                
+                <div class="leo-auth-info leo-mt-30"></div>
+                <div class="leo-txt-c leo-mt-30">
+                    <span class="leo-fs-l leo-active-font">卡密充值</span>
+                </div>
+                
+                <div class="leo-auth-input leo-po-re leo-mt-20 leo-radius-m leo-bg-o">
+                    <span class="iconfont icon-vipcard leo-color-e leo-fs-m leo-po-ab"></span>
+                    <input type="text" name="card_no" maxlength="40" value=""  placeholder="输入充值卡号码" class="leo-show leo-fs-s leo-radius-m leo-bg-o"/>
+                </div>
+                <div class="leo-auth-input leo-po-re leo-mt-20 leo-radius-m leo-bg-o">
+                    <span class="iconfont icon-lock leo-color-e leo-fs-m leo-po-ab"></span>
+                    <input type="text" name="card_pwd" maxlength="40" value=""  placeholder="输入充值卡密码" class="leo-show leo-fs-s leo-radius-m leo-bg-o"/>
+                </div>
+                <a class="leo-left leo-fs-m leo-mt-30 leo-mb-30 leo-ml-30 leo-mr-30" href="https://wpa.qq.com/msgrd?v=3&uin={$maccms.site_qq}&site=qq&menu=yes">联系站长</a>
+                <a class="leo-right leo-fs-m leo-mt-30 leo-mb-30 leo-ml-30 leo-mr-30" href="{$config.card.url}">在线购卡</a>
+                <a class="leo-col-12 leo-dis-ib leo-txt-c leo-fs-m leo-radius-m leo-lh-l leo-color-a leo-bg-b" id="leo-card-submit" tapmode onclick="showDefault('loading')"><span class="iconfont icon-sponsor leo-fs-m"></span>&nbsp;确认充值</a>
+            </div>
+        {include file="user/foot"}
+		</div>
+	</div>
+<script>
+	$('#leo-buy-submit').click(function(){
+		var that=$(this);
+		var price = $("input[name='price']").val();
+		if(Number(price)<1){
+			return;
+		}
+		if(confirm('确定要在线充值吗')) {
+			$.ajax({
+				url: "{:url('user/buy')}",
+				type: "post",
+				dataType: "json",
+				data: {price: price,flag:'pay'},
+				success: function (r) {
+					if (r.code == 1) {
+						location.href="{:url('user/pay')}?order_code=" + r.data.order_code;
+					}
+					else{
+						alert(r.msg);
+					}
+				}
+			});
+		}
+	});
+
+	$('#leo-card-submit').click(function(){
+		var that=$(this);
+		var no = $('input[name="card_no"]').val();
+		var pwd = $('input[name="card_pwd"]').val();
+		if(no=='' || pwd==''){
+			alert('请输入充值卡号和密码');
+			return;
+		}
+		if(confirm('确定要使用充值卡充值吗')) {
+			$.ajax({
+				url: "{:url('user/buy')}",
+				type: "post",
+				dataType: "json",
+				data: {card_no: no,card_pwd:pwd,flag:'card'},
+				success: function (r) {
+					alert(r.msg);
+				}
+			});
+		}
+	});
+	</script>
+{include file="public/footer"}

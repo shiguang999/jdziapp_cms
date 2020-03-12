@@ -1,0 +1,16 @@
+<img class="leo-avatar-img leo-radius-m" src="{$obj.user_portrait|mac_default='template/JOELEO/asset/img/mucho.png'|mac_url_img}?v={:time()}">
+<ul class="leo-info-ul leo-fs-m leo-dis-fl leo-mt-20 leo-pb-20 leo-pt-10">
+	<li class="leo-info-li">
+		<span class="leo-show leo-txt-c leo-active-font leo-pb-10">{$obj.user_points}</span>
+		<span class="leo-show leo-txt-c leo-pb-10">我的积分</span>
+	</li>
+	<li class="leo-info-li leo-info-bl">
+		<span class="leo-show leo-txt-c leo-active-font leo-pb-10">{$obj.group.group_name}</span>
+		<span class="leo-show leo-txt-c leo-pb-10">会员等级</span>
+	</li>
+	<li class="leo-info-li leo-info-bl">
+		<span class="leo-show leo-txt-c leo-active-font leo-pb-10">{if condition="$obj.group_id lt 3"}永久{else}{$obj.user_end_time|date='Y-m-d',###}{/if}</span>
+		<span class="leo-show leo-txt-c leo-pb-10">会员期限</span>
+	</li>
+</ul>
+<script>MAC.Cookie.Set("leo-avatar","{$obj.user_portrait|mac_default='template/JOELEO/asset/img/mucho.png'|mac_url_img}",365);</script>

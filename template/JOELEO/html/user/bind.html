@@ -1,0 +1,132 @@
+{include file="public/include"}
+    <div class="leo-auth-wrap leo-po-ab leo-bg-o">
+        <div class="leo-auth-index leo-over-hd leo-bg-b leo-color-a">
+		<a class="leo-left leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" onclick="LeoBack();">
+			<span class="iconfont icon-back  leo-fs-icon-s leo-color-a"></span>
+		</a>
+		<font class="leo-left leo-col-6 leo-lh-l leo-fs-l leo-ellipsis-1">绑定{if condition="$ac eq 'phone'"}手机{else/}邮箱{/if}</font>
+		<a class="leo-right leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" href="{:url('user/info')}" tapmode onclick="showDefault('loading')">
+		    <span class="iconfont icon-settings leo-fs-icon-s leo-color-a"></span>
+		</a>
+        <a class="leo-right username leo-mt-20 leo-dis-fl" href="{:url('user/index')}" rel="nofollow">
+            <span class="leo-user-name leo-fs-m leo-pr-30 leo-pl-30 leo-radius-m leo-col-0 leo-txt-c leo-color-a leo-lh-vs">
+                {$obj.user_name}
+            </span>
+        </a>
+		</div>
+        <div class="leo-form-box leo-po-ab leo-bg-a">
+            {include file="user/head"}
+            <div class="leo-auth-form">
+					<form id="leo-auth-bind" name="leo-auth-bind" method="post" action="" >
+					<input type="hidden" name="ac" value="{$ac}">
+					<div class="leo-auth-input leo-po-re leo-mt-20 leo-radius-m leo-bg-o">
+                       <span class="iconfont {if$ac==phone}icon-phone{else/}icon-mail{/if} leo-color-e leo-fs-m leo-po-ab"></span>
+                        <input type="text" name="to" placeholder="请输入您绑定的{if$ac==phone}手机号码{else/}邮箱地址{/if}" class="leo-show leo-fs-s leo-radius-m leo-bg-o"/>
+                    </div>
+                    <div class="leo-auth-input leo-po-re leo-mt-20 leo-radius-m leo-bg-o">
+    				    <span class="iconfont icon-vipcard leo-color-e leo-fs-m leo-po-ab"></span>
+                        <input type="text" name="code" placeholder="请输入{if$ac==phone}手机{else/}邮箱{/if}验证码" class="leo-show leo-fs-s leo-radius-m leo-bg-o"/>
+                        <input type="button" class="leo-ver-bind leo-txt-c leo-po-ab leo-fs-m leo-bg-b leo-color-a leo-mt-fl" id="leo-send-sms" value="获取验证码" style="width:1.6rem;padding-left:0;"/>
+                    </div>
+                    <a class="leo-col-12 leo-dis-ib leo-mt-30 leo-txt-c leo-fs-m leo-radius-m leo-lh-l leo-color-a leo-bg-b" id="leo-bind-submit" tapmode onclick="showDefault('loading')">确认绑定</a>
+                    </form>
+                </div>
+        {include file="user/foot"}
+		</div>
+	</div>
+<script type="text/javascript">
+    var countdown=60;
+    function settime(val) {
+        if (countdown == 0) {
+            val.removeAttribute("disabled");
+            val.value="获取验证码";
+            countdown = 60;
+            return true;
+        } else {
+            val.setAttribute("disabled", true);
+            val.value="重新发送(" + countdown + ")";
+            countdown--;
+        }
+        setTimeout(function() {settime(val) },1000)
+    }
+    $('#leo-send-sms').click(function(){
+        var ac = $('input[name="ac"]').val();
+        var to = $('input[name="to"]').val();
+        if(ac=='email') {
+            var pattern = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+            var ex = pattern.test(to);
+            if (!ex) {
+                alert('邮箱格式不正确');
+                return;
+            }
+        }
+        else if(ac=='phone') {
+            var pattern=/^[1][0-9]{10}$/;
+            var ex = pattern.test(to);
+            if (!ex) {
+                alert('手机号格式不正确');
+                return;
+            }
+        }
+        else{
+            alert('参数错误');
+            return;
+        }
+        settime(this);
+        var data = $("#leo-auth-bind").serialize();
+        $.ajax({
+            url: "{:url('user/bindmsg')}",
+            type: "post",
+            dataType: "json",
+            data: data,
+            success: function (r) {
+                alert(r.msg);
+            }
+        });
+    });
+
+    $("#leo-bind-submit").click(function() {
+        var ac = $('input[name="ac"]').val();
+        var to = $('input[name="to"]').val();
+        if(ac=='email') {
+            var pattern = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+            var ex = pattern.test(to);
+            if (!ex) {
+                alert('邮箱格式不正确');
+                return;
+            }
+        }
+        else if(ac=='phone') {
+            var pattern=/^[1][0-9]{10}$/;
+            var ex = pattern.test(to);
+            if (!ex) {
+                alert('手机号格式不正确');
+                return;
+            }
+        }
+        else{
+            alert('参数错误');
+            return;
+        }
+        var code = $('input[name="code"]').val();
+        if(code==''){
+            alert('请输入验证码');
+            return;
+        }
+        var data = $("#leo-auth-bind").serialize();
+
+        $.ajax({
+            url: "{:url('user/bind')}",
+            type: "post",
+            dataType: "json",
+            data: data,
+            success: function (r) {
+                alert(r.msg);
+                if(r.code==1){
+                    location.href="{:url('user/info')}";
+                }
+            }
+        });
+    });
+	</script>
+{include file="public/footer"}

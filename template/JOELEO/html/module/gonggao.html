@@ -1,0 +1,17 @@
+{if$muchoConfig['gonggao']['isopen']==1}
+<div class="leo-gonggao-body leo-bg-a">
+    <div class="pic">
+        {if$muchoConfig['gonggao']['leftlogo']['state']==1}
+        <img src="{$muchoConfig['gonggao']['leftlogo']['img']}">
+        {else}
+        &nbsp;<span class="leo-fs-l leo-color-b " style="font-weight:800;">网站</span>
+        <span class="leo-fs-l " style="font-weight:800;">公告</span>
+        {/if}
+    </div>
+    <div class="leo-gonggao-warp">
+        <div class="swiper-wrapper">
+            {:gonggaos($muchoConfig['gonggao']['info'])}
+        </div>
+	</div>
+</div>
+{/if}

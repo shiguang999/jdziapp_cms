@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+	{maccms:vod num="100" order="desc" by="time"}
+	<url>
+		<loc>http://{$maccms.site_url}{:mac_url_vod_detail($vo)}</loc>
+		<image:image>
+			<image:loc>http://{$maccms.site_url}{$vo.vod_pic|mac_url_img}</image:loc>
+		</image:image>
+		<video:video>
+			<video:title>
+				<![CDATA[{$vo.vod_name}]]>
+			</video:title>
+			<video:content_loc>http://{$maccms.site_url}{:mac_url_vod_play($vo,['sid'=>1,'nid'=>1])}</video:content_loc>
+			<video:category>
+				<![CDATA[{$vo.type.type_name}]]>
+			</video:category>
+			<video:view_count>{$vo.vod_hits}</video:view_count>
+			<video:description>
+				<![CDATA[{$vo.vod_content|mac_filter_html}]]>
+			</video:description>
+		</video:video>
+	</url>
+	{/maccms:vod} {maccms:art num="100" order="desc" by="time"}
+	<url>
+		<loc>http://{$maccms.site_url}{:mac_url_art_detail($vo)}</loc>
+		<image:image>
+			<image:loc>http://{$maccms.site_url}{$vo.art_pic|mac_url_img}</image:loc>
+		</image:image>
+		<news:news>
+			<news:publication>
+				<news:name>
+					<![CDATA[{$vo.vod_name}]]>
+				</news:name>
+				<news:language>zh-cn</news:language>
+			</news:publication>
+			<news:genres>PressRelease, Blog</news:genres>
+			<news:publication_date>{$vo.vod_time|date='Y-m-d H:i:s',###}</news:publication_date>
+			<news:title>
+				<![CDATA[{$vo.vod_name}]]>
+			</news:title>
+			<news:keywords>
+				<![CDATA[{$obj.art_tag}]]>
+			</news:keywords>
+		</news:news>
+	</url>
+	{/maccms:art}
+</urlset>

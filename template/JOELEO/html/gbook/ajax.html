@@ -1,0 +1,65 @@
+{maccms:gbook num="10" paging="yes" order="desc" by="id"}
+    <li class="leo-mt-20 leo-comment-li">
+        <div class="leo-po-re">
+            <div class="leo-po-ab">
+                <img alt="{$vo.gbook_name}" src="{php} echo mac_get_user_portrait($vo['user_id']); {/php}"  height="50" width="50" class="leo-radius-m leo-aimg-l">
+            </div>
+            <div class="leo-ml-com-a">
+                <div class="leo-lh-ss"> 
+                    <span class="leo-fs-m leo-color-d">
+                        <b>{$vo.gbook_name}</b>
+                    </span> 
+                </div>
+                <div class="leo-comment-text leo-fs-m leo-over-hd leo-pb-10 leo-lh-vs">
+                    {$vo.gbook_content|mac_em_replace}
+                </div>
+                <div class="leo-fs-s leo-color-d leo-pb-10 leo-pt-10">
+                    <span class="leo-mr-20"> {$vo.gbook_time|date='Y-m-d H:i:s',###}</span>  
+                </div>
+            </div>
+        </div>
+        {if condition="$vo.gbook_reply_time gt 0"}
+        <ul class="leo-pl-30 leo-ml-20 leo-border-com">
+            <li class="leo-mt-20">
+                <div class="leo-po-re">
+                    <div class="leo-po-ab">
+                        <img alt="站长" src="{$maccms.path_tpl}asset/img/mucho.png"  height="50" width="50" class="leo-radius-m leo-aimg-m">
+                    </div>
+                    <div class="leo-ml-com-b">
+                        <div class="leo-lh-ss"> 
+                            <span class="leo-fs-m leo-color-d">
+                                <b>站长</b>
+                            </span> 
+                        </div>
+                        <div class="leo-comment-text leo-fs-m leo-over-hd leo-pb-10 leo-lh-vs">
+                            {$vo.gbook_reply}
+                        </div>
+                        <div class="leo-fs-s leo-color-d leo-pb-10 leo-pt-10">
+                            <span class="leo-mr-20"> {$vo.gbook_reply_time|date='Y-m-d H:i:s',###} </span>  
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>{/if}
+    </li>
+{/maccms:gbook}
+<script>
+    $(".leo-comment-text").emojiParse({
+        basePath: '/template/JOELEO/asset/img/emoji',
+        icons: emojiLists
+    });
+</script>   
+{notempty name="$__PAGING__.record_total"}
+<section class="leo-col-12 leo-show leo-bg-a leo-pt-10 leo-pb-30 leo-txt-c leo-left">
+{if$__PAGING__.page_current==1}{else/}
+<a target="_self" href="javascript:void(0);" onclick="MAC.Gbook.Show(1)" class="leo-page-elem leo-fs-m leo-bg-a leo-radius-m leo-dis-ib leo-mr-10">首页</a>
+<a target="_self" href="javascript:void(0);" onclick="MAC.Gbook.Show('{$__PAGING__.page_prev}')" class="leo-page-elem leo-fs-m leo-bg-a leo-radius-m leo-dis-ib leo-mr-10">上一页</a>
+{/if}
+<span class="leo-page-elem leo-fs-m leo-bg-a leo-radius-m leo-dis-ib leo-mr-10">{$__PAGING__.page_current}</span>
+{if$__PAGING__.page_current==$__PAGING__.page_total}{else/}
+<a target="_self" href="javascript:void(0);" onclick="MAC.Gbook.Show('{$__PAGING__.page_next}')" class="leo-page-elem leo-fs-m leo-bg-a leo-radius-m leo-dis-ib">下一页</a>&nbsp;
+<a target="_self" href="javascript:void(0);" onclick="MAC.Gbook.Show('{$__PAGING__.page_total}')" class="leo-page-elem leo-fs-m leo-bg-a leo-radius-m leo-dis-ib">尾页</a>&nbsp;
+{/if}
+</section>
+<script>$('#item_count').html('{$__PAGING__.record_total|intval}');</script>
+{/notempty}

@@ -1,0 +1,14 @@
+{notempty name="$__PAGING__.record_total"}
+<section class="leo-col-12 leo-show leo-bg-a leo-pt-30 leo-pb-30 leo-txt-c leo-left">
+    {if$__PAGING__.page_current==1}{else/}
+    <a target="_self" href="{$__PAGING__.page_url|mac_url_page=1}" class="leo-page-elem leo-fs-m leo-bg-a leo-radius-m leo-dis-ib leo-mr-10"  tapmode onclick="showDefault('loading')">首页</a>
+    <a target="_self" href="{$__PAGING__.page_url|mac_url_page=$__PAGING__.page_prev}"  class="leo-page-elem leo-fs-m leo-bg-a leo-radius-m leo-dis-ib leo-mr-10" tapmode onclick="showDefault('loading')">上一页</a>
+    {/if}
+    <span class="leo-page-elem leo-fs-m leo-bg-a leo-radius-m leo-dis-ib leo-mr-10">{$__PAGING__.page_current}</span>
+    {if$__PAGING__.page_current==$__PAGING__.page_total}{else/}
+    <a target="_self" href="{$__PAGING__.page_url|mac_url_page=$__PAGING__.page_next}"  class="leo-page-elem leo-fs-m leo-bg-a leo-radius-m leo-dis-ib" tapmode onclick="showDefault('loading')">下一页</a>&nbsp;
+    <a target="_self" href="{$__PAGING__.page_url|mac_url_page=$__PAGING__.page_total}"  class="leo-page-elem leo-fs-m leo-bg-a leo-radius-m leo-dis-ib" tapmode onclick="showDefault('loading')">尾页</a>&nbsp;
+    {/if}
+</section>
+{/notempty}
+<script>$('.mac_total').html('{$__PAGING__.record_total}');</script>

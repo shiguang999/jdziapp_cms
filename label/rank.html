@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="renderer" content="webkit" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="apple-mobile-web-app-title" content="金豆子影视" />
+<meta name="viewport" content="initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="/index.php/rss/index.xml" />
+<!--[if lt IE 9]><script type="text/javascript">window.location.href = '/index.php/map/index.html';</script><![endif]-->
+<link href="/template/vfed3.1.6/asset/img/favicon.png" rel="apple-touch-icon-precomposed" />
+<link href="/template/vfed3.1.6/asset/img/favicon.png" rel="shortcut icon" type="image/ico" />
+<link rel="stylesheet" type="text/css" href="/template/vfed3.1.6/asset/css/style.css?v=" />
+<link rel="stylesheet" type="text/css" href="/template/vfed3.1.6/asset/css/colou.css?v=" id="fed-colo-color" />
+<style type="text/css">.fed-swip-title,.fed-list-pics,.fed-part-layout,.fed-list-info .fed-list-remarks,.fed-list-info .fed-list-play{border-radius:5px}</style>
+<script type="text/javascript">
+if(document.cookie.match(new RegExp('(^| )fed_color=([^;]*)(;|$)')) != null) {
+	var color = document.cookie.match(new RegExp('(^| )fed_color=([^;]*)(;|$)'));
+	if(color[2] == 'white') {
+		var elementid = document.getElementById('fed-colo-color');
+		if(elementid) elementid.parentNode.removeChild(elementid);
+	} else if(!document.getElementById('fed-colo-color')) {
+		var style = document.createElement('link');
+		style.type = 'text/css';
+		style.rel = 'stylesheet';
+		style.id = 'fed-colo-color';
+		style.href = '/template/vfed3.1.6/asset/css/' + unescape(color[2]) + '.css?v=';
+		document.getElementsByTagName('head').item(0).appendChild(style);
+	} else document.getElementById('fed-colo-color').href = '/template/vfed3.1.6/asset/css/' + unescape(color[2]) + '.css?v=';
+}
+</script></head>
+<body class="fed-min-width">
+<div class="fed-head-info fed-back-whits fed-min-width fed-box-shadow">
+	<div class="fed-part-case">
+		<div class="fed-navs-info">
+			<ul class="fed-menu-info">
+				<li class="fed-pull-left">
+					<a class="fed-menu-logo fed-show-kind" href="/"><img width="96" height="40" alt="金豆子影视" src="/static/images/logo.jpg" /></a>
+				</li>
+				<li class="fed-pull-left">
+					<a class="fed-menu-title fed-show-kind fed-font-xvi fed-hide fed-show-md-block" href="/">首页</a>
+				</li>
+								<li class="fed-pull-left">
+					<a class="fed-menu-title fed-show-kind fed-font-xvi fed-hide fed-show-md-block" href="/index.php/vod/type/id/1.html">电影</a>
+				</li>
+								<li class="fed-pull-left">
+					<a class="fed-menu-title fed-show-kind fed-font-xvi fed-hide fed-show-lg-block" href="/index.php/vod/type/id/2.html">连续剧</a>
+				</li>
+								<li class="fed-pull-left">
+					<a class="fed-menu-title fed-show-kind fed-font-xvi fed-hide fed-show-lg-block" href="/index.php/vod/type/id/3.html">综艺</a>
+				</li>
+								<li class="fed-pull-left">
+					<a class="fed-menu-title fed-show-kind fed-font-xvi fed-hide fed-show-lg-block" href="/index.php/vod/type/id/4.html">动漫</a>
+				</li>
+								<li class="fed-pull-left">
+					<a class="fed-menu-title fed-show-kind fed-font-xvi fed-hide fed-show-md-block" href="/index.php/art/index.html">资讯</a>
+				</li>
+								<li class="fed-pull-left">
+					<a class="fed-menu-title fed-show-kind fed-font-xvi fed-hide fed-show-md-block" href="/index.php/topic/index.html">专题</a>
+				</li>
+								<li class="fed-pull-left">
+					<a class="fed-menu-title fed-show-kind fed-font-xvi fed-navs-navbar fed-event fed-hide fed-show-sm-block" href="javascript:;">导航<span class="fed-part-move fed-edge-info fed-edge-bottom"></span></a>
+				</li>
+			</ul>
+			<div class="fed-navs-search fed-back-whits fed-hidden fed-conceal fed-show-sm-block">
+				<a class="fed-navs-close fed-conceal fed-hide-sm" href="javascript:;">取消</a>
+				<form class="fed-navs-form" autocomplete="off" onkeydown="if(event.keyCode==13){return false}">
+										<div class="fed-navs-cuts fed-event">
+						<a class="fed-navs-btns" href="javascript:;">
+														<span class="fed-navs-name" data-type="1" data-href="/index.php/vod/search.html">视频</span><span class="fed-part-move fed-edge-info fed-edge-bottom"></span> 						</a>
+					</div>
+					<input class="fed-navs-input fed-back-ashen fed-event" type="search" placeholder="请输入关键字" />
+					<a class="fed-navs-submit fed-back-ashen"><i class="fed-icon-font fed-icon-sousuo"></i></a>
+									</form>
+			</div>
+			<div class="fed-navs-right">
+				<a class="fed-navs-route fed-text-black fed-event fed-hidden fed-hide-sm" href="javascript:;"></a>
+								<a class="fed-navs-button fed-text-black fed-event fed-hide-sm fed-icon-font fed-icon-sousuo" href="javascript:;"></a>
+								<a class="fed-navs-record fed-text-black fed-event fed-hide-xs fed-show-sm-block" href="javascript:;">看过<span class="fed-part-move fed-edge-info fed-edge-bottom"></span></a>
+								<a class="fed-navs-login fed-text-black fed-hide-xs fed-show-sm-block" href="javascript:;">登录</a>
+								<a class="fed-navs-record fed-text-black fed-event fed-hide-sm fed-icon-font fed-icon-lishi" href="javascript:;"></a>
+							</div>
+		</div>
+		<div class="fed-pops-navbar fed-box-shadow fed-min-width fed-hidden fed-conceal fed-anim">
+			<div class="fed-pops-channel fed-back-whits fed-part-rows fed-line-top fed-hidden">选择频道</div>
+			<a class="fed-pops-btns fed-back-whits fed-text-black fed-text-center fed-event fed-hide-sm fed-icon-font fed-icon-fenlei" href="javascript:;"></a>
+			<ul class="fed-pops-list fed-font-size fed-back-whits fed-part-rows">
+				<li class="fed-col-sm2">
+					<a class="fed-part-eone" href="/">首页</a>
+				</li>
+								<li class="fed-col-sm2">
+					<a class="fed-part-eone" href="/index.php/vod/type/id/1.html">电影</a>
+				</li>
+								<li class="fed-col-sm2">
+					<a class="fed-part-eone" href="/index.php/vod/type/id/2.html">连续剧</a>
+				</li>
+								<li class="fed-col-sm2">
+					<a class="fed-part-eone" href="/index.php/vod/type/id/3.html">综艺</a>
+				</li>
+								<li class="fed-col-sm2">
+					<a class="fed-part-eone" href="/index.php/vod/type/id/4.html">动漫</a>
+				</li>
+								<li class="fed-col-sm2">
+					<a class="fed-part-eone" href="/index.php/art/type/id/5.html">资讯</a>
+				</li>
+								<li class="fed-col-sm2">
+					<a class="fed-part-eone" href="/index.php/gbook/index.html">留言</a>
+				</li>
+							</ul>
+		</div>
+		<div class="fed-pops-search fed-hidden fed-conceal fed-anim fed-anim-upbit">
+			<div class="fed-pops-case fed-line-top fed-back-ashen fed-box-shadow">
+				<div class="fed-pops-key"></div>
+				<div class="fed-pops-box">
+					<div class="fed-pops-hot">
+						<div class="fed-pops-title fed-back-whits fed-part-rows fed-line-bottom">热门搜索</div>
+						<ul class="fed-pops-list fed-back-whits fed-part-rows">
+														<li class="fed-col-xs6">
+								<a class="fed-event fed-part-eone" href="/index.php/vod/search/wd/%E5%8F%98%E5%BD%A2%E9%87%91%E5%88%9A.html"><span class="fed-part-nums fed-part-num1">1</span><span class="fed-name">变形金刚</span></a>
+							</li>
+														<li class="fed-col-xs6">
+								<a class="fed-event fed-part-eone" href="/index.php/vod/search/wd/%E7%81%AB%E5%BD%B1%E5%BF%8D%E8%80%85.html"><span class="fed-part-nums fed-part-num2">2</span><span class="fed-name">火影忍者</span></a>
+							</li>
+														<li class="fed-col-xs6">
+								<a class="fed-event fed-part-eone" href="/index.php/vod/search/wd/%E5%A4%8D%E4%BB%87%E8%80%85%E8%81%94%E7%9B%9F.html"><span class="fed-part-nums fed-part-num3">3</span><span class="fed-name">复仇者联盟</span></a>
+							</li>
+														<li class="fed-col-xs6">
+								<a class="fed-event fed-part-eone" href="/index.php/vod/search/wd/%E6%88%98%E7%8B%BC.html"><span class="fed-part-nums fed-part-num4">4</span><span class="fed-name">战狼</span></a>
+							</li>
+														<li class="fed-col-xs6">
+								<a class="fed-event fed-part-eone" href="/index.php/vod/search/wd/%E7%BA%A2%E6%B5%B7%E8%A1%8C%E5%8A%A8.html"><span class="fed-part-nums fed-part-num5">5</span><span class="fed-name">红海行动</span></a>
+							</li>
+													</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="fed-pops-record fed-box-shadow fed-hidden fed-conceal fed-anim fed-anim-upbit">
+			<div class="fed-pops-title fed-back-whits fed-line-top fed-line-bottom fed-part-rows"><span class="fed-col-xs9">观看记录</span>
+				<a class="fed-clear fed-event fed-text-right fed-col-xs3" href="javascript:;">清空</a>
+			</div>
+			<ul class="fed-pops-list fed-back-whits"></ul>
+		</div>
+		<div class="fed-pops-cuts fed-line-top fed-hidden fed-conceal fed-anim fed-anim-upbit">
+			<ul class="fed-part-rows fed-box-shadow fed-back-whits fed-padding">
+				<li data-type="1" data-href="/index.php/vod/search.html" class="fed-padding fed-part-curs fed-text-center fed-event fed-text-green">视频</li>
+								<li data-type="2" data-href="/index.php/art/search.html" class="fed-padding fed-part-curs fed-text-center fed-event">资讯</li>
+							</ul>
+		</div>
+				<div class="fed-pops-user fed-box-shadow fed-back-whits fed-hidden fed-conceal fed-anim fed-anim-upbit">
+			<ul class="fed-pops-list fed-font-size fed-back-whits">
+				<li>
+					<a href="/index.php/user/index.html"></a>
+				</li>
+				<li>
+					<a href="/index.php/user/info.html">修改资料</a>
+				</li>
+				<li>
+					<a href="/index.php/user/favs.html">我的收藏</a>
+				</li>
+				<li>
+					<a href="/index.php/user/plays.html">播放记录</a>
+				</li>
+				<li>
+					<a href="/index.php/user/downs.html">下载记录</a>
+				</li>
+				<li>
+					<a href="/index.php/user/plog.html">积分记录</a>
+				</li>
+				<li>
+					<a href="/index.php/user/orders.html">充值记录</a>
+				</li>
+				<li>
+					<a href="/index.php/user/cash.html">积分提现</a>
+				</li>
+				<li>
+					<a href="/index.php/user/buy.html">在线充值</a>
+				</li>
+				<li>
+					<a href="/index.php/user/upgrade.html">升级会员</a>
+				</li>
+				<li>
+					<a href="/index.php/user/reward.html">三级分销</a>
+				</li>
+				<li>
+					<a href="/index.php/user/popedom.html">我的权限</a>
+				</li>
+				<li>
+					<a href="/index.php/user/logout.html">退出登录</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="fed-tabr-info fed-back-whits fed-min-width fed-line-top fed-hide-sm">
+	<ul class="fed-part-rows">
+		<li class="fed-text-center"><a class="fed-visible" href="/"><i class="fed-icon-font fed-icon-shouye"></i><span class="fed-font-xii">首页</span></a></li>
+				<li class="fed-text-center"><a class="fed-visible" href="/index.php/art/index.html"><i class="fed-icon-font fed-icon-zixun"></i><span class="fed-font-xii">资讯</span></a></li>
+				<li class="fed-text-center"><a class="fed-visible" href="/index.php/topic/index.html"><i class="fed-icon-font fed-icon-zhuanti"></i><span class="fed-font-xii">专题</span></a></li>
+				<li class="fed-text-center"><a class="fed-visible" href="/index.php/user/login.html"><i class="fed-icon-font fed-icon-yonghu"></i><span class="fed-font-xii">我的</span></a></li>
+			</ul>
+</div>
+
+<div class="fed-main-info fed-min-width">
+<div class="fed-part-case">
+
+<title>本周热门 - 金豆子影视</title>
+<div class="fed-part-case fed-part-rows">
+		<div class="fed-rank-info fed-part-layout fed-part-rows fed-back-whits fed-col-sm6 fed-col-md4">
+		<div class="fed-list-info fed-list-rank fed-part-rows fed-padding">
+			<h2 class="fed-list-head fed-part-rows fed-font-xvi">电影<a class="fed-part-tips fed-font-xiv" href="/index.php/vod/type/id/1.html">更多</a></h2>
+			<ul class="fed-part-rows">
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/84846.html"><span class="fed-part-nums fed-part-num1">1</span>电影，阿司匹林和兀鹰<span class="fed-part-tips fed-text-green">1000</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/42454.html"><span class="fed-part-nums fed-part-num2">2</span>死尸<span class="fed-part-tips fed-text-green">1000</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/64585.html"><span class="fed-part-nums fed-part-num3">3</span>宿敌<span class="fed-part-tips fed-text-green">1000</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/39058.html"><span class="fed-part-nums fed-part-num4">4</span>狄仁杰之无头神将<span class="fed-part-tips fed-text-green">1000</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/79346.html"><span class="fed-part-nums fed-part-num5">5</span>2017新男女关系<span class="fed-part-tips fed-text-green">1000</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/47266.html"><span class="fed-part-nums fed-part-num6">6</span>黑金风暴<span class="fed-part-tips fed-text-green">1000</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/78000.html"><span class="fed-part-nums fed-part-num7">7</span>特警屠龙<span class="fed-part-tips fed-text-green">1000</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/50956.html"><span class="fed-part-nums fed-part-num8">8</span>窃听风云3<span class="fed-part-tips fed-text-green">1000</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/54409.html"><span class="fed-part-nums fed-part-num9">9</span>天若有情<span class="fed-part-tips fed-text-green">1000</span></a>
+				</li>
+							</ul>
+		</div>
+	</div>
+		<div class="fed-rank-info fed-part-layout fed-part-rows fed-back-whits fed-col-sm6 fed-col-md4">
+		<div class="fed-list-info fed-list-rank fed-part-rows fed-padding">
+			<h2 class="fed-list-head fed-part-rows fed-font-xvi">连续剧<a class="fed-part-tips fed-font-xiv" href="/index.php/vod/type/id/2.html">更多</a></h2>
+			<ul class="fed-part-rows">
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/43378.html"><span class="fed-part-nums fed-part-num1">1</span>沉默的证人<span class="fed-part-tips fed-text-green">1000</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/43149.html"><span class="fed-part-nums fed-part-num2">2</span>下一站婚姻<span class="fed-part-tips fed-text-green">1000</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/79684.html"><span class="fed-part-nums fed-part-num3">3</span>暗黑女教师<span class="fed-part-tips fed-text-green">1000</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/29466.html"><span class="fed-part-nums fed-part-num4">4</span>守卫者·浮出水面<span class="fed-part-tips fed-text-green">1000</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/83178.html"><span class="fed-part-nums fed-part-num5">5</span>血战太平洋<span class="fed-part-tips fed-text-green">1000</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/73034.html"><span class="fed-part-nums fed-part-num6">6</span>爱小孩第一季<span class="fed-part-tips fed-text-green">1000</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/73611.html"><span class="fed-part-nums fed-part-num7">7</span>芝加哥烈焰第六季<span class="fed-part-tips fed-text-green">1000</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/81684.html"><span class="fed-part-nums fed-part-num8">8</span>格子间女人TV版<span class="fed-part-tips fed-text-green">1000</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/85492.html"><span class="fed-part-nums fed-part-num9">9</span>大宋少年志DVD<span class="fed-part-tips fed-text-green">999</span></a>
+				</li>
+							</ul>
+		</div>
+	</div>
+		<div class="fed-rank-info fed-part-layout fed-part-rows fed-back-whits fed-col-sm6 fed-col-md4">
+		<div class="fed-list-info fed-list-rank fed-part-rows fed-padding">
+			<h2 class="fed-list-head fed-part-rows fed-font-xvi">综艺<a class="fed-part-tips fed-font-xiv" href="/index.php/vod/type/id/3.html">更多</a></h2>
+			<ul class="fed-part-rows">
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/84783.html"><span class="fed-part-nums fed-part-num1">1</span>拜托了冰箱第五季特约版<span class="fed-part-tips fed-text-green">999</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/69648.html"><span class="fed-part-nums fed-part-num2">2</span>穷民丈夫<span class="fed-part-tips fed-text-green">999</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/74771.html"><span class="fed-part-nums fed-part-num3">3</span>同学搞什么鬼<span class="fed-part-tips fed-text-green">999</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/82938.html"><span class="fed-part-nums fed-part-num4">4</span>1986年中央电视台春节联欢晚会<span class="fed-part-tips fed-text-green">999</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/30471.html"><span class="fed-part-nums fed-part-num5">5</span>亲爱的客栈第二季<span class="fed-part-tips fed-text-green">998</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/69708.html"><span class="fed-part-nums fed-part-num6">6</span>奔跑吧第三季<span class="fed-part-tips fed-text-green">998</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/81901.html"><span class="fed-part-nums fed-part-num7">7</span>逛遍全世界<span class="fed-part-tips fed-text-green">998</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/44685.html"><span class="fed-part-nums fed-part-num8">8</span>流言终结者第六季<span class="fed-part-tips fed-text-green">997</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/35067.html"><span class="fed-part-nums fed-part-num9">9</span>蜜食记第三季<span class="fed-part-tips fed-text-green">997</span></a>
+				</li>
+							</ul>
+		</div>
+	</div>
+		<div class="fed-rank-info fed-part-layout fed-part-rows fed-back-whits fed-col-sm6 fed-col-md4">
+		<div class="fed-list-info fed-list-rank fed-part-rows fed-padding">
+			<h2 class="fed-list-head fed-part-rows fed-font-xvi">动漫<a class="fed-part-tips fed-font-xiv" href="/index.php/vod/type/id/4.html">更多</a></h2>
+			<ul class="fed-part-rows">
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/85600.html"><span class="fed-part-nums fed-part-num1">1</span>妖精的尾巴第2季<span class="fed-part-tips fed-text-green">1000</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/84814.html"><span class="fed-part-nums fed-part-num2">2</span>潜行吧！奈亚子第二季<span class="fed-part-tips fed-text-green">1000</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/74644.html"><span class="fed-part-nums fed-part-num3">3</span>DARLINGintheFRANXX/亲爱的弗兰克斯<span class="fed-part-tips fed-text-green">1000</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/83907.html"><span class="fed-part-nums fed-part-num4">4</span>圣诞老人接班人<span class="fed-part-tips fed-text-green">1000</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/84773.html"><span class="fed-part-nums fed-part-num5">5</span>鹡鸰女神第一季<span class="fed-part-tips fed-text-green">999</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/37364.html"><span class="fed-part-nums fed-part-num6">6</span>JOJO的奇妙冒险星尘斗士埃及篇<span class="fed-part-tips fed-text-green">999</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/29772.html"><span class="fed-part-nums fed-part-num7">7</span>玩具总动员2【国语】<span class="fed-part-tips fed-text-green">999</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/57875.html"><span class="fed-part-nums fed-part-num8">8</span>小黄人大眼萌<span class="fed-part-tips fed-text-green">999</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/30902.html"><span class="fed-part-nums fed-part-num9">9</span>鼠来宝：明星俱乐部<span class="fed-part-tips fed-text-green">998</span></a>
+				</li>
+							</ul>
+		</div>
+	</div>
+		<div class="fed-rank-info fed-part-layout fed-part-rows fed-back-whits fed-col-sm6 fed-col-md4">
+		<div class="fed-list-info fed-list-rank fed-part-rows fed-padding">
+			<h2 class="fed-list-head fed-part-rows fed-font-xvi">动作片<a class="fed-part-tips fed-font-xiv" href="/index.php/vod/type/id/6.html">更多</a></h2>
+			<ul class="fed-part-rows">
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/47266.html"><span class="fed-part-nums fed-part-num1">1</span>黑金风暴<span class="fed-part-tips fed-text-green">1000</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/78000.html"><span class="fed-part-nums fed-part-num2">2</span>特警屠龙<span class="fed-part-tips fed-text-green">1000</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/50956.html"><span class="fed-part-nums fed-part-num3">3</span>窃听风云3<span class="fed-part-tips fed-text-green">1000</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/62176.html"><span class="fed-part-nums fed-part-num4">4</span>少林英雄榜<span class="fed-part-tips fed-text-green">1000</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/66080.html"><span class="fed-part-nums fed-part-num5">5</span>皇家师姐(国语)<span class="fed-part-tips fed-text-green">1000</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/70640.html"><span class="fed-part-nums fed-part-num6">6</span>封神传说之妖狐王妃<span class="fed-part-tips fed-text-green">1000</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/80108.html"><span class="fed-part-nums fed-part-num7">7</span>致命游戏1997<span class="fed-part-tips fed-text-green">1000</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/40382.html"><span class="fed-part-nums fed-part-num8">8</span>硬汉团<span class="fed-part-tips fed-text-green">999</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/33995.html"><span class="fed-part-nums fed-part-num9">9</span>狱中风云之牢底坐穿<span class="fed-part-tips fed-text-green">999</span></a>
+				</li>
+							</ul>
+		</div>
+	</div>
+		<div class="fed-rank-info fed-part-layout fed-part-rows fed-back-whits fed-col-sm6 fed-col-md4">
+		<div class="fed-list-info fed-list-rank fed-part-rows fed-padding">
+			<h2 class="fed-list-head fed-part-rows fed-font-xvi">喜剧片<a class="fed-part-tips fed-font-xiv" href="/index.php/vod/type/id/7.html">更多</a></h2>
+			<ul class="fed-part-rows">
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/79346.html"><span class="fed-part-nums fed-part-num1">1</span>2017新男女关系<span class="fed-part-tips fed-text-green">1000</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/50187.html"><span class="fed-part-nums fed-part-num2">2</span>杀手公司<span class="fed-part-tips fed-text-green">1000</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/63261.html"><span class="fed-part-nums fed-part-num3">3</span>精装追女仔之2(粤语)<span class="fed-part-tips fed-text-green">1000</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/67543.html"><span class="fed-part-nums fed-part-num4">4</span>最佳女婿(粤语)<span class="fed-part-tips fed-text-green">1000</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/85000.html"><span class="fed-part-nums fed-part-num5">5</span>抓鬼特攻队<span class="fed-part-tips fed-text-green">999</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/43413.html"><span class="fed-part-nums fed-part-num6">6</span>安东尼·杰塞尼克：产房一把火<span class="fed-part-tips fed-text-green">999</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/42509.html"><span class="fed-part-nums fed-part-num7">7</span>足球尤物<span class="fed-part-tips fed-text-green">999</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/61819.html"><span class="fed-part-nums fed-part-num8">8</span>无巧不成婚<span class="fed-part-tips fed-text-green">999</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/83406.html"><span class="fed-part-nums fed-part-num9">9</span>港督最后一个保镖<span class="fed-part-tips fed-text-green">999</span></a>
+				</li>
+							</ul>
+		</div>
+	</div>
+		<div class="fed-rank-info fed-part-layout fed-part-rows fed-back-whits fed-col-sm6 fed-col-md4">
+		<div class="fed-list-info fed-list-rank fed-part-rows fed-padding">
+			<h2 class="fed-list-head fed-part-rows fed-font-xvi">爱情片<a class="fed-part-tips fed-font-xiv" href="/index.php/vod/type/id/8.html">更多</a></h2>
+			<ul class="fed-part-rows">
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/46173.html"><span class="fed-part-nums fed-part-num1">1</span>天各一方<span class="fed-part-tips fed-text-green">1000</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/64550.html"><span class="fed-part-nums fed-part-num2">2</span>只要在一起(法语)<span class="fed-part-tips fed-text-green">1000</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/73472.html"><span class="fed-part-nums fed-part-num3">3</span>太原城里无悲伤<span class="fed-part-tips fed-text-green">1000</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/81459.html"><span class="fed-part-nums fed-part-num4">4</span>校园卧底<span class="fed-part-tips fed-text-green">1000</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/85638.html"><span class="fed-part-nums fed-part-num5">5</span>私奔B计划<span class="fed-part-tips fed-text-green">999</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/38622.html"><span class="fed-part-nums fed-part-num6">6</span>真爱2000<span class="fed-part-tips fed-text-green">999</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/72103.html"><span class="fed-part-nums fed-part-num7">7</span>恰逢那年花开<span class="fed-part-tips fed-text-green">999</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/84651.html"><span class="fed-part-nums fed-part-num8">8</span>谈谈情说说性<span class="fed-part-tips fed-text-green">998</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/31416.html"><span class="fed-part-nums fed-part-num9">9</span>爱上你主播<span class="fed-part-tips fed-text-green">998</span></a>
+				</li>
+							</ul>
+		</div>
+	</div>
+		<div class="fed-rank-info fed-part-layout fed-part-rows fed-back-whits fed-col-sm6 fed-col-md4">
+		<div class="fed-list-info fed-list-rank fed-part-rows fed-padding">
+			<h2 class="fed-list-head fed-part-rows fed-font-xvi">科幻片<a class="fed-part-tips fed-font-xiv" href="/index.php/vod/type/id/9.html">更多</a></h2>
+			<ul class="fed-part-rows">
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/82566.html"><span class="fed-part-nums fed-part-num1">1</span>巫师镇<span class="fed-part-tips fed-text-green">1000</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/54823.html"><span class="fed-part-nums fed-part-num2">2</span>谜巢2018<span class="fed-part-tips fed-text-green">999</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/36239.html"><span class="fed-part-nums fed-part-num3">3</span>占领<span class="fed-part-tips fed-text-green">998</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/67841.html"><span class="fed-part-nums fed-part-num4">4</span>暹罗决：九神战甲<span class="fed-part-tips fed-text-green">998</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/37802.html"><span class="fed-part-nums fed-part-num5">5</span>47号物品<span class="fed-part-tips fed-text-green">997</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/64037.html"><span class="fed-part-nums fed-part-num6">6</span>巨齿鲨(国语)<span class="fed-part-tips fed-text-green">997</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/75455.html"><span class="fed-part-nums fed-part-num7">7</span>果戈里：邪灵<span class="fed-part-tips fed-text-green">997</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/53706.html"><span class="fed-part-nums fed-part-num8">8</span>仙境之桥<span class="fed-part-tips fed-text-green">996</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/55105.html"><span class="fed-part-nums fed-part-num9">9</span>兴登堡遇难记<span class="fed-part-tips fed-text-green">994</span></a>
+				</li>
+							</ul>
+		</div>
+	</div>
+		<div class="fed-rank-info fed-part-layout fed-part-rows fed-back-whits fed-col-sm6 fed-col-md4">
+		<div class="fed-list-info fed-list-rank fed-part-rows fed-padding">
+			<h2 class="fed-list-head fed-part-rows fed-font-xvi">恐怖片<a class="fed-part-tips fed-font-xiv" href="/index.php/vod/type/id/10.html">更多</a></h2>
+			<ul class="fed-part-rows">
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/42454.html"><span class="fed-part-nums fed-part-num1">1</span>死尸<span class="fed-part-tips fed-text-green">1000</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/57433.html"><span class="fed-part-nums fed-part-num2">2</span>致命弯道1<span class="fed-part-tips fed-text-green">999</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/48927.html"><span class="fed-part-nums fed-part-num3">3</span>无名女屍<span class="fed-part-tips fed-text-green">998</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/53690.html"><span class="fed-part-nums fed-part-num4">4</span>心魔<span class="fed-part-tips fed-text-green">998</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/55193.html"><span class="fed-part-nums fed-part-num5">5</span>后备箱<span class="fed-part-tips fed-text-green">998</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/77836.html"><span class="fed-part-nums fed-part-num6">6</span>飞头魔女<span class="fed-part-tips fed-text-green">998</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/73441.html"><span class="fed-part-nums fed-part-num7">7</span>猛尸镇<span class="fed-part-tips fed-text-green">998</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/80036.html"><span class="fed-part-nums fed-part-num8">8</span>三更2之饺子<span class="fed-part-tips fed-text-green">998</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/51418.html"><span class="fed-part-nums fed-part-num9">9</span>痞子律师<span class="fed-part-tips fed-text-green">997</span></a>
+				</li>
+							</ul>
+		</div>
+	</div>
+		<div class="fed-rank-info fed-part-layout fed-part-rows fed-back-whits fed-col-sm6 fed-col-md4">
+		<div class="fed-list-info fed-list-rank fed-part-rows fed-padding">
+			<h2 class="fed-list-head fed-part-rows fed-font-xvi">剧情片<a class="fed-part-tips fed-font-xiv" href="/index.php/vod/type/id/11.html">更多</a></h2>
+			<ul class="fed-part-rows">
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/84846.html"><span class="fed-part-nums fed-part-num1">1</span>电影，阿司匹林和兀鹰<span class="fed-part-tips fed-text-green">1000</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/64585.html"><span class="fed-part-nums fed-part-num2">2</span>宿敌<span class="fed-part-tips fed-text-green">1000</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/39058.html"><span class="fed-part-nums fed-part-num3">3</span>狄仁杰之无头神将<span class="fed-part-tips fed-text-green">1000</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/54409.html"><span class="fed-part-nums fed-part-num4">4</span>天若有情<span class="fed-part-tips fed-text-green">1000</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/31182.html"><span class="fed-part-nums fed-part-num5">5</span>不一样的本能<span class="fed-part-tips fed-text-green">1000</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/81664.html"><span class="fed-part-nums fed-part-num6">6</span>疯狂电影人<span class="fed-part-tips fed-text-green">1000</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/48992.html"><span class="fed-part-nums fed-part-num7">7</span>爱猫之城<span class="fed-part-tips fed-text-green">1000</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/55648.html"><span class="fed-part-nums fed-part-num8">8</span>陪睡美人<span class="fed-part-tips fed-text-green">1000</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/58716.html"><span class="fed-part-nums fed-part-num9">9</span>兄弟<span class="fed-part-tips fed-text-green">1000</span></a>
+				</li>
+							</ul>
+		</div>
+	</div>
+		<div class="fed-rank-info fed-part-layout fed-part-rows fed-back-whits fed-col-sm6 fed-col-md4">
+		<div class="fed-list-info fed-list-rank fed-part-rows fed-padding">
+			<h2 class="fed-list-head fed-part-rows fed-font-xvi">战争片<a class="fed-part-tips fed-font-xiv" href="/index.php/vod/type/id/12.html">更多</a></h2>
+			<ul class="fed-part-rows">
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/67445.html"><span class="fed-part-nums fed-part-num1">1</span>红日1963<span class="fed-part-tips fed-text-green">999</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/60139.html"><span class="fed-part-nums fed-part-num2">2</span>穿越雷区<span class="fed-part-tips fed-text-green">998</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/81339.html"><span class="fed-part-nums fed-part-num3">3</span>想念哥哥<span class="fed-part-tips fed-text-green">997</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/52691.html"><span class="fed-part-nums fed-part-num4">4</span>战争机器<span class="fed-part-tips fed-text-green">996</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/80298.html"><span class="fed-part-nums fed-part-num5">5</span>早安越南<span class="fed-part-tips fed-text-green">993</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/52380.html"><span class="fed-part-nums fed-part-num6">6</span>最后证人<span class="fed-part-tips fed-text-green">992</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/55278.html"><span class="fed-part-nums fed-part-num7">7</span>海外特派员<span class="fed-part-tips fed-text-green">991</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/72262.html"><span class="fed-part-nums fed-part-num8">8</span>林海雪原<span class="fed-part-tips fed-text-green">987</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/60414.html"><span class="fed-part-nums fed-part-num9">9</span>黄埔军人<span class="fed-part-tips fed-text-green">985</span></a>
+				</li>
+							</ul>
+		</div>
+	</div>
+		<div class="fed-rank-info fed-part-layout fed-part-rows fed-back-whits fed-col-sm6 fed-col-md4">
+		<div class="fed-list-info fed-list-rank fed-part-rows fed-padding">
+			<h2 class="fed-list-head fed-part-rows fed-font-xvi">国产剧<a class="fed-part-tips fed-font-xiv" href="/index.php/vod/type/id/13.html">更多</a></h2>
+			<ul class="fed-part-rows">
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/43378.html"><span class="fed-part-nums fed-part-num1">1</span>沉默的证人<span class="fed-part-tips fed-text-green">1000</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/43149.html"><span class="fed-part-nums fed-part-num2">2</span>下一站婚姻<span class="fed-part-tips fed-text-green">1000</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/29466.html"><span class="fed-part-nums fed-part-num3">3</span>守卫者·浮出水面<span class="fed-part-tips fed-text-green">1000</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/81684.html"><span class="fed-part-nums fed-part-num4">4</span>格子间女人TV版<span class="fed-part-tips fed-text-green">1000</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/85492.html"><span class="fed-part-nums fed-part-num5">5</span>大宋少年志DVD<span class="fed-part-tips fed-text-green">999</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/44519.html"><span class="fed-part-nums fed-part-num6">6</span>黄金地带<span class="fed-part-tips fed-text-green">999</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/41987.html"><span class="fed-part-nums fed-part-num7">7</span>红楼背后<span class="fed-part-tips fed-text-green">998</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/43973.html"><span class="fed-part-nums fed-part-num8">8</span>人在旅途<span class="fed-part-tips fed-text-green">997</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/62505.html"><span class="fed-part-nums fed-part-num9">9</span>法医秦明之幸存者<span class="fed-part-tips fed-text-green">997</span></a>
+				</li>
+							</ul>
+		</div>
+	</div>
+		<div class="fed-rank-info fed-part-layout fed-part-rows fed-back-whits fed-col-sm6 fed-col-md4">
+		<div class="fed-list-info fed-list-rank fed-part-rows fed-padding">
+			<h2 class="fed-list-head fed-part-rows fed-font-xvi">港台剧<a class="fed-part-tips fed-font-xiv" href="/index.php/vod/type/id/14.html">更多</a></h2>
+			<ul class="fed-part-rows">
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/41196.html"><span class="fed-part-nums fed-part-num1">1</span>武林圣火令<span class="fed-part-tips fed-text-green">999</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/38968.html"><span class="fed-part-nums fed-part-num2">2</span>爱情来的时候第二部<span class="fed-part-tips fed-text-green">998</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/80662.html"><span class="fed-part-nums fed-part-num3">3</span>奸人坚粤语<span class="fed-part-tips fed-text-green">998</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/73121.html"><span class="fed-part-nums fed-part-num4">4</span>飞虎<span class="fed-part-tips fed-text-green">997</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/79050.html"><span class="fed-part-nums fed-part-num5">5</span>当代男儿<span class="fed-part-tips fed-text-green">997</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/41997.html"><span class="fed-part-nums fed-part-num6">6</span>樱野3加1<span class="fed-part-tips fed-text-green">996</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/39529.html"><span class="fed-part-nums fed-part-num7">7</span>隔世追凶粤语<span class="fed-part-tips fed-text-green">996</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/71227.html"><span class="fed-part-nums fed-part-num8">8</span>深宫计2粤语<span class="fed-part-tips fed-text-green">996</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/41797.html"><span class="fed-part-nums fed-part-num9">9</span>法网柔情<span class="fed-part-tips fed-text-green">995</span></a>
+				</li>
+							</ul>
+		</div>
+	</div>
+		<div class="fed-rank-info fed-part-layout fed-part-rows fed-back-whits fed-col-sm6 fed-col-md4">
+		<div class="fed-list-info fed-list-rank fed-part-rows fed-padding">
+			<h2 class="fed-list-head fed-part-rows fed-font-xvi">日韩剧<a class="fed-part-tips fed-font-xiv" href="/index.php/vod/type/id/15.html">更多</a></h2>
+			<ul class="fed-part-rows">
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/79684.html"><span class="fed-part-nums fed-part-num1">1</span>暗黑女教师<span class="fed-part-tips fed-text-green">1000</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/71827.html"><span class="fed-part-nums fed-part-num2">2</span>面包和汤和猫咪好天气<span class="fed-part-tips fed-text-green">999</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/29958.html"><span class="fed-part-nums fed-part-num3">3</span>现在开始威胁你<span class="fed-part-tips fed-text-green">998</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/46428.html"><span class="fed-part-nums fed-part-num4">4</span>SICK&#39;S恕乃抄～内阁情报调査室特务事项専従系事件簿～<span class="fed-part-tips fed-text-green">998</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/72189.html"><span class="fed-part-nums fed-part-num5">5</span>可以不可以<span class="fed-part-tips fed-text-green">998</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/62643.html"><span class="fed-part-nums fed-part-num6">6</span>车达莱夫人的爱情<span class="fed-part-tips fed-text-green">997</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/75776.html"><span class="fed-part-nums fed-part-num7">7</span>我的爱在我身边<span class="fed-part-tips fed-text-green">997</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/59533.html"><span class="fed-part-nums fed-part-num8">8</span>悲惨世界～没有终点的旅途～<span class="fed-part-tips fed-text-green">996</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/73369.html"><span class="fed-part-nums fed-part-num9">9</span>内向的老板<span class="fed-part-tips fed-text-green">996</span></a>
+				</li>
+							</ul>
+		</div>
+	</div>
+		<div class="fed-rank-info fed-part-layout fed-part-rows fed-back-whits fed-col-sm6 fed-col-md4">
+		<div class="fed-list-info fed-list-rank fed-part-rows fed-padding">
+			<h2 class="fed-list-head fed-part-rows fed-font-xvi">欧美剧<a class="fed-part-tips fed-font-xiv" href="/index.php/vod/type/id/16.html">更多</a></h2>
+			<ul class="fed-part-rows">
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/83178.html"><span class="fed-part-nums fed-part-num1">1</span>血战太平洋<span class="fed-part-tips fed-text-green">1000</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/73034.html"><span class="fed-part-nums fed-part-num2">2</span>爱小孩第一季<span class="fed-part-tips fed-text-green">1000</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/73611.html"><span class="fed-part-nums fed-part-num3">3</span>芝加哥烈焰第六季<span class="fed-part-tips fed-text-green">1000</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/42121.html"><span class="fed-part-nums fed-part-num4">4</span>少年魔法师第三季<span class="fed-part-tips fed-text-green">999</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/36393.html"><span class="fed-part-nums fed-part-num5">5</span>错配搭档<span class="fed-part-tips fed-text-green">999</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/77988.html"><span class="fed-part-nums fed-part-num6">6</span>雀起乡到烛镇第二季<span class="fed-part-tips fed-text-green">999</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/70764.html"><span class="fed-part-nums fed-part-num7">7</span>巴士174事件<span class="fed-part-tips fed-text-green">999</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/43079.html"><span class="fed-part-nums fed-part-num8">8</span>星际旅行：下一代第六季<span class="fed-part-tips fed-text-green">998</span></a>
+				</li>
+								<li class="fed-part-eone">
+					<a href="/index.php/vod/detail/id/72668.html"><span class="fed-part-nums fed-part-num9">9</span>隧道谜案第二季<span class="fed-part-tips fed-text-green">998</span></a>
+				</li>
+							</ul>
+		</div>
+	</div>
+	</div>
+</div></div><div class="fed-goto-info">
+		<a class="fed-goto-share fed-visible fed-text-center fed-back-whits fed-icon-font fed-icon-fenxiang" href="javascript:;"></a>
+		<a class="fed-goto-color fed-visible fed-text-center fed-back-whits fed-icon-font fed-icon-fengge fed-event" href="javascript:;"></a>
+		<a class="fed-goto-toper fed-hidden fed-text-center fed-back-whits fed-icon-font fed-icon-top" href="javascript:;"></a>
+</div><script type="text/javascript"> var vfed = { 'path': '/', 'tips': 'EXlMTExLjY3LjE5My40MTo2MDYxPTE1NjQyMDE5NTg=', 'ver': '', 'tpl': '/template/vfed3.1.6/', 'mid': '', 'aid': '7', 'did': '', 'sid': '', 'nid': '', 'wap': 'ys.jdzi.vip', 'mob': '1', 'not': '1' }; </script>
+<script src="/template/vfed3.1.6/asset/js/jquery.js?v=" type="text/javascript" charset="utf-8"></script>
+<script src="/template/vfed3.1.6/asset/js/global.js?v=" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">fed.global.ajax(vfed.path + 'api.php/timming/index');</script>
+<div class="fed-foot-info fed-part-layout fed-back-whits">
+	<div class="fed-part-case">
+		<p class="fed-text-center fed-text-black"></p>
+		<p class="fed-text-center fed-text-black">统计代码</p>
+		<p class="fed-text-center fed-text-black fed-foot-maps fed-font-size">
+			<a class="fed-font-xiv" href="/index.php/rss/index.xml" target="_blank">RSS订阅</a>
+			<span class="fed-font-xiv">&nbsp;-&nbsp;</span>
+			<a class="fed-font-xiv" href="/index.php/rss/baidu.xml" target="_blank">百度蜘蛛</a>
+			<span class="fed-font-xiv">&nbsp;-&nbsp;</span>
+			<a class="fed-font-xiv" href="/index.php/rss/google.xml" target="_blank">谷歌地图</a>
+			<span class="fed-font-xiv">&nbsp;-&nbsp;</span>
+			<a class="fed-font-xiv" href="/index.php/rss/sm.xml" target="_blank">神马爬虫</a>
+			<span class="fed-font-xiv fed-hide-xs">&nbsp;-&nbsp;</span>
+			<a class="fed-font-xiv fed-hide-xs" href="/index.php/rss/sogou.xml" target="_blank">搜狗蜘蛛</a>
+			<span class="fed-font-xiv fed-hide-xs">&nbsp;-&nbsp;</span>
+			<a class="fed-font-xiv fed-hide-xs" href="/index.php/rss/so.xml" target="_blank">奇虎地图</a>
+			<span class="fed-font-xiv fed-hide-xs">&nbsp;-&nbsp;</span>
+			<a class="fed-font-xiv fed-hide-xs" href="/index.php/rss/bing.xml" target="_blank">必应爬虫</a>
+		</p>
+				<p class="fed-text-center fed-text-black">512193231@qq.com&nbsp;&nbsp;&nbsp;icp123</p>
+				<p class="fed-text-center fed-text-black">&copy;&nbsp;2019&nbsp;ys.jdzi.vip&nbsp;Theme&nbsp;by&nbsp;<a class="fed-font-xiv" href="https://jx-ll.cn" target="_blank">Jxin&nbsp;</a></p>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!--猜你喜欢-->
+<section class="leo-mod  leo-col-12">
+	<div class="leo-bg-a leo-lh-l leo-fs-l">
+		<div class="leo-mod-title">
+			<svg class="icon leo-fs-icon-xl" aria-hidden="true">
+                <use xlink:href="#icon-wodezhuifan"></use>
+            </svg>猜你喜欢
+            <a class="leo-more leo-po-ab leo-color-b leo-lh-l leo-fs-m">
+			    <span class="iconfont icon-location leo-fs-m"></span>&nbsp;向右滑动精彩更多
+			</a>
+		</div>
+	</div>
+	<div class="leo-po-re leo-bg-a leo-left leo-col-12">
+		<div class="leo-pr-20 leo-pl-20">
+			<div class="leo-video-slide leo-over-hd">
+				<ul class="swiper-wrapper">
+				    {maccms:vod num="12" type="current" order="desc" by="hits"}
+				    <li class="swiper-slide leo-video-ritem leo-col-4 leo-left leo-mb-30 leo-mr-20" tapmode onclick="showDefault('loading')">
+						<a class="leo-show" href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}">
+						<div class="leo-video-tips leo-po-ab leo-fs-s leo-color-a leo-pl-20 leo-bg-b">猜你喜欢</div>
+					    <img class="leo-lazy leo-pic leo-radius-s" src="{$vo.vod_pic|mac_url_img}">
+                        <div class="leo-video-remark leo-po-re leo-fs-s leo-color-a leo-right leo-ellipsis-1">{$vo.vod_remarks|mac_default='内详'}</div>
+						<div class="leo-mt-15">
+							<h2 class="leo-fs-m leo-ellipsis-1">{$vo.vod_name}</h2>
+						</div>
+					</a>
+					</li>{/maccms:vod}
+                </ul>
+			</div>
+		</div>
+	</div>
+</section>

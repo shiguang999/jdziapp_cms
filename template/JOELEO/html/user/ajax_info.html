@@ -1,0 +1,57 @@
+{include file="public/include"}
+    <div class="leo-auth-wrap leo-po-ab leo-bg-o">
+        <div class="leo-auth-index leo-over-hd leo-bg-b leo-color-a">
+		<a class="leo-left leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" href="{:url('user/index')}">
+			<span class="iconfont icon-back  leo-fs-icon-s leo-color-a"></span>
+		</a>
+		<font class="leo-left leo-col-6 leo-lh-l leo-fs-l leo-ellipsis-1">个人资料</font>
+		<a class="leo-right leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" href="{:url('user/info')}" tapmode onclick="showDefault('loading')">
+		    <span class="iconfont icon-settings leo-fs-icon-s leo-color-a"></span>
+		</a>
+        <a class="leo-right username leo-mt-20 leo-dis-fl" href="{:url('user/index')}" rel="nofollow">
+            <span class="leo-user-name leo-fs-m leo-pr-30 leo-pl-30 leo-radius-m leo-col-0 leo-txt-c leo-color-a leo-lh-vs">
+                {$obj.user_name}
+            </span>
+        </a>
+		</div>
+        <div class="leo-form-box leo-po-ab leo-bg-a">
+            {include file="user/head"}
+                <div class="leo-pr-20 leo-pl-20">
+                    <div class="leo-auth-info leo-fs-m leo-mt-20 leo-mb-10 leo-mr-20 leo-ml-20 leo-pb-30">
+                        <span>用户名：</span>
+                        <span class="leo-right">{$obj.user_name}</span>
+                    </div>
+                    <div class="leo-auth-info leo-fs-m leo-mt-20 leo-mb-10 leo-mr-20 leo-ml-20 leo-pb-30">
+                        <span>所属会员组：</span>
+                        <span class="leo-right">{$obj.group.group_name}</span>
+                    </div>
+                    <div class="leo-auth-info leo-fs-m leo-mt-20 leo-mb-10 leo-mr-20 leo-ml-20 leo-pb-30">
+                        <span>到期时间：</span>
+                        <span class="leo-right">{$obj.user_end_time|mac_day|mac_default='无限期'}</span>
+                    </div>
+                    <div class="leo-auth-info leo-fs-m leo-mt-20 leo-mb-10 leo-mr-20 leo-ml-20 leo-pb-30">
+                        <span>QQ号码：</span>
+                        <span class="leo-right">{$obj.user_qq|mac_default='未填写'}</span>
+                    </div>
+                    <div class="leo-auth-info leo-fs-m leo-mt-20 leo-mb-10 leo-mr-20 leo-ml-20 leo-pb-30">
+                        <span>Email地址：</span>
+                        <span class="leo-right">{$obj.user_email|mac_default='未绑定'}</span>
+                    </div>
+                    <div class="leo-auth-info leo-fs-m leo-mt-20 leo-mb-10 leo-mr-20 leo-ml-20 leo-pb-30">
+                        <span>联系电话：</span>
+                        <span class="leo-right">{$obj.user_phone|mac_default='未填写'}</span>
+                    </div>
+                    <div class="leo-auth-info leo-fs-m leo-mt-20 leo-mb-10 leo-mr-20 leo-ml-20 leo-pb-30">
+                        <span>登录次数：</span>
+                        <span class="leo-right">{$obj.user_login_num}次</span>
+                    </div>
+                    <div class="leo-auth-info leo-fs-m leo-mt-20 leo-mb-10 leo-mr-20 leo-ml-20 leo-pb-30">
+                        <span>登录IP：</span>
+                        <span class="leo-right">{$obj.user_login_ip|long2ip}</span>
+                    </div>
+                
+                </div>
+        {include file="user/foot"}
+        </div>
+	</div>
+{include file="public/footer"}

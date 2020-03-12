@@ -1,0 +1,84 @@
+{if$maccms.aid!==2}
+<div class="leo-foot-txt leo-col-12 leo-mt-30 leo-color-e leo-left leo-fs-s">
+    <p class="leo-txt-c">{$maccms.site_name}&nbsp; &nbsp;©&nbsp;2017-2018 {$maccms.site_tj}</p>
+</div>
+{/if}
+<div aui-popup-for="bottom-right" class="leo-go-top leo-txt-c leo-lh-m leo-po-fi leo-radius-m leo-bg-b leo-show">
+    <span class="iconfont icon-more leo-fs-icon-s leo-color-a"></span>
+</div>
+<br><br><br><br>
+<div class="aui-popup" id="bottom-right">
+    <div class="aui-popup-content">
+        <ul class="aui-list aui-list-noborder">
+            <li class="aui-list-item" >
+                <div class="aui-list-item-inner">
+                    <a rel="nofollow" href="javascript:void(0);" id="leo-go-top">
+                        <span class="iconfont icon-fold"></span>
+                    </a>
+                </div>
+            </li>
+            <li class="aui-list-item" >
+                <div class="aui-list-item-inner">
+                    <a rel="nofollow" tapmode onclick="openDialog('text')">
+                        <span class="iconfont icon-new"></span>
+                    </a>
+                </div>
+            </li>
+            <li class="aui-list-item">
+                <div class="aui-list-item-inner">
+                    <a rel="nofollow" onclick="LeoOpenTheme()">
+                        <span class="iconfont icon-clothes"></span>
+                    </a>
+                </div>  
+            </li>
+            <li class="aui-list-item">
+                <div class="aui-list-item-inner">
+                    <a rel="nofollow" href="javascript:void(0);" id="leo-copy-share">
+                        <span class="iconfont icon-share"></span>
+                    </a>
+                </div>  
+            </li>
+            {if$muchoConfig['dataoke']['state']==1}
+            <li class="aui-list-item">
+                <div class="aui-list-item-inner">
+                    <a rel="nofollow" href="{$maccms.path_tpl}asset/inc/nine.php">
+                        <span class="iconfont icon-shop"></span>
+                    </a>
+                </div>  
+            </li>
+            <li class="aui-list-item">
+                <div class="aui-list-item-inner">
+                    <a rel="nofollow" href="{$maccms.path_tpl}asset/inc/daily.php">
+                        <span class="iconfont icon-wefill"></span>
+                    </a>
+                </div>  
+            </li>
+            {/if}
+        </ul>
+    </div>
+</div>
+<nav class="leo-foot-wrap leo-bg-a leo-po-fi">
+    <a href="{$maccms.path}" class="leo-foot-a leo-txt-c leo-pt-10 {if$maccms.aid==1}leo-active-font{/if}">
+        <span class="iconfont icon-home leo-fs-icon-m" tapmode onclick="showDefault('loading')"></span>
+        <p class="leo-fs-s">首页</p>
+    </a>
+    <a href="{:mac_url('art/index')}" class="leo-foot-a leo-txt-c leo-pt-10 {if$maccms.aid==20}leo-active-font{/if}">
+        <span class="iconfont icon-copy leo-fs-icon-m" tapmode onclick="showDefault('loading')"></span>
+        <p class="leo-fs-s">资讯</p>
+    </a>
+    <a href="{:mac_url('label/index')}" class="leo-foot-a leo-txt-c leo-pt-10 {if$maccms.aid==7}leo-active-font{/if}">
+        <span class="iconfont icon-discover leo-fs-icon-m" tapmode onclick="showDefault('loading')"></span>
+        <p class="leo-fs-s">直播</p>
+    </a>
+    <a href="{:mac_url('map/index')}" class="leo-foot-a leo-txt-c leo-pt-10 {if$maccms.aid==2}leo-active-font{/if}">
+        <span class="iconfont icon-musicfill leo-fs-icon-m" tapmode onclick="showDefault('loading')"></span>
+        <p class="leo-fs-s">音乐</p>
+    </a>
+</nav>
+</div>
+{if$user.user_id!=''&&$muchoConfig['isads']==1&&$user.group.group_name!='默认会员'}{else}
+<script src="{$maccms.path_ads}leoad_all.js?v={:time()}"></script>{/if}
+<script type="text/javascript" src="{$maccms.path_tpl}asset/js/jquery.leeleo.js?v=2.0" ></script>
+{include file="module/themes"}
+</body>
+</html>

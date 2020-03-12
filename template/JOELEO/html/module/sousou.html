@@ -1,0 +1,50 @@
+<!--搜索布局-->
+
+<section class="leo-po-fi leo-col-12 leo-hide leo-bg-a leo-search-wrap">
+	<div class="leo-h-l leo-bg-b leo-po-re leo-col-12">
+	    <a class="leo-left leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" href="javascript:;" onclick="LeoCancelSearcho()">
+		    <span class="iconfont icon-back leo-fs-icon-s leo-color-a"></span>
+	    </a>
+		<form method="post" target="_self" action="{:mac_url('vod/search')}" class="leo-po-ab leo-bg-a leo-radius-m" id="leo-search-form">
+	   	    <input type="text" name="wd" autocomplete="on" placeholder="请输入关键字" class="mac_wd leo-fs-l" id="leo-search-wd" value="{if$maccms.aid==13}{$param.wd}{/if}">
+	   	    <a href="javascript:" title="搜索" id="leo-search-submit">
+	   	        <span class="iconfont icon-search leo-fs-icon-s leo-color-d leo-po-ab"></span>
+	   	    </a>
+      	</form>
+		    <a class="leo-search-cancel leo-po-ab leo-lh-l leo-fs-l leo-color-a" onclick="LeoCancelSearcho()">取消</a>
+	</div>
+    <section class="leo-mt-15">
+        <div class="leo-bg-a leo-lh-l leo-fs-l">
+			<div class="leo-mod-title">
+				<svg class="icon leo-fs-icon-xl" aria-hidden="true">
+				    <use xlink:href="#icon-dong"></use>
+                </svg>搜索记录
+                <a class="leo-more leo-po-ab leo-color-b leo-lh-l leo-fs-m" id="leo-history-delete">
+                    <span class="iconfont icon-delete leo-fs-m"></span>&nbsp;清除记录</a>
+			</div>
+		</div>
+		<div class="leo-bg-a">
+			<div class="leo-pl-20 leo-pr-20" id="leo-his-storage"></div>
+			<div class="leo-pl-20 leo-pr-20" id="leo-his-block">
+                <a class="leo-search-tags leo-fs-m leo-bg-o leo-mr-20 leo-mt-20 leo-radius-m leo-dis-ib leo-row-block">暂无搜索记录</a>
+			</div>
+		</div>
+	</section>
+<!--搜索标签-->
+    <section class="leo-mt-15">
+		<div class="leo-bg-a leo-lh-l leo-fs-l">
+			<div class="leo-mod-title">
+			    <svg class="icon leo-fs-icon-xl" aria-hidden="true">
+                    <use xlink:href="#icon-fanjutuijian"></use>
+                </svg>热门搜索
+			</div>
+		</div>
+		<div class="leo-bg-a">
+			<div class="leo-pl-20 leo-pr-20">
+			    {maccms:foreach name=":explode(',',$maccms.search_hot)" id="vo2" key="key2"}
+                <a href="{:mac_url('vod/search',['wd'=>$vo2])}" title="{$maccms.search_hot}" class="leo-search-tags leo-fs-m leo-bg-o leo-mr-20 leo-mt-20 leo-radius-m leo-dis-ib">{$vo2}</a>
+                {/maccms:foreach}
+			</div>
+		</div>
+	</section>
+</section>

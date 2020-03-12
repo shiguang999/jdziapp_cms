@@ -1,0 +1,33 @@
+{include file="public/header"}
+<!--影片详情-->
+<div class="leo-detail-wrap leo-po-re leo-col-12">
+	<div class="leo-blur">
+	    <img class="leo-detail-cover leo-lazy leo-po-ab" src={if$muchoConfig['islazy']==1}"{$maccms.path_tpl}asset/img/lazy.png" data-original={/if}"{$obj.vod_pic|mac_url_img}" alt="{$obj.vod_name}">
+	</div>
+	<div class="leo-detail-img leo-left leo-po-re">
+	    <img class="leo-lazy leo-radius-s" src={if$muchoConfig['islazy']==1}"{$maccms.path_tpl}asset/img/lazy.png" data-original={/if}"{$obj.vod_pic|mac_url_img}" alt="{$obj.vod_name}">
+	</div>
+	<div class="leo-detail-media leo-po-re">
+		<h1 class="leo-color-a leo-fs-l leo-ellipsis-2">{$obj.vod_name}</h1>
+		<ul class="leo-mt-20 leo-color-a">
+			<li class="leo-ellipsis-1 leo-fs-s leo-lh-ss">导演：{$obj.vod_director|mac_url_create='director','vod','search'}</li>
+			<li class="leo-ellipsis-1 leo-fs-s leo-lh-ss">主演：{$obj.vod_actor|mac_url_create='actor','vod','search'}</li>
+			<li class="leo-ellipsis-1 leo-fs-s leo-lh-ss">年代：{$obj.vod_year|mac_url_create='year','vod','search'}    分类：<a href="{:mac_url_type($obj.type)}" target="_blank">{$obj.type.type_name}</a></li>
+			<li class="leo-ellipsis-1 leo-fs-s leo-lh-ss">地区：{$obj.vod_area|mac_url_create='area','vod','search'}     播放量：<span class="mac_hits hits" data-mid="{$maccms.mid}" data-id="{$obj.vod_id}" data-type="hits"></span></li>
+		</ul>
+		<div class="leo-po-ab leo-mt-20">
+		{if$maccms.aid==16&&$obj.vod_points_down!=0}
+        	{if$popedom.code==1}
+        		<a target="_blank" download="{$obj['vod_down_list'][$param['sid']]['urls'][$param['nid']]['url']}" class="leo-dis-ib leo-lh-s leo-pl-30 leo-pr-30 leo-color-a leo-fs-m leo-bg-b leo-mr-20 leo-radius-m" href="{$obj['vod_down_list'][$param['sid']]['urls'][$param['nid']]['url']}"><span class="iconfont icon-location leo-fs-m"></span>&nbsp;下载{$obj['vod_down_list'][$param['sid']]['urls'][$param['nid']]['name']}</a>
+        	{/if}
+        {/if}</div>
+	</div>
+</div>
+<!--影片简介-->
+<div class="leo-bg-a leo-pr-20 leo-pl-20 leo-pt-30" id="leo-detail-info">
+	<p class="leo-color-e leo-fs-s leo-ellipsis-2">影片简介：{$obj.vod_content|mac_filter_html}</p>
+	<div class="leo-txt-c leo-color-e"><span class="iconfont icon-unfold"></span></div>
+</div>
+<span class="mac_ulog_set leo-hide" data-type="1" data-mid="{$maccms.mid}" data-id="{$obj.vod_id}" data-sid="{$param.sid}" data-nid="{$param.nid}"></span>
+{include file="module/relate"}
+{include file="public/footer"}

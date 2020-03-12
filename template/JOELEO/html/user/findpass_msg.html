@@ -1,0 +1,80 @@
+{include file="public/include"}
+<div class="leo-auth-wrap leo-po-ab leo-bg-o">
+    <div class="leo-auth-logo leo-bg-b leo-over-hd leo-color-a">
+        <a href="{$maccms.path}" title="{$maccms.site_name}" class="leo-show leo-txt-c leo-col-12 leo-fs-xl leo-color-a" id="leo-config-logo"></a>
+        <script>$("#leo-config-logo").html(leo_logo)</script>
+    </div>
+    <div class="leo-form-box leo-po-ab leo-bg-a">
+        <h2 class="leo-pl-20 leo-pt-30 leo-fs-l">{$param['ac_text']}找回密码</h2>
+        <div class="leo-auth-form">
+            
+        <form method="post" action="" id="leo-auth-find">
+            <input type="hidden" name="ac" value="{$param['ac']}">
+    		<div class="leo-auth-input leo-po-re leo-mt-20 leo-radius-m leo-bg-o">
+               <span class="iconfont icon-mail leo-color-e  leo-fs-m leo-po-ab"></span>
+                <input type="text" id="to" name="to" placeholder="请输入您绑定的{$param['ac_text']}" class="leo-show leo-fs-s leo-radius-m leo-bg-o"/>
+            </div>
+            <div class="leo-auth-input leo-po-re leo-mt-20 leo-radius-m leo-bg-o">
+               <span class="iconfont icon-vipcard leo-color-e leo-fs-m leo-po-ab"></span>
+                <img src="{:mac_url('verify/index')}" alt="看不清？点击更换" onClick="this.src=this.src+'?'+Math.random()" class="leo-ver-bind leo-po-ab leo-ver-img"/>
+                <input type="text" name="verify" placeholder="请输入验证码" class="leo-show leo-fs-s leo-radius-m leo-bg-o"/>
+        	</div>
+    		<input type="button" class="leo-col-12 leo-dis-ib leo-mt-30 leo-txt-c leo-fs-m leo-radius-m leo-lh-l leo-color-a leo-bg-b" id="leo-send-sms" value="发送{$param['ac_text']}验证码">
+    	</form>    
+    	<form method="post" action="" id="leo-auth-find2">
+    	    <div class="leo-auth-input leo-po-re leo-mt-20 leo-radius-m leo-bg-o">
+    		    <span class="iconfont icon-vipcard leo-color-e leo-fs-m leo-po-ab"></span>
+                <input type="text" name="code"  id="code"  placeholder="请输入{$param['ac_text']}验证码" class="leo-show leo-fs-s leo-radius-m leo-bg-o"/>
+            </div>
+            <div class="leo-auth-input leo-po-re leo-mt-20 leo-radius-m leo-bg-o">
+                <span class="iconfont icon-lock leo-color-e leo-fs-m leo-po-ab"></span>
+                <input type="password" id="user_pwd" name="user_pwd"  minlength="6" placeholder="新密码" class="leo-show leo-fs-s leo-radius-m leo-bg-o"/>
+            </div>
+            <div class="leo-auth-input leo-po-re leo-mt-20 leo-radius-m leo-bg-o">
+                <span class="iconfont icon-lock leo-color-e leo-fs-m leo-po-ab"></span>
+                <input type="password" id="user_pwd2" name="user_pwd2"  minlength="6" placeholder="确认密码" class="leo-show leo-fs-s leo-radius-m leo-bg-o"/>
+            </div>
+            <a class="leo-col-6 leo-dis-ib leo-mt-30 leo-txt-c leo-fs-m leo-radius-m leo-lh-l leo-color-a leo-bg-b"  tapmode onclick="showDefault('loading');" href="{:url('user/findpass')}">返回</a>
+    		<input type="button" class="leo-col-6 leo-dis-ib leo-mt-30 leo-txt-c leo-fs-m leo-radius-m leo-lh-l leo-color-a leo-bg-b" id="leo-find-submit" value="重置">
+    	</form>
+		
+        <a class="leo-left leo-fs-m leo-mt-30 leo-mb-30 leo-ml-30 leo-mr-30" href="{:url('user/findpass_msg')}?ac=phone">手机找回密码</a>
+        <a class="leo-right leo-fs-m leo-mt-30 leo-mb-30 leo-ml-30 leo-mr-30" href="{:url('user/findpass_msg')}?ac=email">邮箱找回密码</a>
+        {include file="user/foot"}
+        </div>
+    </div>
+<script>
+	$(function(){
+		$('#leo-send-sms').click(function() {
+			if ($('#to').val()  == '') { alert('请输入{$param["ac_text"]}！'); $("#to").focus(); return false; }
+			$.ajax({
+				url: "{:url('user/findpass_msg')}",
+				type: "post",
+				dataType: "json",
+				data: $('#leo-auth-find').serialize(),
+				success: function (r) {
+					alert(r.msg);
+				}
+			});
+		});
+		$('#leo-find-submit').click(function() {
+			if ($('#to').val()  == '') { alert('请输入{$param["ac_text"]}'); $("#to").focus(); return false; }
+			if ($('#code').val()  == '') { alert('请输入验证码！'); $("#code").focus(); return false; }
+			if ($('#user_pwd').val()  == '') { alert('请输入新密码！'); $("#user_pwd").focus(); return false; }
+			if ($('#user_pwd2').val()  == '') { alert('请输入确认密码！'); $("#user_pwd2").focus(); return false; }
+			if ($('#user_pwd').val()  != $('#user_pwd2').val() ) { alert('二次密码不一致！'); $("#user_pwd2").focus(); return false; }
+			var data= {ac:'{$param["ac"]}',to:$('#to').val(),code:$('#code').val(),user_pwd:$('#user_pwd').val(),user_pwd2:$('#user_pwd2').val()};
+			$.ajax({
+				url: "{:url('user/findpass_reset')}",
+				type: "post",
+				dataType: "json",
+				data: data,
+				success: function (r) {
+					alert(r.msg);
+					window.location.href="{:url('user/login')}"
+				}
+			});
+		});
+	});
+</script>
+{include file="public/footer"}

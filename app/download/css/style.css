@@ -1,0 +1,12 @@
+/**
+ * File Name: style.css
+ */
+
+@import url("bootstrap.css");
+@import url("styles.css");
+@import url("animate.min.css");
+@import url("font-awesome.min.css");
+@import url("shortcodes.css");
+@import url("owl.carousel.css");
+@import url("owl.theme.css");
+@import url("owl.transitions.css");

@@ -1,0 +1,126 @@
+{include file="public/include"}
+    <div class="leo-auth-wrap leo-po-ab leo-bg-o">
+        <div class="leo-auth-index leo-over-hd leo-bg-b leo-color-a">
+		<a class="leo-left leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" href="{:url('user/index')}">
+			<span class="iconfont icon-back  leo-fs-icon-s leo-color-a"></span>
+		</a>
+		<font class="leo-left leo-col-6 leo-lh-l leo-fs-l leo-ellipsis-1">修改信息</font>
+		<a class="leo-right leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" href="{:url('user/index')}" tapmode onclick="showDefault('loading')">
+		    <span class="iconfont icon-settings leo-fs-icon-s leo-color-a"></span>
+		</a>
+		</div>
+    <div class="leo-form-box leo-po-ab leo-bg-a">
+            {include file="user/head"}
+                <div class="leo-auth-form">
+                    <form method="post" id="leo-auth-setting">
+                        <div class="leo-auth-input leo-po-re leo-mt-20 leo-radius-m leo-bg-o">
+                            <span class="iconfont icon-profile leo-color-e leo-fs-m leo-po-ab"></span>
+                            <input type="text" name="user_name" value="{$obj.user_name}" disabled="disabled" class="leo-show leo-fs-s leo-radius-m leo-bg-o"/>
+                        </div>
+                        <div class="leo-auth-input leo-po-re leo-mt-20 leo-radius-m leo-bg-o">
+                            <span class="iconfont iconfont icon-lock leo-color-e leo-fs-m leo-po-ab"></span>
+                            <input type="password" name="user_pwd" value=""  placeholder="输入原始密码" class="leo-show leo-fs-s leo-radius-m leo-bg-o"/>
+                        </div>
+                        <div class="leo-auth-input leo-po-re leo-mt-20 leo-radius-m leo-bg-o">
+                            <span class="iconfont iconfont icon-lock leo-color-e leo-fs-m leo-po-ab"></span>
+                            <input type="password" name="user_pwd1" value=""  placeholder="输入新密码" class="leo-show leo-fs-s leo-radius-m leo-bg-o"/>
+                        </div>
+                        <div class="leo-auth-input leo-po-re leo-mt-20 leo-radius-m leo-bg-o">
+                            <span class="iconfont iconfont icon-lock leo-color-e leo-fs-m leo-po-ab"></span>
+                            <input type="password" name="user_pwd2" value="" placeholder="再次确认密码" class="leo-show leo-fs-s leo-radius-m leo-bg-o"/>
+                        </div>
+                        <div class="leo-auth-input leo-po-re leo-mt-20 leo-radius-m leo-bg-o">
+                            <span class="iconfont icon-qq leo-color-e leo-fs-m leo-po-ab"></span>
+                            <input type="text" name="user_qq" value="{$obj.user_qq}" placeholder="QQ号码" class="leo-show leo-fs-s leo-radius-m leo-bg-o"/>
+                        </div>
+   
+ 					    <div class="leo-auth-input leo-po-re leo-mt-20 leo-radius-m leo-bg-o">
+ 					        <span class="iconfont icon-mail leo-color-e leo-fs-m leo-po-ab"></span>
+                            <input type="text" value="{$obj.user_email}" name="user_email" placeholder="邮箱地址" readonly="readonly" class="leo-show leo-fs-s leo-radius-m leo-bg-o"/>
+                            {if condition="$obj.user_email neq ''"}
+                            <a class="leo-ver-bind leo-txt-c leo-po-ab leo-fs-m leo-bg-b leo-color-a leo-mt-fl" id="leo-unbind-submit" ac="email" href="javascript:;">解绑</a>
+                            {else/}
+                            <a class="leo-ver-bind leo-txt-c leo-po-ab leo-fs-m leo-bg-b leo-color-a leo-mt-fl" href="{:url('user/bind')}?ac=email">绑定</a>
+                            {/if}
+                        </div>
+ 
+                        <div class="leo-auth-input leo-po-re leo-mt-20 leo-radius-m leo-bg-o">
+                            <span class="iconfont icon-phone leo-color-e leo-fs-m leo-po-ab"></span>
+                            <input type="text" size="40" value="{$obj.user_phone}" name="user_phone" placeholder="手机号码" class="leo-show leo-fs-s leo-radius-m leo-bg-o"/>
+                            {if condition="$obj.user_phone neq ''"}
+                            <a class="leo-ver-bind leo-txt-c leo-po-ab leo-fs-m leo-bg-b leo-color-a leo-mt-fl" id="leo-unbind-submit" ac="phone" href="javascript:;">解绑</a>
+                            {else/}
+                            <a class="leo-ver-bind leo-txt-c leo-po-ab leo-fs-m leo-bg-b leo-color-a leo-mt-fl" href="{:url('user/bind')}?ac=phone">绑定</a>
+                            {/if}
+                        </div>
+                        <div class="leo-auth-input leo-po-re leo-mt-20 leo-radius-m leo-bg-o">
+                            <span class="iconfont icon-mark leo-color-e leo-fs-m leo-po-ab"></span>
+                            <input type="text" size="40" value="{$obj.user_question}" name="user_question" placeholder="找回密码问题" class="leo-show leo-fs-s leo-radius-m leo-bg-o"/>
+                        </div>
+                        <div class="leo-auth-input leo-po-re leo-mt-20 leo-radius-m leo-bg-o">
+                            <span class="iconfont icon-mark leo-color-e leo-fs-m leo-po-ab"></span>
+                            <input type="text" size="40" value="{$obj.user_answer}" name="user_answer" placeholder="找回密码答案" class="leo-show leo-fs-s leo-radius-m leo-bg-o"/>
+                        </div>
+                        <a class="leo-col-12 leo-dis-ib leo-mt-30 leo-txt-c leo-fs-m leo-radius-m leo-lh-l leo-color-a leo-bg-b" id="leo-setting-submit" tapmode onclick="showDefault('loading')">确认修改</a>
+                    </form>
+                </div>
+        {include file="user/foot"}
+		</div>
+	</div>
+<script src="{$maccms.path}static/js/jquery.imageupload.js"></script>
+<script>
+	$('#leo-unbind-submit').click(function(){
+		var ac = $(this).attr('ac');
+		if(ac!='email' && ac!='phone'){
+			alert('参数错误');
+		}
+		if(confirm('确认解除绑定吗？此操作不可恢复？')) {
+			$.ajax({
+				url: "{:url('user/unbind')}",
+				type: "post",
+				dataType: "json",
+				data: {ac: ac},
+				beforeSend: function () {
+					//开启loading
+				},
+				success: function (r) {
+					alert(r.msg);
+					if(r.code==1){
+						location.href="{:url('user/info')}";
+					}
+				},
+				complete: function () {
+					//结束loading
+				}
+			});
+		}
+	});
+	$("#leo-setting-submit").click(function() {
+		var data = $("#leo-auth-setting").serialize();
+		$.ajax({
+			url: "{:url('user/info')}",
+			type: "post",
+			dataType: "json",
+			data: data,
+			success: function (r) {
+				alert(r.msg);
+				if(r.code==1){
+					location.href="{:url('user/info')}";
+				}
+			}
+		});
+	});
+	$(".leo-avatar-img").imageUpload({
+		formAction: "{:url('user/portrait')}",
+		inputFileName:'file',
+		browseButtonValue: '修改头像',
+		browseButtonClass:'leo-avatar-upload',
+		automaticUpload: true,
+		hideDeleteButton: true,
+		hover:false
+	})
+	$(".leo-avatar-img").on("imageUpload.uploadFailed", function (ev, err) {
+		alert(err);
+	});
+	</script>
+{include file="public/footer"}

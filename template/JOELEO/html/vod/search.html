@@ -1,0 +1,42 @@
+{include file="public/header"}
+{if$__PAGING__.record_total!==0}
+<div class="leo-col-12 leo-pt-30 leo-pl-20 leo-pb-30 leo-pr-20 leo-bg-a">
+    <span class="leo-col-12 leo-dis-ib leo-txt-c leo-fs-m leo-radius-m leo-lh-s leo-color-d leo-bg-o leo-mb-20">
+        <svg class="icon leo-fs-icon-l" aria-hidden="true"><use xlink:href="#icon-pinglun"></use></svg>
+        搜索到与&nbsp;“<span class="leo-search-wd">{$param.wd}{$param.actor}{$param.director}{$param.area}{$param.lang}{$param.year}</span>”&nbsp;相关的&nbsp;“<span class="mac_total">0</span>”&nbsp;条结果
+    </span>
+</div>
+{/if}
+{maccms:vod num="15" paging="yes" pageurl="vod/search" order="desc" by="time" id="obj"}
+<div class="leo-detail-wrap leo-po-re leo-col-12">
+	<div class="leo-blur">
+	    <img class="leo-detail-cover leo-lazy leo-po-ab" src={if$muchoConfig['islazy']==1}"{$maccms.path_tpl}asset/img/lazy.png" data-original={/if}"{$obj.vod_pic|mac_url_img}" alt="{$obj.vod_name}">
+	</div>
+	<div class="leo-detail-img leo-left leo-po-re">
+	    <img class="leo-lazy leo-radius-s" src={if$muchoConfig['islazy']==1}"{$maccms.path_tpl}asset/img/lazy.png" data-original={/if}"{$obj.vod_pic|mac_url_img}" alt="{$obj.vod_name}">
+	</div>
+	<div class="leo-detail-media leo-po-re">
+		<h1 class="leo-color-a leo-fs-l leo-ellipsis-1">{$obj.vod_name}</h1>
+		<ul class="leo-mt-20 leo-color-a">
+			<li class="leo-ellipsis-1 leo-fs-s leo-lh-ss">导演：{$obj.vod_director|mac_url_create='director','vod','search'}</li>
+			<li class="leo-ellipsis-1 leo-fs-s leo-lh-ss">主演：{$obj.vod_actor|mac_url_create='actor','vod','search'}</li>
+			<li class="leo-ellipsis-1 leo-fs-s leo-lh-ss">年代：{$obj.vod_year|mac_url_create='year','vod','search'}    分类：<a href="{:mac_url_type($obj.type)}" target="_blank">{$obj.type.type_name}</a></li>
+			<li class="leo-ellipsis-1 leo-fs-s leo-lh-ss">地区：{$obj.vod_area|mac_url_create='area','vod','search'}     播放量：{$obj.vod_hits}</li>
+		</ul>
+		<div class="leo-po-ab leo-mt-15">
+		  <a href="{:mac_url_vod_detail($obj)}" class="leo-dis-ib leo-lh-s leo-pl-30 leo-pr-30 leo-color-a leo-fs-m leo-bg-b leo-mr-20 leo-radius-m" tapmode onclick="showDefault('loading')"><span class="iconfont icon-video leo-fs-m"></span>&nbsp;查看详情</a>
+		  <a class="leo-dis-ib leo-lh-s leo-pl-30 leo-pr-30 leo-color-a leo-fs-m leo-bg-b leo-mr-20 leo-radius-m mac_ulog" data-type="2" data-mid="{$maccms.mid}" data-id="{$obj.vod_id}" href="javascript:;"><span class="iconfont icon-like leo-fs-m"></span>&nbsp;收藏</a>
+        </div>
+	</div>
+</div>
+<script>var mac_xwd = $("#leo-search-wd").html();</script>
+{/maccms:vod}
+{notempty name="$__PAGING__.record_total"}
+{include file="module/paging"}
+{/notempty}
+{empty name="$__PAGING__.record_total"}
+<script>$(function(){MAC.Gbook.Sreport();});</script>
+<div class="leo-search-empty leo-left leo-col-12 leo-bg-a leo-pr-20 leo-pl-20"></div>
+{include file="module/relate"}
+{/empty}
+{include file="public/footer"}

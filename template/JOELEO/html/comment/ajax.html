@@ -1,0 +1,134 @@
+<!--评论开始-->
+<div class="leo-col-12">
+    <span class="leo-col-12 leo-dis-ib leo-txt-c leo-fs-m leo-radius-m leo-lh-s leo-color-d leo-bg-o leo-mb-20">
+        <svg class="icon leo-fs-icon-l" aria-hidden="true"><use xlink:href="#icon-pinglun"></use></svg>
+        {if$__PAGING__.record_total|intval!==0}
+        共<em id="item_count">{$__PAGING__.record_total|intval}</em>条评论，快加入吧！还可以输入<span class="comment_remaining" >200字</span>
+        {else}
+        此影片还无评论，快来抢沙发！还可以输入<span class="comment_remaining" >200字</span>
+	    {/if}
+    </span>
+</div>
+<div class="leo-comment-show">
+<form class="leo-mb-30 comment_form">
+    <input type="hidden" name="comment_pid" value="0">
+    <!--评论框-->
+    <div class="leo-col-12">
+        <textarea class="leo-comment-parent leo-bg-a leo-col-12 leo-lh-ss leo-fs-m leo-color-d leo-pl-20 leo-pr-20 leo-radius-s comment_content" name="comment_content" placeholder="小伙子，请说一下你的看法！"></textarea>
+        <div class="leo-col-12">
+            <a rel="nofollow" href="javascript:void(0);">
+            <span class="leo-emoji-parent leo-dis-ib leo-txt-c leo-fs-m leo-radius-m leo-lh-s leo-color-d leo-bg-o leo-mt-15 leo-w-m leo-mr-10">
+                <svg class="icon leo-fs-icon-l leo-ml-f20" aria-hidden="true"><use xlink:href="#icon-biaoqing"></use></svg>表情
+            </span></a>
+            {if$comment.verify==1}
+            <div class="leo-comment-block leo-dis-ib leo-w-m">
+                <input type="text" name="verify" id="verify" placeholder="验证码" class="leo-h-m leo-fs-m leo-bg-o leo-pl-30 leo-radius-hl-m"/>
+        	</div>
+        	<span class="leo-dis-ib leo-fs-l leo-mr-10">
+                <img src="{:mac_url('verify/index')}" alt="看不清？点击更换" onClick="this.src=this.src+'?'+Math.random()" class="leo-w-m leo-radius-hr-m  leo-h-m" style="width:1rem;"/>
+            </span>
+            {/if}
+            <a rel="nofollow" href="javascript:void(0);">
+            <span class="comment_submit leo-dis-ib leo-txt-c leo-fs-m leo-radius-m leo-lh-s leo-color-a leo-bg-b leo-w-m"><span class="iconfont icon-focus leo-fs-m"></span>&nbsp;发射</span></a>
+        </div>
+    </div>
+</form>
+</div>
+{maccms:comment num="5" paging="yes" order="desc" by="id"}{/maccms:comment}
+<div class="leo-show leo-comment-body">
+{maccms:foreach name="__LIST__" id="vo"}
+    <li class="leo-mt-20 leo-comment-li">
+        <div class="leo-po-re">
+            <div class="leo-po-ab">
+                <img alt="{$vo.comment_name}" src="{php} echo mac_get_user_portrait($vo['user_id']); {/php}"  height="50" width="50" class="leo-radius-m leo-aimg-m">
+            </div>
+            <div class="leo-ml-com-a">
+                <div class="leo-lh-ss"> 
+                    <span class="leo-fs-m leo-color-d">
+                        <b>{$vo.comment_name}</b>
+                        <a class="digg_link leo-right" data-id="{$vo.comment_id}" data-mid="4" data-type="down" href="javascript:;">
+                            <svg class="icon leo-fs-icon-ll" aria-hidden="true"><use xlink:href="#icon-thumbdown"></use></svg>（<em class="digg_num icon-num">{$vo.comment_down}</em>）
+                        </a>
+                        <a class="digg_link leo-right leo-mr-20" data-id="{$vo.comment_id}" data-mid="4" data-type="up" href="javascript:;">
+                            <svg class="icon leo-fs-icon-ll" aria-hidden="true"><use xlink:href="#icon-thumbup"></use></svg>（<em class="digg_num icon-num">{$vo.comment_up}</em>）
+                        </a>
+                    </span> 
+                </div>
+                <div class="leo-comment-text leo-fs-m leo-over-hd leo-pb-10 leo-lh-vs">
+                    {$vo.comment_content|mac_em_replace}
+                </div>
+                <div class="leo-fs-s leo-color-d leo-pb-10 leo-pt-10">
+                    <span class="leo-mr-20"> {$vo.comment_time|date='Y-m-d H:i:s',###}</span>  
+                    <span class="leo-mr-20 leo-right leo-mt-fs"> 
+                        <a class="comment_report leo-mr-20 " data-id="{$vo.comment_id}" href="javascript:;">举报</a>
+                        <a class="comment_reply leo-mr-20 " data-id="{$vo.comment_id}" href="javascript:;">回复</a> 
+                    </span> 
+                </div>
+            </div>
+        </div>
+        <ul class="leo-pl-30 leo-ml-20 leo-border-com">
+        {maccms:foreach name="$vo.sub" id="child"}
+            <li class="leo-mt-20">
+                <div class="leo-po-re">
+                    <div class="leo-po-ab">
+                        <img alt="{$vo.comment_name}" src="{php} echo mac_get_user_portrait($child['user_id']); {/php}"  height="50" width="50" class="leo-radius-m leo-aimg-m">
+                    </div>
+                    <div class="leo-ml-com-b">
+                        <div class="leo-lh-ss"> 
+                            <span class="leo-fs-m leo-color-d">
+                                <b>{$child.comment_name}</b>
+                                <a class="digg_link leo-right" data-id="{$child.comment_id}" data-mid="4" data-type="down" href="javascript:;">
+                                    <svg class="icon leo-fs-icon-ll" aria-hidden="true"><use xlink:href="#icon-thumbdown"></use></svg>（<em class="digg_num icon-num">{$child.comment_down}</em>）
+                                </a>
+                                <a class="digg_link leo-right leo-mr-20" data-id="{$child.comment_id}" data-mid="4" data-type="up" href="javascript:;">
+                                    <svg class="icon leo-fs-icon-ll" aria-hidden="true"><use xlink:href="#icon-thumbup"></use></svg>（<em class="digg_num icon-num">{$child.comment_up}</em>）
+                                </a>
+                            </span> 
+                        </div>
+                        <div class="leo-comment-text leo-fs-m leo-over-hd leo-pb-10 leo-lh-vs">
+                            {$child.comment_content|mac_em_replace}
+                        </div>
+                        <div class="leo-fs-s leo-color-d leo-pb-10 leo-pt-10">
+                            <span class="leo-mr-20"> {$child.comment_time|date='Y-m-d H:i:s',###} </span>  
+                            <span class="leo-mr-20 leo-right leo-mt-fs"> 
+                                <a class="comment_report leo-mr-20 " data-id="{$child.comment_id}" href="javascript:;">举报</a>
+                                <a class="comment_reply leo-mr-20 " data-id="{$vo.comment_id}" href="javascript:;">回复</a> 
+                            </span> 
+                        </div>
+                    </div>
+                </div>
+            </li>
+        {/maccms:foreach}
+        </ul>
+    </li>
+{/maccms:foreach}
+</div>
+<script>
+$(".leo-comment-parent").emoji({
+    button: ".leo-emoji-parent",
+    showTab: true,
+    animation: 'fade',
+    basePath: '/template/JOELEO/asset/img/emoji',
+    icons: emojiLists
+});
+
+$(".leo-comment-text").emojiParse({
+    basePath: '/template/JOELEO/asset/img/emoji',
+    icons: emojiLists
+});
+</script>     
+      
+{notempty name="$__PAGING__.record_total"}
+<section class="leo-col-12 leo-show leo-bg-a leo-pt-10 leo-pb-30 leo-txt-c leo-left">
+{if$__PAGING__.page_current==1}{else/}
+<a target="_self" href="javascript:void(0);" onclick="MAC.Comment.Show(1)" class="leo-page-elem leo-fs-m leo-bg-a leo-radius-m leo-dis-ib leo-mr-10">首页</a>
+<a target="_self" href="javascript:void(0);" onclick="MAC.Comment.Show('{$__PAGING__.page_prev}')" class="leo-page-elem leo-fs-m leo-bg-a leo-radius-m leo-dis-ib leo-mr-10">上一页</a>
+{/if}
+<span class="leo-page-elem leo-fs-m leo-bg-a leo-radius-m leo-dis-ib leo-mr-10" id="leo-page-elem">{$__PAGING__.page_current}</span>
+{if$__PAGING__.page_current==$__PAGING__.page_total}{else/}
+<a target="_self" href="javascript:void(0);" onclick="MAC.Comment.Show('{$__PAGING__.page_next}')" class="leo-page-elem leo-fs-m leo-bg-a leo-radius-m leo-dis-ib">下一页</a>&nbsp;
+<a target="_self" href="javascript:void(0);" onclick="MAC.Comment.Show('{$__PAGING__.page_total}')" class="leo-page-elem leo-fs-m leo-bg-a leo-radius-m leo-dis-ib">尾页</a>&nbsp;
+{/if}
+</section>
+<script>$('#item_count').html('{$__PAGING__.record_total|intval}');</script>
+{/notempty}

@@ -1,0 +1,156 @@
+{include file="public/include"}
+<div class="leo-auth-wrap leo-po-ab leo-bg-o">
+    <div class="leo-auth-logo leo-bg-b leo-over-hd leo-color-a">
+        <a href="{$maccms.path}" title="{$maccms.site_name}" class="leo-show leo-txt-c leo-col-12 leo-fs-xl leo-color-a" id="leo-config-logo"></a>
+        <script>$("#leo-config-logo").html(leo_logo)</script>
+    </div>
+    <div class="leo-form-box leo-po-ab leo-bg-a">
+        <h2 class="leo-pl-20 leo-pt-30 leo-fs-l">新用户注册</h2>
+        <div class="leo-auth-form">
+            <form method="post" id="leo-auth-reg" action="">
+                <div class="leo-auth-input leo-po-re leo-mt-20 leo-radius-m leo-bg-o">
+                    <span class="iconfont icon-profile leo-color-e leo-fs-m leo-po-ab"></span>
+                    <input type="text" name="user_name"  minlength="4" placeholder="用户名" class="leo-show leo-fs-s leo-radius-m leo-bg-o"/>
+                </div>
+                <div class="leo-auth-input leo-po-re leo-mt-20 leo-radius-m leo-bg-o">
+                    <span class="iconfont icon-lock leo-color-e leo-fs-m leo-po-ab"></span>
+                    <input type="password" id="pass1" name="user_pwd"  minlength="6" placeholder="密码" class="leo-show leo-fs-s leo-radius-m leo-bg-o"/>
+                </div>
+                <div class="leo-auth-input leo-po-re leo-mt-20 leo-radius-m leo-bg-o">
+                    <span class="iconfont icon-lock leo-color-e leo-fs-m leo-po-ab"></span>
+                    <input type="password" id="pass2" name="user_pwd2"  minlength="6" placeholder="重复密码" class="leo-show leo-fs-s leo-radius-m leo-bg-o"/>
+                </div>
+                
+                {if condition="$user_config.reg_phone_sms neq 0"}
+    			<input type="hidden" name="ac" value="phone">
+    			<div class="leo-auth-input leo-po-re leo-mt-20 leo-radius-m leo-bg-o">
+                   <span class="iconfont icon-phone leo-color-e leo-fs-m leo-po-ab"></span>
+                    <input type="text" name="to" placeholder="请输入手机号码" class="leo-show leo-fs-s leo-radius-m leo-bg-o"/>
+                </div>
+                <div class="leo-auth-input leo-po-re leo-mt-20 leo-radius-m leo-bg-o">
+				    <span class="iconfont icon-vipcard leo-color-e leo-fs-m leo-po-ab"></span>
+                    <input type="text" name="code" placeholder="请输入手机验证码" class="leo-show leo-fs-s leo-radius-m leo-bg-o"/>
+                    <input type="button" class="leo-ver-bind leo-txt-c leo-po-ab leo-fs-m leo-bg-b leo-color-a leo-mt-fl" id="leo-send-sms" value="获取验证码" style="width:1.6rem;padding-left:0;"/>
+                </div>
+
+    			{elseif condition="$user_config.reg_email_sms neq 0"}
+    			<input type="hidden" name="ac" value="email">
+    			<div class="leo-auth-input leo-po-re leo-mt-20 leo-radius-m leo-bg-o">
+                   <span class="iconfont icon-mail leo-color-e leo-fs-m leo-po-ab"></span>
+                    <input type="text" name="to" placeholder="请输入邮箱地址" class="leo-show leo-fs-s leo-radius-m leo-bg-o"/>
+                </div>
+                <div class="leo-auth-input leo-po-re leo-mt-20 leo-radius-m leo-bg-o">
+				    <span class="iconfont icon-vipcard leo-color-e leo-fs-m leo-po-ab"></span>
+                    <input type="text" name="code" placeholder="请输入邮箱验证码" class="leo-show leo-fs-s leo-radius-m leo-bg-o"/>
+                    <input type="button" class="leo-ver-bind leo-txt-c leo-po-ab leo-fs-m leo-bg-b leo-color-a leo-mt-fl" id="leo-send-sms" value="获取验证码" style="width:1.6rem;padding-left:0;"/>
+                </div>
+    			{/if}
+    
+    			{if condition="$user_config.reg_verify neq 0"}
+                <div class="leo-auth-input leo-po-re leo-mt-20 leo-radius-m leo-bg-o">
+                   <span class="iconfont icon-vipcard leo-color-e leo-fs-m leo-po-ab"></span>
+                    <img src="{:mac_url('verify/index')}" alt="看不清？点击更换" onClick="this.src=this.src+'?'+Math.random()" class="leo-ver-bind leo-po-ab leo-ver-img"/>
+                    <input type="text" name="verify" placeholder="请输入验证码" class="leo-show leo-fs-s leo-radius-m leo-bg-o"/>
+            	</div>
+    			{/if}
+
+            	<a class="leo-col-6 leo-dis-ib leo-mt-30 leo-txt-c leo-fs-m leo-radius-m leo-lh-l leo-color-a leo-bg-b"  tapmode onclick="showDefault('loading');LeoBack();">返回</a>
+            	<a class="leo-col-6 leo-dis-ib leo-mt-30 leo-txt-c leo-fs-m leo-radius-m leo-lh-l leo-color-a leo-bg-b" id="leo-reg-submit" tapmode onclick="showDefault('loading')">立即注册</a>
+            </form>
+        </div>
+        {include file="user/foot"}
+        </div>
+    </div>
+<script>
+    var countdown=60;
+    function settime(val) {
+        if (countdown == 0) {
+            val.removeAttribute("disabled");
+            val.value="获取验证码";
+            countdown = 60;
+            return true;
+        } else {
+            val.setAttribute("disabled", true);
+            val.value="重新发送(" + countdown + ")";
+            countdown--;
+        }
+        setTimeout(function() {settime(val) },1000)
+    }
+    $('#leo-send-sms').click(function(){
+        var ac = $('input[name="ac"]').val();
+        var to = $('input[name="to"]').val();
+        if(ac=='email') {
+            var pattern = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+            var ex = pattern.test(to);
+            if (!ex) {
+                alert('邮箱格式不正确');
+                return;
+            }
+        }
+        else if(ac=='phone') {
+            var pattern=/^[1][0-9]{10}$/;
+            var ex = pattern.test(to);
+            if (!ex) {
+                alert('手机号格式不正确');
+                return;
+            }
+        }
+        else{
+            alert('参数错误');
+            return;
+        }
+        settime(this);
+        var data = $("#leo-auth-reg").serialize();
+        $.ajax({
+            url: "{:url('user/reg_msg')}",
+            type: "post",
+            dataType: "json",
+            data: data,
+            success: function (r) {
+                alert(r.msg);
+            }
+        });
+    });
+	$("#leo-reg-submit").click(function() {
+		var data = $('#leo-auth-reg').serialize();
+		var input = $("#leo-auth-reg").serializeArray();
+		var pwd1 = $("#pwd1").val();
+		var pwd2 = $("#pwd2").val();
+		var inputName = new Array();
+		inputName['user_name'] = '账号';
+		inputName['user_pwd'] = '密码';
+		inputName['user_pwd2'] = '确认密码';
+		inputName['user_email'] = '邮箱';
+		inputName['verify'] = '验证码';
+		var is = false;
+		var err = '';
+		$.each(input,function(name,field) {
+			if (field.value == '' && field.name!='verify') {
+				is = true;
+				err = inputName[field.name] + '不能为空';
+				return false;
+			}
+		});
+		if (is) {
+			alert(err);
+			return false;
+		}
+		if (pwd1 != pwd2) {
+			alert('两次密码不一致');
+			return false;
+		}
+		$.ajax({
+			url: "{:url('user/reg')}",
+			type: "post",
+			dataType: "json",
+			data: data,
+			success: function (r) {
+				alert(r.msg);
+				if(r.code==1){
+					location.href="{:url('user/login')}";
+				}
+			}
+		});
+	})
+	</script>
+{include file="public/footer"}

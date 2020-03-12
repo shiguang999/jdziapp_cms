@@ -1,0 +1,78 @@
+{include file="public/include"}
+    <div class="leo-auth-wrap leo-po-ab leo-bg-o">
+        <div class="leo-auth-index leo-over-hd leo-bg-b leo-color-a">
+		<a class="leo-left leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" onclick="LeoBack();">
+			<span class="iconfont icon-back  leo-fs-icon-s leo-color-a"></span>
+		</a>
+		<font class="leo-left leo-col-6 leo-lh-l leo-fs-l leo-ellipsis-1">赚取积分</font>
+		<a class="leo-right leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" href="{:url('user/info')}" tapmode onclick="showDefault('loading')">
+		    <span class="iconfont icon-settings leo-fs-icon-s leo-color-a"></span>
+		</a>
+        <a class="leo-right username leo-mt-20 leo-dis-fl" href="{:url('user/index')}" rel="nofollow">
+            <span class="leo-user-name leo-fs-m leo-pr-30 leo-pl-30 leo-radius-m leo-col-0 leo-txt-c leo-color-a leo-lh-vs">
+                {$obj.user_name}
+            </span>
+        </a>
+		</div>
+        <div class="leo-form-box leo-po-ab leo-bg-a">
+            {include file="user/head"}
+                <div class="leo-pr-20 leo-pl-20">
+                    <div class="leo-txt-c leo-mt-15">
+                        <span class="leo-fs-l leo-active-font">推广赚积分</span>
+                        <p class="leo-fs-m leo-txt-c leo-active-font leo-pl-20 leo-mt-20 leo-mb-10"><small>*（推广访问一人可赚取 {$GLOBALS['config']['user']['invite_visit_points']} 积分；推广注册一人可赚取 {$GLOBALS['config']['user']['invite_reg_points']} 积分。用户注册成功后即为你的一级下线，该用户所有积分行为你可按比例抽成，以此类推，详见三级分销；）</small></p>
+                    </div>
+                    {if $GLOBALS['config']['user']['invite_visit_points'] gt 0}
+                    <div class="leo-auth-info leo-fs-m leo-mt-20 leo-mb-10 leo-mr-20 leo-ml-20 leo-pb-30">
+                        <span>推广访问链接：</span>
+                        <a class="leo-right" id="leo-copy-link2" href="javascript:void(0);">一键复制</a>
+                    </div>
+                    {/if}
+                    {if $GLOBALS['config']['user']['invite_reg_points'] gt 0}
+                    <div class="leo-auth-info leo-fs-m leo-mt-20 leo-mb-10 leo-mr-20 leo-ml-20 leo-pb-30">
+                        <span>推广注册链接：</span>
+                        <a class="leo-right" id="leo-copy-link" href="javascript:void(0);">一键复制</a>
+                    </div>
+                    {/if}
+                    <script>
+                    var tui_link = "{$maccms.http_type}{$maccms.site_url}{:mac_url('user/reg')}?uid={$obj.user_id}";
+                    var tui_link2 = "{$maccms.http_type}{$maccms.site_url}{:mac_url('user/visit')}?uid={$obj.user_id}";
+                        $.ajax({
+                            type: 'get',
+                            url: '/template/JOELEO/asset/inc/sina.php?url='+tui_link,
+                            success: function($r){
+                                var clipboard = new Clipboard('#leo-copy-link', {
+                                    text: function() {
+                                        return $r;
+                                    }
+                                });
+                                clipboard.on('success', function(e) {
+                                    MAC.Pop.Msg(320,20,'复制成功，快分享给小伙伴吧！',1000);
+                                });
+                                clipboard.on('error', function(e) {
+                                    MAC.Pop.Msg(200,20,'复制成功，快分享给小伙伴吧！',1000);
+                                });
+                            }
+                        });
+                        $.ajax({
+                            type: 'get',
+                            url: '/template/JOELEO/asset/inc/sina.php?url='+tui_link2,
+                            success: function($r){
+                                var clipboard2 = new Clipboard('#leo-copy-link2', {
+                                    text: function() {
+                                        return $r;
+                                    }
+                                });
+                                clipboard2.on('success', function(e) {
+                                    MAC.Pop.Msg(320,20,'复制成功，快分享给小伙伴吧！',1000);
+                                });
+                                clipboard2.on('error', function(e) {
+                                    MAC.Pop.Msg(200,20,'复制成功，快分享给小伙伴吧！',1000);
+                                });
+                            }
+                        });
+                    </script>
+                </div>
+            {include file="user/foot"}
+		</div>
+	</div>
+{include file="public/footer"}

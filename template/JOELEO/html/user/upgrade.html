@@ -1,0 +1,83 @@
+{include file="public/include"}
+    <div class="leo-auth-wrap leo-po-ab leo-bg-o">
+        <div class="leo-auth-index leo-over-hd leo-bg-b leo-color-a">
+		<a class="leo-left leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" onclick="LeoBack();">
+			<span class="iconfont icon-back  leo-fs-icon-s leo-color-a"></span>
+		</a>
+		<font class="leo-left leo-col-6 leo-lh-l leo-fs-l leo-ellipsis-1">升级会员组</font>
+		<a class="leo-right leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" href="{:url('user/info')}" tapmode onclick="showDefault('loading')">
+		    <span class="iconfont icon-settings leo-fs-icon-s leo-color-a"></span>
+		</a>
+        <a class="leo-right username leo-mt-20 leo-dis-fl" href="{:url('user/index')}" rel="nofollow">
+            <span class="leo-user-name leo-fs-m leo-pr-30 leo-pl-30 leo-radius-m leo-col-0 leo-txt-c leo-color-a leo-lh-vs">
+                {$obj.user_name}
+            </span>
+        </a>
+		</div>
+        <div class="leo-form-box leo-po-ab leo-bg-a">
+            {include file="user/head"}
+            <div class="leo-auth-form">
+                    <div class="leo-auth-info leo-fs-m leo-mt-20 leo-mb-10 leo-mr-20 leo-ml-20 leo-pb-30">
+                        <span>所属会员组:</span>
+                        <span class="leo-color-c leo-right">{$obj.group.group_name}</span>
+                    </div>
+                    <div class="leo-auth-info leo-fs-m leo-mt-20 leo-mb-10 leo-mr-20 leo-ml-20 leo-pb-30">
+                        <span>会员期限:</span>
+                        <span class="leo-color-c leo-right">{if condition="$obj.group_id lt 3"}无限期{else} {$obj.user_end_time|mac_day}{/if}</span>
+                    </div>
+                    <form action="" method="post">
+						{volist name="group_list" id="vo"}{if condition="$vo.group_id gt 2"}
+						<div class="leo-txt-c leo-mt-15">
+                            <span class="leo-fs-l leo-active-font">{$vo.group_name}会员组升级</span>
+                        </div>
+                        <div class="leo-auth-input leo-po-re leo-mt-20 leo-radius-m leo-bg-o">
+                            <span class="iconfont icon-vipcard leo-color-e leo-fs-m leo-po-ab"></span>
+                            <input type="text" value=" 包天：{$vo.group_points_day}积分" readonly="readonly" class="leo-show leo-fs-s leo-radius-m leo-bg-o"/>
+                            <a class="leo-ver-bind leo-txt-c leo-po-ab leo-fs-m leo-bg-b leo-color-a leo-auth-upgrade leo-mt-fl" data-id="{$vo.group_id}" data-name="{$vo.group_name}" data-points="{$vo.group_points_day}" data-long="day">升级</a>
+                        </div>
+                        <div class="leo-auth-input leo-po-re leo-mt-20 leo-radius-m leo-bg-o">
+                            <span class="iconfont icon-vipcard leo-color-e leo-fs-m leo-po-ab"></span>
+                            <input type="text" value=" 包周：{$vo.group_points_week}积分" readonly="readonly" class="leo-show leo-fs-s leo-radius-m leo-bg-o"/>
+                            <a class="leo-ver-bind leo-txt-c leo-po-ab leo-fs-m leo-bg-b leo-color-a leo-auth-upgrade leo-mt-fl" data-id="{$vo.group_id}" data-name="{$vo.group_name}"  data-points="{$vo.group_points_week}" data-long="week">升级</a>
+                        </div>
+                        <div class="leo-auth-input leo-po-re leo-mt-20 leo-radius-m leo-bg-o">
+                            <span class="iconfont icon-vipcard leo-color-e leo-fs-m leo-po-ab"></span>
+                            <input type="text" value=" 包月：{$vo.group_points_month}积分" readonly="readonly" class="leo-show leo-fs-s leo-radius-m leo-bg-o"/>
+                            <a class="leo-ver-bind leo-txt-c leo-po-ab leo-fs-m leo-bg-b leo-color-a leo-auth-upgrade leo-mt-fl" data-id="{$vo.group_id}" data-name="{$vo.group_name}"  data-points="{$vo.group_points_month}" data-long="month">升级</a>
+                        </div>
+                        <div class="leo-auth-input leo-po-re leo-mt-20 leo-radius-m leo-bg-o ">
+                            <span class="iconfont icon-vipcard leo-color-e leo-fs-m leo-po-ab"></span>
+                            <input type="text" value=" 包年：{$vo.group_points_year}积分" readonly="readonly" class="leo-show leo-fs-s leo-radius-m leo-bg-o"/>
+                            <a class="leo-ver-bind leo-txt-c leo-po-ab leo-fs-m leo-bg-b leo-color-a leo-auth-upgrade leo-mt-fl" data-id="{$vo.group_id}" data-name="{$vo.group_name}"  data-points="{$vo.group_points_year}" data-long="year">升级</a>
+                        </div>
+                        <div class="leo-auth-info leo-mt-30"></div>
+                        {/if}{/volist}
+                    </form>
+                </div>
+			{include file="user/foot"}
+		</div>
+	</div>
+<script>
+	$('.leo-auth-upgrade').click(function(){
+		var that=$(this);
+		var group_id = that.attr('data-id');
+		var group_name = that.attr('data-name');
+		var long = that.attr('data-long');
+		var points = that.attr('data-points');
+		if(confirm('确定要升级到【'+group_name+'】会员组吗,需要花费【'+points+'】积分')) {
+			$.ajax({
+				url: "{:url('user/upgrade')}",
+				type: "post",
+				dataType: "json",
+				data: {group_id: group_id,long:long },
+				success: function (r) {
+					alert(r.msg);
+					if (r.code == 1) {
+						location.reload();
+					}
+				}
+			});
+		}
+	});
+</script>
+{include file="public/footer"}

@@ -1,0 +1,91 @@
+{include file="public/include"}
+<!--登录页面-->
+<div class="leo-auth-wrap leo-po-ab leo-bg-o">
+    <div class="leo-auth-logo leo-bg-b leo-over-hd leo-color-a">
+        <a href="{$maccms.path}" title="{$maccms.site_name}" class="leo-show leo-txt-c leo-col-12 leo-fs-xl leo-color-a" id="leo-config-logo"></a>
+        <script>$("#leo-config-logo").html(leo_logo)</script>
+    </div>
+    <div class="leo-form-box leo-po-ab leo-bg-a">
+         <h2 class="leo-pl-20 leo-pt-30 leo-fs-l">用户登录</h2>
+            <div class="leo-auth-form">
+                <form method="post" action="">
+                    <div class="leo-auth-input leo-po-re leo-mt-20 leo-radius-m leo-bg-o">
+                        <span class="iconfont icon-profile leo-color-e leo-fs-m leo-po-ab"></span>
+                        <input type="text" name="user_name" minlength="4" placeholder="用户名" class="leo-show leo-fs-s leo-radius-m leo-bg-o"/>
+                    </div>
+                    <div class="leo-auth-input leo-po-re leo-mt-20 leo-radius-m leo-bg-o">
+                        <span class="iconfont icon-lock leo-color-e leo-fs-m leo-po-ab"></span>
+                        <input type="password" name="user_pwd" minlength="6" placeholder="密码" class="leo-show leo-fs-s leo-radius-m leo-bg-o"/>
+                    </div>
+                    {if condition="$GLOBALS['config']['user']['login_verify'] eq 1"}
+                    <div class="leo-auth-input leo-po-re leo-mt-20 leo-radius-m leo-bg-o">
+                        <span class="iconfont icon-vipcard leo-color-e leo-fs-m leo-po-ab"></span>
+                        <img src="{:mac_url('verify/index')}" alt="看不清？点击更换" onClick="this.src=this.src+'?'+Math.random()" class="leo-ver-bind leo-po-ab leo-ver-img" id="leo-auth-verify"/>
+                        <input type="text" name="verify" placeholder="请输入验证码" class="leo-show leo-fs-s leo-radius-m leo-bg-o"/>
+                    </div>
+                    {/if}
+                    <?php $mucho=require ('application/extra/maccms.php'); ?>
+                    <?php if($mucho[ 'connect'][ 'weixin'][ 'status']=='1' && $mucho[ 'connect'][ 'qq'][ 'status']!='1' ) { ?>
+                    <a class="leo-col-6 leo-dis-ib leo-mt-30 leo-txt-c leo-fs-m leo-radius-m leo-lh-l leo-color-a leo-bg-b" href="{:mac_url('user/oauth')}?type=weixin">微信登录</a>
+                    <a class="leo-col-6 leo-dis-ib leo-mt-30 leo-txt-c leo-fs-m leo-radius-m leo-lh-l leo-color-a leo-bg-b " id="leo-login-submit" tapmode onclick="showDefault('loading')">登录</a>
+                    <?php } if($mucho[ 'connect'][ 'qq'][ 'status']=='1' && $mucho[
+                    'connect'][ 'weixin'][ 'status']!='1' ) { ?>
+                    <a class="leo-col-6 leo-dis-ib leo-mt-30 leo-txt-c leo-fs-m leo-radius-m leo-lh-l leo-color-a leo-bg-b" href="{:mac_url('user/oauth')}?type=qq">QQ登录</a>
+                    <a class="leo-col-6 leo-dis-ib leo-mt-30 leo-txt-c leo-fs-m leo-radius-m leo-lh-l leo-color-a leo-bg-b" id="leo-login-submit" tapmode onclick="showDefault('loading')">登录</a>
+                    <?php } if($mucho[ 'connect'][ 'qq'][ 'status']=='1' && $mucho[
+                    'connect'][ 'weixin'][ 'status']=='1' ) { ?>
+                    <a class="leo-col-4 leo-dis-ib leo-mt-30 leo-txt-c leo-fs-m leo-radius-m leo-lh-l leo-color-a leo-bg-b" href="{:mac_url('user/oauth')}?type=weixin">微信登录</a>
+                    <a class="leo-col-4 leo-dis-ib leo-mt-30 leo-txt-c leo-fs-m leo-radius-m leo-lh-l leo-color-a leo-bg-b" href="{:mac_url('user/oauth')}?type=qq">QQ登录</a>
+                    <a class="leo-col-4 leo-dis-ib leo-mt-30 leo-txt-c leo-fs-m leo-radius-m leo-lh-l leo-color-a leo-bg-b " id="leo-login-submit" tapmode onclick="showDefault('loading')">登录</a>
+                    <?php
+                    } if($mucho[ 'connect'][ 'qq'][ 'status']!='1' && $mucho[ 'connect'][ 'weixin'][ 'status']!='1' ) { ?>
+                    <a class="leo-col-12 leo-dis-ib leo-mt-30 leo-txt-c leo-fs-m leo-radius-m leo-lh-l leo-color-a leo-bg-b" id="leo-login-submit" tapmode onclick="showDefault('loading')">登录</a>
+                        <?php } ?>
+                </form>
+                <a class="leo-left leo-fs-m leo-mt-30 leo-mb-30 leo-ml-30 leo-mr-30" href="{:mac_url('user/reg')}">注册账号</a>
+                <a class="leo-right leo-fs-m leo-mt-30 leo-mb-30 leo-ml-30 leo-mr-30" href="{:mac_url('user/findpass')}">忘记密码</a>
+            </div>
+        {include file="user/foot"}
+    </div>
+</div>
+<script>
+$("input[name='login_name']").focus();
+$('#leo-login-submit').click(function () {
+    var user_name = $('input[name="user_name"]').val();
+    var user_pwd = $('input[name="user_pwd"]').val();
+    var verify = $('input[name="verify"]').val();
+    if (user_name == '') {
+        alert('账号不能为空');
+        $('input[name="user_name"]').focus();
+        return;
+    }
+    if (user_pwd == '') {
+        alert('密码不能为空');
+        $('input[name="user_pass"]').focus();
+        return;
+    }
+    if (verify == '') {
+        alert('验证码不能为空');
+        $('input[name="verify"]').focus();
+        return;
+    }
+    var data = {
+        user_name: user_name,
+        user_pwd: user_pwd,
+        verify: verify
+    };
+    $.ajax({
+        url: "{:url('user/login')}",
+        type: "post",
+        dataType: "json",
+        data: data,
+        success: function (r) {
+            if (r.code == 1) {
+                location.href = "{:mac_url('user/index')}";
+            } else {
+                alert(r.msg);
+            }
+        }
+    });
+});
+</script>{include file="public/footer"}

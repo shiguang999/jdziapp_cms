@@ -1,0 +1,71 @@
+{include file="public/include"}
+    <div class="leo-auth-wrap leo-po-ab leo-bg-o">
+        <div class="leo-auth-index leo-over-hd leo-bg-b leo-color-a">
+		<a class="leo-left leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" onclick="LeoBack();">
+			<span class="iconfont icon-back  leo-fs-icon-s leo-color-a"></span>
+		</a>
+		<font class="leo-left leo-col-6 leo-lh-l leo-fs-l leo-ellipsis-1">我的收藏</font>
+		<a class="leo-right leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" href="{:url('user/info')}" tapmode onclick="showDefault('loading')">
+		    <span class="iconfont icon-settings leo-fs-icon-s leo-color-a"></span>
+		</a>
+        <a class="leo-right username leo-mt-20 leo-dis-fl" href="{:url('user/index')}" rel="nofollow">
+            <span class="leo-user-name leo-fs-m leo-pr-30 leo-pl-30 leo-radius-m leo-col-0 leo-txt-c leo-color-a leo-lh-vs">
+                {$obj.user_name}
+            </span>
+        </a>
+		</div>
+        <div class="leo-form-box leo-po-ab leo-bg-a">
+            {include file="user/head"}
+                <div class="leo-pr-20 leo-pl-20 ">
+                    <form id="form1" name="form1" method="post">
+                        <a class="leo-col-3 leo-dis-ib leo-mt-30 leo-txt-c leo-fs-m leo-radius-m leo-lh-s leo-color-a leo-bg-b" id="btnChkAll" onClick="MAC.CheckBox.All('ids[]');">全选</a>
+                        <a class="leo-col-3 leo-dis-ib leo-mt-30 leo-txt-c leo-fs-m leo-radius-m leo-lh-s leo-color-a leo-bg-b" id="btnChkOther" onClick="MAC.CheckBox.Other('ids[]');">反选</a>
+                        <a class="leo-col-3 leo-dis-ib leo-mt-30 leo-txt-c leo-fs-m leo-radius-m leo-lh-s leo-color-a leo-bg-b" id="btnDel" >删除</a>
+                        <a class="leo-col-3 leo-dis-ib leo-mt-30 leo-txt-c leo-fs-m leo-radius-m leo-lh-s leo-color-a leo-bg-b" id="btnClear" >清空</a>
+                        <ul class="leo-left leo-col-12 leo-fs-m leo-mt-20 leo-pr-20 leo-pl-20">
+                    		{volist name="list" id="vo"}
+                    		<li class="leo-left leo-col-12 leo-mt-30">
+                    				<span class="leo-left leo-ellipsis-1 leo-w-l">
+                    				    <input class="" name="ids[]" type="checkbox" value="{$vo.ulog_id}">
+                    				        <a target="_blank" href="{$vo.data.link}">[{$vo.data.type.type_name}] {$vo.data.name} </a>
+                    				</span>
+                    				<span class="leo-right leo-pr-20">消费积分:{$vo.ulog_points}</span>
+                    		</li>
+                    		{/volist}
+                    	</ul>
+                    </form>
+	               {include file="module/paging"}
+		    </div>
+        {include file="user/foot"}
+	    </div>
+    </div>
+<script>
+	function delData(ids,all){
+		var msg ='删除';
+		if(all==1){
+			msg='清空';
+		}
+		if(confirm('确定要'+msg+'记录吗')){
+			$.post("{:url('user/ulog_del')}",{ids:ids,type:2,all:all},function(data) {
+				if (data.code == '1') {
+					alert('删除成功');
+					location.reload();
+				}else {
+					alert('删除失败：' + data.msg);
+				}
+			}, 'json')
+		}
+	}
+	$("#btnClear").click(function(){
+		delData('',1);
+	});
+	$("#btnDel").click(function(){
+		var ids = MAC.CheckBox.Ids('ids[]');
+		if(ids==''){
+			alert("请至少选择一个数据");
+			return;
+		}
+		delData(ids,0);
+	});
+</script>
+{include file="public/footer"}

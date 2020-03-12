@@ -1,0 +1,57 @@
+{include file="public/include"}
+    <title>排行榜单 - {$maccms.site_name}</title>
+{include file="module/sousou"}
+<div class="leo-container"> 
+<header class="leo-po-re leo-h-l leo-color-a leo-col-12">
+	<div class="leo-col-12 leo-po-fi leo-bg-b">
+    	<a class="leo-left leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" onclick="LeoBack();">
+    		<span class="iconfont icon-back leo-fs-icon-s leo-color-a"></span>
+    	</a>
+    	<font class="leo-left leo-col-6 leo-lh-l leo-fs-l leo-ellipsis-1">影片TOP榜单</font>
+		{if$user.user_id!=''}
+		<a class="leo-right leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" href="{:mac_url('user/index')}" tapmode onclick="showDefault('loading')">
+	        <img class="leo-radius-m leo-mt-20 leo-aimg-s" id="leo-head-avatar">
+	    </a>
+	    {else}
+		<a class="leo-right leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" href="{:mac_url('user/login')}" tapmode onclick="showDefault('loading')">
+	        <span class="iconfont icon-people leo-fs-icon-s leo-color-a"></span>
+	    </a>
+	    {/if}
+		<a class="leo-right leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl mac_history" href="javascript:;" >
+	        <span class="iconfont icon-time leo-fs-icon-s leo-color-a"></span>
+	   	</a>
+	    <a class="leo-right leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" href="javascript:;" onclick="LeoOpenSearcho()">
+	        <span class="iconfont icon-search leo-fs-icon-s leo-color-a"></span>
+	    </a>
+	</div>
+</header>
+<script>var leo_avatar = MAC.Cookie.Get("leo-avatar");if(leo_avatar == "" || leo_avatar == null){$("#leo-head-avatar").attr("src", "/template/JOELEO/asset/img/mucho.png?v={:time()}");}else{$("#leo-head-avatar").attr("src", leo_avatar+"?v={:time()}");}$("#leo-config-logo").html(leo_logo)</script>
+{maccms:type ids="1,2,3,4" order="asc" by="sort"}
+<section class="leo-bg-a leo-pl-20 leo-pr-20">
+    <div class="leo-rank-wrap">
+        <h2 class="leo-fs-l leo-lh-l leo-txt-c"><b>{$vo.type_name} • 推荐榜</b></h2>
+    	<ul class="leo-rank-num leo-pt-10">{maccms:vod num="10" type="'.$vo['type_id'].'" order="desc" by="hits" id="vo2" key="key2"}
+    		<li class="leo-po-re leo-dis-ib leo-lh-l leo-col-12">
+    		    <i class="leo-left leo-mt-20 leo-mr-20 leo-radius-m leo-color-a leo-lh-ss leo-fs-s leo-txt-c ">{$key2}</i>
+    		    <span class="leo-fs-m leo-left leo-col-6 leo-ellipsis-1">
+    		        <a href="{:mac_url_vod_detail($vo2)}" title="{$vo2.vod_name}" tapmode onclick="showDefault('loading')">{$vo2.vod_name}</a>
+    		    </span>
+    		    <em class="leo-right leo-color-e leo-fs-s leo-ellipsis-1">{$vo2.vod_remarks|mac_default='暂无介绍'}</em>
+    		</li>{/maccms:vod}
+    	</ul>
+        <h2 class="leo-fs-l leo-lh-l leo-txt-c"><b>{$vo.type_name} •本周热播榜</b></h2>
+    	<ul class="leo-rank-num leo-pt-10">{maccms:vod num="10" type="'.$vo['type_id'].'" order="desc" by="hits_week" id="vo2" key="key2"}
+    		<li class="leo-po-re leo-dis-ib leo-lh-l leo-col-12">
+    		    <i class="leo-left leo-mt-20 leo-mr-20 leo-radius-m leo-color-a leo-lh-ss leo-fs-s leo-txt-c ">{$key2}</i> 
+    		    <span class="leo-fs-m leo-left leo-col-6 leo-ellipsis-1">
+    		        <a href="{:mac_url_vod_detail($vo2)}" title="{$vo2.vod_name}" tapmode onclick="showDefault('loading')">{$vo2.vod_name}</a>
+    		    </span>
+    		    <em class="leo-right leo-color-e leo-fs-s leo-ellipsis-1">{$vo2.vod_remarks|mac_default='暂无介绍'}</em>
+    		</li>{/maccms:vod}
+    	</ul>
+	</div>
+</section>
+{/maccms:type}
+</div>
+</body>
+</html>

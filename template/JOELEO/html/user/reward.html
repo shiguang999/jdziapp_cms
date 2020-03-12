@@ -1,0 +1,52 @@
+{include file="public/include"}
+    <div class="leo-auth-wrap leo-po-ab leo-bg-o">
+        <div class="leo-auth-index leo-over-hd leo-bg-b leo-color-a">
+		<a class="leo-left leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" href="{:url('user/index')}">
+			<span class="iconfont icon-back  leo-fs-icon-s leo-color-a"></span>
+		</a>
+		<font class="leo-left leo-col-6 leo-lh-l leo-fs-l leo-ellipsis-1">三级分销</font>
+		<a class="leo-right leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" href="{:url('user/info')}" tapmode onclick="showDefault('loading')">
+		    <span class="iconfont icon-settings leo-fs-icon-s leo-color-a"></span>
+		</a>
+        <a class="leo-right username leo-mt-15 leo-dis-fl" href="{:url('user/index')}" rel="nofollow">
+            <span class="leo-user-name leo-fs-m leo-pr-30 leo-pl-30 leo-radius-m leo-col-0 leo-txt-c leo-color-a leo-mt-10">
+                {$obj.user_name}
+            </span>
+        </a>
+		</div>
+        <div class="leo-form-box leo-po-ab leo-bg-a">
+            {include file="user/head"}
+            <div class="leo-auth-form">
+                <div class="leo-txt-c leo-mt-15">
+                    <span class="leo-fs-l leo-active-font">我的{if condition="$param.level eq ''"}一{elseif condition="$param.level eq '2'"}二{elseif condition="$param.level eq '3'"}三{/if}级下线</span>
+                </div>
+                <div class="leo-auth-info leo-fs-m leo-mt-20 leo-mb-10 leo-mr-20 leo-ml-20 leo-pb-60">
+                    {if condition="$param.level eq ''"}
+                        <a class="leo-left leo-fs-m" href="{:url('user/reward')}?level=2">二级下线</a>
+                        <a class="leo-right leo-fs-m" href="{:url('user/reward')}?level=3">三级下线</a>
+                    {elseif condition="$param.level eq '2'"}
+                        <a class="leo-left leo-fs-m" href="{:url('user/reward')}">一级下线</a>
+                        <a class="leo-right leo-fs-m" href="{:url('user/reward')}?level=3">三级下线</a>
+                    {elseif condition="$param.level eq '3'"}
+                        <a class="leo-left leo-fs-m" href="{:url('user/reward')}">一级下线</a>
+                        <a class="leo-right leo-fs-m" href="{:url('user/reward')}?level=2">二级下线</a>
+                    {/if}
+                </div>
+                <div class="leo-auth-info leo-fs-m leo-mt-15 leo-mb-10 leo-mr-20 leo-ml-20 leo-pb-30"></div>
+                {volist name="list" id="vo"}
+                    <div class="leo-auth-info leo-fs-m leo-mt-15 leo-mb-10 leo-mr-20 leo-ml-20 leo-pb-30">
+                        <span>用户名：</span>
+                        <span class="leo-right leo-color-c leo-lh-vs">{$vo.user_name}</span>
+                    </div>
+                    <div class="leo-auth-info leo-fs-m leo-mt-15 leo-mb-10 leo-mr-20 leo-ml-20 leo-pb-30">
+                        <span>注册时间：</span>
+                        <span class="leo-right leo-color-c leo-lh-vs">{$vo.user_reg_time|mac_day}</span>
+                    </div>
+
+                {/volist}
+            
+            </div>
+        {include file="user/foot"}
+		</div>
+	</div>
+{include file="public/footer"}

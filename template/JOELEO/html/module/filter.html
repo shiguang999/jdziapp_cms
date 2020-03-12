@@ -1,0 +1,77 @@
+<!--筛选部件-->
+	<section class="leo-mt-15 leo-left leo-col-12">
+		<div class="leo-col-12 leo-po-re leo-bg-a leo-pt-10 leo-pb-10">
+			<div class="leo-col-12 leo-lh-m leo-over-hd leo-mt-20">
+				<div id="leo-select-1" class="leo-select-wrap leo-col-12 leo-show leo-po-re">
+					<ul class="swiper-wrapper clearfix">
+                        <li class="swiper-slide"><a>频道</a></li>
+                        {maccms:type ids="parent" order="asc" by="sort" flag="vod"}
+                        <li class="swiper-slide {if$vo.type_id==$obj.type_id||$vo.type_id==$obj.parent.type_id}active{/if}" tapmode onclick="showDefault('loading')"><a href="{:mac_url_type($vo,['area'=>$param.area,'lang'=>$param.lang,'year'=>$param.year,'by'=>$param.by],'show')}">{$vo.type_name}</a></li>
+                        {/maccms:type}
+                    </ul>
+				</div>
+			</div>
+			<div class="leo-col-12 leo-lh-m leo-over-hd leo-mt-20">
+				<div id="leo-select-2" class="leo-select-wrap leo-col-12 leo-show leo-po-re">
+					<ul class="swiper-wrapper clearfix">
+                        <li class="swiper-slide"><a>分类</a></li>
+                        <li class="swiper-slide {if$vo.parent.type_id==$obj.parent.type_id}active{/if}"><a href="{:mac_url_type($obj.parent,['area'=>$param.area,'lang'=>$param.lang,'year'=>$param.year,'by'=>$param.by],'show')}">全部</a></li>
+                        {maccms:type ids="current" order="asc" by="sort" mid="vod"}
+                        <li class="swiper-slide {if$vo.type_id==$obj.type_id}active{/if}" tapmode onclick="showDefault('loading')"><a href="{:mac_url_type($vo,['area'=>$param.area,'lang'=>$param.lang,'year'=>$param.year,'by'=>$param.by],'show')}">{$vo.type_name}</a></li>
+                        {/maccms:type}
+                    </ul>
+				</div>
+			</div>
+			<div class="leo-col-12 leo-lh-m leo-over-hd leo-mt-20">
+				<div id="leo-select-3" class="leo-select-wrap leo-col-12 leo-show leo-po-re">
+					<ul class="swiper-wrapper clearfix">
+						<li class="swiper-slide"><a>地区</a></li>
+						<li class="swiper-slide {if$param.area==''}active{/if}"><a href="{:mac_url_type($obj,['area'=>'','lang'=>$param.lang,'year'=>$param.year,'by'=>$param.by],'show')}">全部</a></li>
+                        {empty name="$obj.type_extend.area"}
+            			{maccms:foreach name=":explode(',',$obj.parent.type_extend.area)"}
+            			<li class="swiper-slide {if$param.area==$vo}active{/if}" tapmode onclick="showDefault('loading')"><a href="{:mac_url_type($obj,['area'=>$vo,'lang'=>$param.lang,'year'=>$param.year,'by'=>$param.by],'show')}">{$vo}</a></li>
+            			{/maccms:foreach}
+            			{else}
+            			{maccms:foreach name=":explode(',',$obj.type_extend.area)"}
+                        <li class="swiper-slide {if$param.area==$vo}active{/if}" tapmode onclick="showDefault('loading')"><a href="{:mac_url_type($obj,['area'=>$vo,'lang'=>$param.lang,'year'=>$param.year,'by'=>$param.by],'show')}">{$vo}</a></li>
+            			{/maccms:foreach}
+            			{/empty}
+					</ul>
+				</div>
+			</div>
+			<div class="leo-col-12 leo-lh-m leo-over-hd leo-mt-20">
+				<div id="leo-select-4" class="leo-select-wrap leo-col-12 leo-show leo-po-re">
+					<ul class="swiper-wrapper clearfix">
+						<li class="swiper-slide"><a>年代</a></li>
+						<li class="swiper-slide {if$param.year==''}active{/if}"><a href="{:mac_url_type($obj,['area'=>$param.area,'lang'=>$param.lang,'year'=>'','by'=>$param.by],'show')}">全部</a></li>
+                        {empty name="$obj.type_extend.year"}
+		                {maccms:foreach name=":explode(',',$obj.parent.type_extend.year)"}
+            			<li class="swiper-slide {if$param.year==$vo}active{/if}" tapmode onclick="showDefault('loading')"><a href="{:mac_url_type($obj,['area'=>$param.area,'lang'=>$param.lang,'year'=>$vo,'by'=>$param.by],'show')}">{$vo}</a></li>
+            			{/maccms:foreach}
+            			{else}
+            			{maccms:foreach name=":explode(',',$obj.type_extend.year)"}
+                        <li class="swiper-slide {if$param.year==$vo}active{/if}" tapmode onclick="showDefault('loading')"><a href="{:mac_url_type($obj,['area'=>$param.area,'lang'=>$param.lang,'year'=>$vo,'by'=>$param.by],'show')}">{$vo}</a></li>
+            			{/maccms:foreach}
+            			{/empty}
+					</ul>
+				</div>
+			</div>
+			<div class="leo-col-12 leo-lh-m leo-over-hd leo-mt-20">
+				<div id="leo-select-5" class="leo-select-wrap leo-col-12 leo-show leo-po-re">
+					<ul class="swiper-wrapper clearfix">
+						<li class="swiper-slide"><a>语言</a></li>
+						<li class="swiper-slide {if$param.lang==''}active{/if}"><a href="{:mac_url_type($obj,['area'=>$param.area,'lang'=>'','year'=>$param.year,'by'=>$param.by],'show')}">全部</a></li>
+                        {empty name="$obj.type_extend.lang"}
+		                {maccms:foreach name=":explode(',',$obj.parent.type_extend.lang)"}
+            			<li class="swiper-slide {if$param.lang==$vo}active{/if}" tapmode onclick="showDefault('loading')"><a href="{:mac_url_type($obj,['area'=>$param.area,'lang'=>$vo,'year'=>$param.year,'by'=>$param.by],'show')}">{$vo}</a></li>
+            			{/maccms:foreach}
+            			{else}
+            			{maccms:foreach name=":explode(',',$obj.type_extend.lang)"}
+                        <li class="swiper-slide {if$param.lang==$vo}active{/if}" tapmode onclick="showDefault('loading')"><a href="{:mac_url_type($obj,['area'=>$param.area,'lang'=>$vo,'year'=>$param.year,'by'=>$param.by],'show')}">{$vo}</a></li>
+            			{/maccms:foreach}
+            			{/empty}
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>

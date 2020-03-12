@@ -1,0 +1,39 @@
+{include file="public/include"}
+<title>CCTV 15 - {$maccms.site_name}</title>
+{include file="module/sousou"}
+<div class="leo-container"> 
+<header class="leo-po-re leo-h-l leo-color-a leo-col-12">
+	<div class="leo-col-12 leo-po-fi leo-bg-b">
+    	<a class="leo-left leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" onclick="LeoBack();">
+    		<span class="iconfont icon-back leo-fs-icon-s leo-color-a"></span>
+    	</a>
+    	<font class="leo-left leo-col-6 leo-lh-l leo-fs-l leo-ellipsis-1">CCTV 15</font>
+		{if$user.user_id!=''}
+		<a class="leo-right leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" href="{:mac_url('user/index')}" tapmode onclick="showDefault('loading')">
+	        <img class="leo-radius-m leo-mt-20 leo-aimg-s" id="leo-head-avatar">
+	    </a>
+	    {else}
+		<a class="leo-right leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" href="{:mac_url('user/login')}" tapmode onclick="showDefault('loading')">
+	        <span class="iconfont icon-people leo-fs-icon-s leo-color-a"></span>
+	    </a>
+	    {/if}
+		<a class="leo-right leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl mac_history" href="javascript:;" >
+	        <span class="iconfont icon-time leo-fs-icon-s leo-color-a"></span>
+	   	</a>
+	    <a class="leo-right leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" href="javascript:;" onclick="LeoOpenSearcho()">
+	        <span class="iconfont icon-search leo-fs-icon-s leo-color-a"></span>
+	    </a>
+	</div>
+</header>
+<script>var leo_avatar = MAC.Cookie.Get("leo-avatar");$("#leo-head-avatar").attr("src", leo_avatar+"?v={:time()}");</script>
+<!--播放器-->
+<div class="leo-info-tip leo-pr-20 leo-pl-20 leo-po-re leo-col-12 leo-lh-l leo-dis-fl leo-color-a" id="leo-info-tip" >
+    <span class="leo-pl-20 leo-fs-l"><span class="iconfont icon-info leo-fs-l"></span></span>
+    <div class="leo-fs-m ellipsis-2">正在播放：CCTV 15</div>
+    <span class="leo-pr-20 leo-fs-l" tapmode onclick="LeoCloseTips()"><span class="iconfont icon-close leo-fs-l"></span></span>
+</div>
+<section class="leo-player">
+    <video style="width: 100%;height:100%;" src="http://ivi.bupt.edu.cn/hls/cctv15.m3u8" type="application/x-mpegURL" autoplay="" controls=""></video>
+</section>
+{include file="label/label"}
+{include file="public/footer"}

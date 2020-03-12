@@ -1,0 +1,35 @@
+{include file="public/header"}
+<!--专题-->
+<section class="leo-mod leo-left leo-col-12">
+	<div class="leo-bg-a leo-lh-l leo-fs-l">
+		<div class="leo-mod-title">
+			<svg class="icon leo-fs-icon-xl" aria-hidden="true">
+               <use xlink:href="#icon-dong"></use>
+            </svg>专题
+			<a class="leo-more leo-po-ab leo-color-b leo-lh-l leo-fs-m" tapmode onclick="showDefault('loading')">
+			<span class="iconfont icon-location leo-fs-m"></span>&nbsp;共有<span class="mac_total"></span>个专题
+			</a>
+		</div>
+	</div>
+	<style>
+	</style>
+	<div class="leo-po-re leo-bg-a leo-left leo-col-12">
+		<div class="leo-pr-20 leo-pl-20">
+			<ul>{maccms:topic num="10" paging="yes" order="desc" by="time"}
+				<li class=" leo-col-12 leo-left leo-mb-30" tapmode onclick="showDefault('loading')">
+					<a class="leo-show" href="{:mac_url_topic_detail($vo)}" title="{$vo.topic_name}" style="height:4rem">
+					    <img class="leo-lazy leo-radius-s" src={if$muchoConfig['islazy']==1}"{$maccms.path_tpl}asset/img/lazybig.png" data-original={/if}"{$vo.topic_pic|mac_url_img}" style="width:100%;height:100%;">
+						<div class="leo-topic-tbg">
+    						<div class="leo-topic-tit leo-txt-c leo-color-a leo-mt-30">—— {$vo.topic_rel_vod|explode=',',###|count}个影片 ,{$vo.topic_rel_art|explode=',',###|count}个资讯——</div>
+    						<div class="leo-topic-tit leo-txt-c leo-color-a">{$vo.topic_name}</div>
+    					</div>
+					</a>
+				</li>{/maccms:topic}
+			</ul>
+		</div>
+	</div>
+</section>
+<!-- 分页 -->
+{include file="module/paging"}
+{include file="public/footer"}
+

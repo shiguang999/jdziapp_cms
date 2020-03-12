@@ -1,0 +1,38 @@
+<div class="leo-comment-show">
+<form class="leo-mb-30 gbook_form">
+    <!--评论框-->
+    <div class="leo-col-12">
+        <textarea class="leo-gbook-parent leo-bg-a leo-col-12 leo-lh-ss leo-fs-m leo-color-d leo-pl-20 leo-pr-20 leo-radius-s gbook_content" name="gbook_content" placeholder="请输入留言内容！！">{$param.name}</textarea>
+        <div class="leo-col-12">
+            <a rel="nofollow" href="javascript:void(0);">
+            <span class="leo-gbook-emoji leo-dis-ib leo-txt-c leo-fs-m leo-radius-m leo-lh-s leo-color-d leo-bg-o leo-mt-15 leo-w-m leo-mr-10">
+                <svg class="icon leo-fs-icon-l leo-ml-f20" aria-hidden="true"><use xlink:href="#icon-biaoqing"></use></svg>表情
+            </span></a>
+            {if$gbook.verify==1}
+            <div class="leo-comment-block leo-dis-ib leo-w-m">
+                <input type="text" name="verify" id="verify" placeholder="验证码" class="leo-h-m leo-fs-m leo-bg-o leo-pl-30 leo-radius-hl-m"/>
+        	</div>
+        	<span class="leo-dis-ib leo-fs-l leo-mr-10">
+                <img src="{:mac_url('verify/index')}" alt="看不清？点击更换" onClick="this.src=this.src+'?'+Math.random()" class="leo-w-m leo-radius-hr-m  leo-h-m" style="width:1rem;"/>
+            </span>
+            {/if}
+            <a rel="nofollow" href="javascript:void(0);">
+            <span class="gbook_submit leo-dis-ib leo-txt-c leo-fs-m leo-radius-m leo-lh-s leo-color-a leo-bg-b leo-w-m" id="leo-gbook-submit"><span class="iconfont icon-focus leo-fs-m"></span>&nbsp;发射</span></a>
+        </div>
+    </div>
+</form>
+</div>
+<script>
+    $(function(){
+        MAC.Gbook.Login = {$gbook.login};
+        MAC.Gbook.Verify = {$gbook.verify};
+        MAC.Gbook.Init();
+    });
+    $(".leo-gbook-parent").emoji({
+        button: ".leo-gbook-emoji",
+        showTab: false,
+        animation: 'fade',
+        basePath: '/template/JOELEO/asset/img/emoji',
+        icons: emojiLists
+    });
+</script>

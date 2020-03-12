@@ -1,0 +1,4 @@
+<!--固定广告-->
+<section class="leo-mod leo-left leo-col-12">
+	{if$user.user_id!=''&&$muchoConfig['isads']==1&&$user.group.group_name!='默认会员'}{else}<script src="{$maccms.path_ads}leoad_one.js?v={:time()}"></script>{/if}
+</section>

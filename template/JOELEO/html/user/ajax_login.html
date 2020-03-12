@@ -1,0 +1,40 @@
+<!--登录弹窗开始-->
+<div class="leo-auth-form">
+    <form class="mac_login_form">
+        <div class="leo-auth-input leo-po-re leo-mt-20 leo-radius-m leo-bg-o">
+            <span class="iconfont icon-profile leo-color-e leo-fs-m leo-po-ab"></span>
+            <input type="text" name="user_name" minlength="4" placeholder="用户名" class="leo-show leo-fs-s leo-radius-m leo-bg-o"/>
+        </div>
+        <div class="leo-auth-input leo-po-re leo-mt-20 leo-radius-m leo-bg-o">
+            <span class="iconfont icon-lock leo-color-e leo-fs-m leo-po-ab"></span>
+            <input type="password" name="user_pwd" minlength="6" placeholder="密码" class="leo-show leo-fs-s leo-radius-m leo-bg-o"/>
+        </div>
+        {if condition="$GLOBALS['config']['user']['login_verify'] eq 1"}
+        <div class="leo-auth-input leo-po-re leo-mt-20 leo-radius-m leo-bg-o">
+            <span class="iconfont icon-vipcard leo-color-e leo-fs-m leo-po-ab"></span>
+            <img src="{:mac_url('verify/index')}" alt="看不清？点击更换" onClick="this.src=this.src+'?'+Math.random()" class="leo-ver-bind leo-po-ab leo-ver-img"/>
+            <input type="text" name="verify" placeholder="请输入验证码" class="leo-show leo-fs-s leo-radius-m leo-bg-o"/>
+        </div>
+        {/if}
+        <?php $mucho=require ('application/extra/maccms.php'); ?>
+        <?php if($mucho[ 'connect'][ 'weixin'][ 'status']=='1' && $mucho[ 'connect'][ 'qq'][ 'status']!='1' ) { ?>
+        <a class="leo-col-6 leo-dis-ib leo-mt-30 leo-txt-c leo-fs-m leo-radius-m leo-lh-l leo-color-a leo-bg-b" href="{:mac_url('user/oauth')}?type=weixin">微信登录</a>
+        <a class="leo-col-6 leo-dis-ib leo-mt-30 leo-txt-c leo-fs-m leo-radius-m leo-lh-l leo-color-a leo-bg-b login_form_submit" tapmode onclick="showDefault('loading')">登录</a>
+        <?php } if($mucho[ 'connect'][ 'qq'][ 'status']=='1' && $mucho[
+        'connect'][ 'weixin'][ 'status']!='1' ) { ?>
+        <a class="leo-col-6 leo-dis-ib leo-mt-30 leo-txt-c leo-fs-m leo-radius-m leo-lh-l leo-color-a leo-bg-b" href="{:mac_url('user/oauth')}?type=qq">QQ登录</a>
+        <a class="leo-col-6 leo-dis-ib leo-mt-30 leo-txt-c leo-fs-m leo-radius-m leo-lh-l leo-color-a leo-bg-b login_form_submit" tapmode onclick="showDefault('loading')">登录</a>
+        <?php } if($mucho[ 'connect'][ 'qq'][ 'status']=='1' && $mucho[
+        'connect'][ 'weixin'][ 'status']=='1' ) { ?>
+        <a class="leo-col-4 leo-dis-ib leo-mt-30 leo-txt-c leo-fs-m leo-radius-m leo-lh-l leo-color-a leo-bg-b" href="{:mac_url('user/oauth')}?type=weixin">微信登录</a>
+        <a class="leo-col-4 leo-dis-ib leo-mt-30 leo-txt-c leo-fs-m leo-radius-m leo-lh-l leo-color-a leo-bg-b" href="{:mac_url('user/oauth')}?type=qq">QQ登录</a>
+        <a class="leo-col-4 leo-dis-ib leo-mt-30 leo-txt-c leo-fs-m leo-radius-m leo-lh-l leo-color-a leo-bg-b login_form_submit" tapmode onclick="showDefault('loading')">登录</a>
+        <?php
+        } if($mucho[ 'connect'][ 'qq'][ 'status']!='1' && $mucho[ 'connect'][ 'weixin'][ 'status']!='1' ) { ?>
+        <a class="leo-col-12 leo-dis-ib leo-mt-30 leo-txt-c leo-fs-m leo-radius-m leo-lh-l leo-color-a leo-bg-b login_form_submit" tapmode onclick="showDefault('loading')">登录</a>
+            <?php } ?>
+    </form>
+    <a class="leo-left leo-fs-m leo-mt-30 leo-mb-30 leo-ml-30 leo-mr-30" href="{:mac_url('user/reg')}">注册账号</a>
+    <a class="leo-right leo-fs-m leo-mt-30 leo-mb-30 leo-ml-30 leo-mr-30" href="{:mac_url('user/findpass')}">忘记密码</a>
+</div>
+<!--登录弹窗结束-->

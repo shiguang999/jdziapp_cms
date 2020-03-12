@@ -1,0 +1,138 @@
+{include file="public/include"}
+    <div class="leo-auth-wrap leo-po-ab leo-bg-o">
+        <div class="leo-auth-index leo-over-hd leo-bg-b leo-color-a">
+		<a class="leo-left leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" href="{:url('user/index')}">
+			<span class="iconfont icon-back  leo-fs-icon-s leo-color-a"></span>
+		</a>
+		<font class="leo-left leo-col-6 leo-lh-l leo-fs-l leo-ellipsis-1">提现记录</font>
+		<a class="leo-right leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" href="{:url('user/info')}" tapmode onclick="showDefault('loading')">
+		    <span class="iconfont icon-settings leo-fs-icon-s leo-color-a"></span>
+		</a>
+        <a class="leo-right username leo-mt-15 leo-dis-fl" href="{:url('user/index')}" rel="nofollow">
+            <span class="leo-user-name leo-fs-m leo-pr-30 leo-pl-30 leo-radius-m leo-col-0 leo-txt-c leo-color-a leo-mt-10">
+                {$obj.user_name}
+            </span>
+        </a>
+		</div>
+        <div class="leo-form-box leo-po-ab leo-bg-a">
+            {include file="user/head"}
+            <div class="leo-auth-form">
+                <div class="leo-txt-c leo-mt-15">
+                    <span class="leo-fs-l leo-active-font">我的提现记录</span>
+                    <p class="leo-fs-m leo-txt-c leo-active-font leo-pl-20 leo-mt-20 leo-mb-10"><small>*（剩余{$GLOBALS['user']['user_points']}积分，1元等于{$GLOBALS['config']['user']['cash_ratio']}积分，相当于{$GLOBALS['user']['user_points']/$GLOBALS['config']['user']['cash_ratio']}元，最低提现金额：{$GLOBALS['config']['user']['cash_min']}元）</small></p>
+                </div>
+                <form id="fm" name="fm" method="post" action="" >
+                    <div class="leo-auth-input leo-po-re leo-mt-20 leo-radius-m leo-bg-o">
+                        <span class="iconfont icon-vipcard leo-color-e leo-fs-m leo-po-ab"></span>
+                        <input type="text" name="cash_bank_name" value="{$config.min}" size="22" maxlength="12"  placeholder="请输入开户行名称或支付宝微信" class="leo-show leo-fs-s leo-radius-m leo-bg-o"/>
+                    </div>
+                    <div class="leo-auth-input leo-po-re leo-mt-20 leo-radius-m leo-bg-o">
+                        <span class="iconfont icon-pay leo-color-e leo-fs-m leo-po-ab"></span>
+                        <input type="text" name="cash_bank_no" value="{$config.min}" size="22" maxlength="12"  placeholder="请输入银行卡号或支付宝微信账号" class="leo-show leo-fs-s leo-radius-m leo-bg-o"/>
+                    </div>
+                    <div class="leo-auth-input leo-po-re leo-mt-20 leo-radius-m leo-bg-o">
+                        <span class="iconfont icon-profile leo-color-e leo-fs-m leo-po-ab"></span>
+                        <input type="text" name="cash_payee_name" value="{$config.min}" size="22" maxlength="12"  placeholder="请输入收款人姓名与上方账户对应" class="leo-show leo-fs-s leo-radius-m leo-bg-o"/>
+                    </div>
+                    <div class="leo-auth-input leo-po-re leo-mt-20 leo-radius-m leo-bg-o">
+                        <span class="iconfont icon-recharge leo-color-e leo-fs-m leo-po-ab"></span>
+                        <input type="text" name="cash_money" value="{$config.min}" size="22" maxlength="12"  placeholder="请输入提现金额" class="leo-show leo-fs-s leo-radius-m leo-bg-o"/>
+                    </div>
+                    <a class="leo-col-12 leo-dis-ib leo-mt-30 leo-txt-c leo-fs-m leo-radius-m leo-lh-l leo-color-a leo-bg-b" id="leo-cash-submit" tapmode onclick="showDefault('loading')">
+                        <span class="iconfont icon-sponsor leo-fs-m" href="javascript:;"></span>&nbsp;申请提现
+                    </a>
+        	    </form>
+                
+
+                
+                {volist name="list" id="vo"}
+                <div class="leo-auth-info leo-mt-30"></div>
+                    <div class="leo-auth-info leo-fs-m leo-mt-15 leo-mb-10 leo-mr-20 leo-ml-20 leo-pb-30">
+                        <span>编号:</span>
+                        <span class="leo-right leo-color-e leo-lh-vs">{$vo.cash_id}</span>
+                    </div>
+                    <div class="leo-auth-info leo-fs-m leo-mt-20 leo-mb-10 leo-mr-20 leo-ml-20 leo-pb-30">
+                        <span>提现状态：</span>
+                        <span class="leo-right leo-color-c leo-lh-vs">{if condition="$vo.cash_status neq '1'"}未审核{else/}已审核{/if} {$vo.cash_remarks}</span>
+                    </div>
+                    <div class="leo-auth-info leo-fs-m leo-mt-20 leo-mb-10 leo-mr-20 leo-ml-20 leo-pb-30">
+                        <span>提现金额：</span>
+                        <span class="leo-right leo-color-e leo-lh-vs">￥{$vo.cash_money}元</span>
+                    </div>
+                    <div class="leo-auth-info leo-fs-m leo-mt-20 leo-mb-10 leo-mr-20 leo-ml-20 leo-pb-30">
+                        <span>创建时间：</span>
+                        <span class="leo-right leo-color-e leo-lh-vs">{$vo.cash_time|mac_day}</span>
+                    </div>
+                    <div class="leo-auth-info leo-fs-m leo-mt-20 leo-mb-10 leo-mr-20 leo-ml-20 leo-pb-30">
+                        <span>记录操作：</span>
+                        <span class="leo-right leo-lh-vs">
+				            <a href="javascript:;" data-id="{$vo.cash_id}" class="leo-color-c btn-del">删除此项</a>
+				        </span>
+                    </div>
+                 
+                {/volist}
+            
+            </div>
+        {include file="user/foot"}
+		</div>
+	</div>
+<script>
+	$('.btn-del').click(function(){
+		var that=$(this);
+		if(confirm('确定要删除吗')) {
+			$.ajax({
+				url: "{:url('user/cash_del')}",
+				type: "post",
+				dataType: "json",
+				data: {ids: that.attr('data-id')},
+				success: function (r) {
+					alert(r.msg);
+					if (r.code == 1) {
+						that.parent().parent().remove();
+					}
+				},
+				complete: function () {
+                    window.location.reload();
+				}
+			});
+		}
+	});
+	
+	$("#leo-cash-submit").click(function() {
+        var cash_bank_name = $('input[name="cash_bank_name"]').val();
+        if(cash_bank_name==''){
+            alert('请输入银行名称');
+            return;
+        }
+        var cash_bank_no = $('input[name="cash_bank_no"]').val();
+        if(cash_bank_no==''){
+            alert('请输入银行账户');
+            return;
+        }
+        var cash_payee_name = $('input[name="cash_payee_name"]').val();
+        if(cash_payee_name==''){
+            alert('请输入收款人姓名');
+            return;
+        }
+        var cash_money = $('input[name="cash_money"]').val();
+        if(cash_money==''){
+            alert('请输入提现金额');
+            return;
+        }
+
+        var data = $("#fm").serialize();
+        $.ajax({
+            url: "{:url('user/cash')}",
+            type: "post",
+            dataType: "json",
+            data: data,
+            success: function (r) {
+                alert(r.msg);
+                if(r.code==1){
+                    location.href="{:url('user/cash')}";
+                }
+            }
+        });
+    });
+	</script>
+{include file="public/footer"}

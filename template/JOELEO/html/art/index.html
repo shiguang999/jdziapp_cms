@@ -1,0 +1,31 @@
+{include file="public/header"}
+{include file="module/banner"}
+{maccms:type num="6" ids="child" order="asc" by="sort" flag="art" id="mucho"}
+<section class="leo-mod leo-left leo-col-12">
+	<div class="leo-bg-a leo-lh-l leo-fs-l">
+		<div class="leo-mod-title">
+			<svg class="icon leo-fs-icon-xl" aria-hidden="true">
+               <use xlink:href="#icon-dong"></use>
+            </svg>{$mucho.type_name}
+			<a href="{:mac_url_type($mucho)}" class="leo-more leo-po-ab leo-color-b leo-lh-l leo-fs-m" tapmode onclick="showDefault('loading')">
+			<span class="iconfont icon-location leo-fs-m"></span>&nbsp;查看更多&nbsp;<span class="iconfont icon-right leo-fs-m"></span>
+			</a>
+		</div>
+	</div>
+	<div class="leo-po-re leo-bg-a leo-left leo-col-12">
+		<div class="leo-pr-20 leo-pl-20">
+			<ul>{maccms:art num="4" type="'.$mucho['type_id'].'" order="desc" by="time"}
+				<li class="leo-video-sitem leo-col-6 leo-left leo-mb-30" tapmode onclick="showDefault('loading')">
+					<a class="leo-show" href="{:mac_url_art_detail($vo)}" title="{$vo.vod_name}">
+					    <img class="leo-lazy leo-pic leo-radius-s" src={if$muchoConfig['islazy']==1}"{$maccms.path_tpl}asset/img/lazybig.png" data-original={/if}"{$vo.art_pic|mac_url_img}">
+						<div class="leo-mt-15">
+							<h2 class="leo-fs-m leo-ellipsis-1">{$vo.art_name}</h2>
+						</div>
+					</a>
+				</li>{/maccms:art}
+			</ul>
+		</div>
+	</div>
+</section>
+{/maccms:type}
+{include file="public/footer"}

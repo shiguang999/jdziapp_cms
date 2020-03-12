@@ -1,0 +1,53 @@
+<!--热播推荐-->
+<section class="leo-mod leo-left leo-col-12">
+	<div class="leo-bg-a leo-lh-l leo-fs-l">
+		<div class="leo-mod-title">
+			<svg class="icon leo-fs-icon-xl" aria-hidden="true">
+               <use xlink:href="#icon-fanjutuijian"></use>
+            </svg>今日推荐
+			<a class="leo-more leo-po-ab leo-color-b leo-lh-l leo-fs-m">
+			视频总数：{:mac_data_count(0,'all','vod')} | 今日更新：{:mac_data_count(0,'today','vod')}
+			</a>
+		</div>
+	</div>
+	{if$muchoConfig['islider']==1}
+	<div class="leo-po-re leo-bg-a leo-left leo-col-12">
+		<div class="leo-pr-20 leo-pl-20">
+			<div class="leo-video-slide leo-over-hd">
+				<ul class="swiper-wrapper leo-hot-video">
+				    {maccms:vod num="4" type="all" order="desc" by="time" level="4"}
+				    <li class="swiper-slide leo-video-sitem  leo-left leo-mb-30" tapmode onclick="showDefault('loading')">
+						<a class="leo-show" href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}">
+						<div class="leo-video-tips leo-po-ab leo-fs-s leo-color-a leo-pl-20 leo-bg-b">推荐</div>
+					    <img class="leo-pic leo-radius-s" src="{$vo.vod_pic_slide|mac_default=$vo.vod_pic|mac_url_img}" style="object-fit: cover;">
+                        <div class="leo-video-remark leo-po-re leo-fs-s leo-color-a leo-right leo-ellipsis-1">{$vo.vod_remarks|mac_default='内详'}</div>
+						<div class="leo-mt-15">
+							<h2 class="leo-fs-m leo-ellipsis-1">{$vo.vod_name}</h2>
+							<p class="leo-fs-s leo-mt-15 leo-color-e leo-ellipsis-1">{$vo.vod_content|mac_filter_html}</p>
+						</div>
+					</a>
+					</li>{/maccms:vod}
+                </ul>
+			</div>
+		</div>
+	</div>
+	{else}
+	<div class="leo-po-re leo-bg-a leo-left leo-col-12">
+		<div class="leo-pr-20 leo-pl-20">
+			<ul>{maccms:vod num="4" type="all" order="desc" by="time" level="4"}
+				<li class="leo-video-sitem leo-col-6 leo-left leo-mb-30" tapmode onclick="showDefault('loading')">
+					<a class="leo-show" href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}">
+						<div class="leo-video-tips leo-po-ab leo-fs-s leo-color-a leo-pl-20 leo-bg-b">推荐</div>
+					    <img class="leo-lazy leo-pic leo-radius-s" src={if$muchoConfig['islazy']==1}"{$maccms.path_tpl}asset/img/lazybig.png" data-original={/if}"{$vo.vod_pic_slide|mac_default=$vo.vod_pic|mac_url_img}" style="object-fit:cover;">
+                        <div class="leo-video-remark leo-po-re leo-fs-s leo-color-a leo-right">{$vo.vod_remarks|mac_default='内详'}</div>
+						<div class="leo-mt-15">
+							<h2 class="leo-fs-m leo-ellipsis-1">{$vo.vod_name}</h2>
+							<p class="leo-fs-s leo-mt-15 leo-color-e leo-ellipsis-1">{$vo.vod_content|mac_filter_html}</p>
+						</div>
+					</a>
+				</li>{/maccms:vod}
+			</ul>
+		</div>
+	</div>
+	{/if}
+</section>

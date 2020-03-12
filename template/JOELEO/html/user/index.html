@@ -1,0 +1,58 @@
+{include file="public/include"}
+    <div class="leo-auth-wrap leo-po-ab leo-bg-o">
+        <div class="leo-auth-index leo-over-hd leo-bg-b leo-color-a">
+		<a class="leo-left leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" onclick="LeoBack();">
+			<span class="iconfont icon-back  leo-fs-icon-s leo-color-a"></span>
+		</a>
+		<font class="leo-left leo-col-6 leo-lh-l leo-fs-l leo-ellipsis-1">会员中心</font>
+		<a class="leo-right leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" href="{:url('user/info')}" tapmode onclick="showDefault('loading')">
+		    <span class="iconfont icon-settings leo-fs-icon-s leo-color-a"></span>
+		</a>
+        <a class="leo-right username leo-mt-20 leo-dis-fl" href="{:url('user/index')}" rel="nofollow">
+            <span class="leo-user-name leo-fs-m leo-pr-30 leo-pl-30 leo-radius-m leo-col-0 leo-txt-c leo-color-a leo-lh-vs">
+                {$obj.user_name}
+            </span>
+        </a>
+		</div>
+        <div class="leo-form-box leo-po-ab leo-bg-a">
+            {include file="user/head"}
+            <div class="leo-auth-menu leo-left leo-pb-30">
+                <a class="leo-mt-20 leo-mb-20 leo-dis-ib leo-over-hd leo-col-4 leo-txt-c leo-pl-10" href="{:mac_url('user/ajax_info')}" tapmode onclick="showDefault('loading')">
+		            <span class="iconfont icon-form"></span><p class="leo-fs-m leo-pt-10">个人资料</p>
+                </a>
+	            <a class="leo-mt-20 leo-mb-20 leo-dis-ib leo-over-hd leo-col-4 leo-txt-c leo-pl-10" href="{:mac_url('user/favs')}"  tapmode onclick="showDefault('loading')">
+	                <span class="iconfont icon-attentionfavor"></span><p class="leo-fs-m leo-pt-10">我的收藏</p>
+            	</a>
+                <a class="leo-mt-20 leo-mb-20 leo-dis-ib leo-over-hd leo-col-4 leo-txt-c leo-pl-10" href="{:mac_url('user/plays')}"  tapmode onclick="showDefault('loading')">
+            	    <span class="iconfont icon-video"></span><p class="leo-fs-m leo-pt-10">播放足迹</p>
+            	</a>
+                <a class="leo-mt-20 leo-mb-20 leo-dis-ib leo-over-hd leo-col-4 leo-txt-c leo-pl-10" href="{:url('user/plog')}"  tapmode onclick="showDefault('loading')">
+            	    <span class="iconfont icon-send"></span><p class="leo-fs-m leo-pt-10">积分记录</p>
+            	</a>
+                <a class="leo-mt-20 leo-mb-20 leo-dis-ib leo-over-hd leo-col-4 leo-txt-c leo-pl-10" href="{:url('user/cash')}"  tapmode onclick="showDefault('loading')">
+            	    <span class="iconfont icon-refund"></span><p class="leo-fs-m leo-pt-10">提现记录</p>
+            	</a>
+                <a class="leo-mt-20 leo-mb-20 leo-dis-ib leo-over-hd leo-col-4 leo-txt-c leo-pl-10" href="{:url('user/reward')}"  tapmode onclick="showDefault('loading')">
+            	    <span class="iconfont icon-group_fill"></span><p class="leo-fs-m leo-pt-10">三级分销</p>
+            	</a>
+                <a class="leo-mt-20 leo-mb-20 leo-dis-ib leo-over-hd leo-col-4 leo-txt-c leo-pl-10" href="{:mac_url('user/buy')}" tapmode onclick="showDefault('loading')">
+            	    <span class="iconfont icon-goodsnew"></span><p class="leo-fs-m leo-pt-10">充值中心</p>
+            	</a>    
+            	<a class="leo-mt-20 leo-mb-20 leo-dis-ib leo-over-hd leo-col-4 leo-txt-c leo-pl-10" href="{:mac_url('user/upgrade')}" tapmode onclick="showDefault('loading')">
+            	    <span class="iconfont icon-crown"></span><p class="leo-fs-m leo-pt-10">升级会员</p>
+            	</a> 
+            	<a class="leo-mt-20 leo-mb-20 leo-dis-ib leo-over-hd leo-col-4 leo-txt-c leo-pl-10" href="{:mac_url('user/orders')}" tapmode onclick="showDefault('loading')">
+            	    <span class="iconfont icon-moneybag"></span><p class="leo-fs-m leo-pt-10">充值记录</p>
+            	</a> 
+            	<a class="leo-mt-20 leo-mb-20 leo-dis-ib leo-over-hd leo-col-4 leo-txt-c leo-pl-10" href="{:mac_url('user/popedom')}" tapmode onclick="showDefault('loading')">
+            	    <span class="iconfont icon-explore"></span><p class="leo-fs-m leo-pt-10">我的权限</p>
+            	</a> 
+            	<a class="leo-mt-20 leo-mb-20 leo-dis-ib leo-over-hd leo-col-4 leo-txt-c leo-pl-10" href="{:mac_url('user/downs')}" tapmode onclick="showDefault('loading')">
+            	    <span class="iconfont icon-wefill"></span><p class="leo-fs-m leo-pt-10">赚取积分</p>
+            	</a> 
+            </div>
+                <a class="leo-auth-logout leo-left leo-lh-m leo-radius-m leo-fs-m leo-bg-b leo-color-a leo-mt-30 leo-mb-30 leo-txt-c" href="{:mac_url('user/logout')}" tapmode onclick="showDefault('loading')"><span class="iconfont icon-roundclose leo-fs-m"></span>&nbsp;退出</a>
+        {include file="user/foot"}
+		</div>
+	</div>
+{include file="public/footer"}

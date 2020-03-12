@@ -1,0 +1,106 @@
+{include file="public/include"}
+<title>高清直播 - {$maccms.site_name}</title>
+{include file="module/sousou"}
+<div class="leo-container"> 
+<header class="leo-po-re leo-h-l leo-color-a leo-col-12">
+	<div class="leo-col-12 leo-po-fi leo-bg-b">
+    	<a class="leo-left leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" onclick="LeoBack();">
+    		<span class="iconfont icon-back leo-fs-icon-s leo-color-a"></span>
+    	</a>
+    	<font class="leo-left leo-col-6 leo-lh-l leo-fs-l leo-ellipsis-1">高清直播</font>
+		{if$user.user_id!=''}
+		<a class="leo-right leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" href="{:mac_url('user/index')}" tapmode onclick="showDefault('loading')">
+	        <img class="leo-radius-m leo-mt-20 leo-aimg-s" id="leo-head-avatar">
+	    </a>
+	    {else}
+		<a class="leo-right leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" href="{:mac_url('user/login')}" tapmode onclick="showDefault('loading')">
+	        <span class="iconfont icon-people leo-fs-icon-s leo-color-a"></span>
+	    </a>
+	    {/if}
+		<a class="leo-right leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl mac_history" href="javascript:;" >
+	        <span class="iconfont icon-time leo-fs-icon-s leo-color-a"></span>
+	   	</a>
+	    <a class="leo-right leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" href="javascript:;" onclick="LeoOpenSearcho()">
+	        <span class="iconfont icon-search leo-fs-icon-s leo-color-a"></span>
+	    </a>
+	</div>
+</header>
+<script>var leo_avatar = MAC.Cookie.Get("leo-avatar");$("#leo-head-avatar").attr("src", leo_avatar+"?v={:time()}");</script>
+<!--央视频道-->
+<section class="leo-mod leo-left leo-col-12">
+	<div class="leo-bg-a leo-lh-l leo-fs-l">
+		<div class="leo-mod-title">
+			<svg class="icon leo-fs-icon-xl" aria-hidden="true">
+			    <use xlink:href="#icon-dong"></use>
+            </svg>央视频道
+            <a class="leo-more leo-po-ab leo-color-b leo-lh-l leo-fs-m">
+			    <span class="iconfont icon-location leo-fs-m"></span>&nbsp;好看的直播&nbsp;
+			</a>
+		</div>
+	</div>
+	<div class="leo-po-re leo-bg-a leo-left leo-col-12">
+		<div class="leo-pr-20 leo-pl-20">
+			<ul class="leo-left leo-pb-30">
+			 <li class="leo-tv-li leo-left leo-col-4 leo-mr-20 leo-mb-20 leo-radius-s leo-over-hd" tapmode onclick="showDefault('loading')"><a href="{:mac_url('label/cctv1')}" class="leo-show leo-txt-c"><img src="{$maccms.path_tpl}asset/img/tv/c1.png" class="leo-img-ytv"/><span>CCTV1</span></a></li>
+			 <li class="leo-tv-li leo-left leo-col-4 leo-mr-20 leo-mb-20 leo-radius-s leo-over-hd" tapmode onclick="showDefault('loading')"><a href="{:mac_url('label/cctv2')}" class="leo-show leo-txt-c"><img src="{$maccms.path_tpl}asset/img/tv/c2.png" class="leo-img-ytv"/><span>CCTV2</span></a></li>
+			 <li class="leo-tv-li leo-left leo-col-4 leo-mr-20 leo-mb-20 leo-radius-s leo-over-hd" tapmode onclick="showDefault('loading')"><a href="{:mac_url('label/cctv3')}" class="leo-show leo-txt-c"><img src="{$maccms.path_tpl}asset/img/tv/c3.png" class="leo-img-ytv"/><span>CCTV3</span></a></li>
+			 <li class="leo-tv-li leo-left leo-col-4 leo-mr-20 leo-mb-20 leo-radius-s leo-over-hd" tapmode onclick="showDefault('loading')"><a href="{:mac_url('label/cctv4')}" class="leo-show leo-txt-c"><img src="{$maccms.path_tpl}asset/img/tv/c4.png" class="leo-img-ytv"/><span>CCTV4</span></a></li>
+			 <li class="leo-tv-li leo-left leo-col-4 leo-mr-20 leo-mb-20 leo-radius-s leo-over-hd" tapmode onclick="showDefault('loading')"><a href="{:mac_url('label/cctv5')}" class="leo-show leo-txt-c"><img src="{$maccms.path_tpl}asset/img/tv/c5.png" class="leo-img-ytv"/><span>CCTV5</span></a></li>
+			 <li class="leo-tv-li leo-left leo-col-4 leo-mr-20 leo-mb-20 leo-radius-s leo-over-hd" tapmode onclick="showDefault('loading')"><a href="{:mac_url('label/cctv6')}" class="leo-show leo-txt-c"><img src="{$maccms.path_tpl}asset/img/tv/c6.png" class="leo-img-ytv"/><span>CCTV6</span></a></li>
+			 <li class="leo-tv-li leo-left leo-col-4 leo-mr-20 leo-mb-20 leo-radius-s leo-over-hd" tapmode onclick="showDefault('loading')"><a href="{:mac_url('label/cctv7')}" class="leo-show leo-txt-c"><img src="{$maccms.path_tpl}asset/img/tv/c7.png" class="leo-img-ytv"/><span>CCTV7</span></a></li>
+			 <li class="leo-tv-li leo-left leo-col-4 leo-mr-20 leo-mb-20 leo-radius-s leo-over-hd" tapmode onclick="showDefault('loading')"><a href="{:mac_url('label/cctv8')}" class="leo-show leo-txt-c"><img src="{$maccms.path_tpl}asset/img/tv/c8.png" class="leo-img-ytv"/><span>CCTV8</span></a></li>
+			 <li class="leo-tv-li leo-left leo-col-4 leo-mr-20 leo-mb-20 leo-radius-s leo-over-hd" tapmode onclick="showDefault('loading')"><a href="{:mac_url('label/cctv9')}" class="leo-show leo-txt-c"><img src="{$maccms.path_tpl}asset/img/tv/c9.png" class="leo-img-ytv"/><span>CCTV9</span></a></li>
+			 <li class="leo-tv-li leo-left leo-col-4 leo-mr-20 leo-mb-20 leo-radius-s leo-over-hd" tapmode onclick="showDefault('loading')"><a href="{:mac_url('label/cctv10')}" class="leo-show leo-txt-c"><img src="{$maccms.path_tpl}asset/img/tv/c10.png" class="leo-img-ytv"/><span>CCTV10</span></a></li>
+			 <li class="leo-tv-li leo-left leo-col-4 leo-mr-20 leo-mb-20 leo-radius-s leo-over-hd" tapmode onclick="showDefault('loading')"><a href="{:mac_url('label/cctv11')}" class="leo-show leo-txt-c"><img src="{$maccms.path_tpl}asset/img/tv/c11.png" class="leo-img-ytv"/><span>CCTV11</span></a></li>
+			 <li class="leo-tv-li leo-left leo-col-4 leo-mr-20 leo-mb-20 leo-radius-s leo-over-hd" tapmode onclick="showDefault('loading')"><a href="{:mac_url('label/cctv12')}" class="leo-show leo-txt-c"><img src="{$maccms.path_tpl}asset/img/tv/c12.png" class="leo-img-ytv"/><span>CCTV12</span></a></li>
+			 <li class="leo-tv-li leo-left leo-col-4 leo-mr-20 leo-mb-20 leo-radius-s leo-over-hd" tapmode onclick="showDefault('loading')"><a href="{:mac_url('label/cctv13')}" class="leo-show leo-txt-c"><img src="{$maccms.path_tpl}asset/img/tv/c13.png" class="leo-img-ytv"/><span>CCTV13</span></a></li>
+			 <li class="leo-tv-li leo-left leo-col-4 leo-mr-20 leo-mb-20 leo-radius-s leo-over-hd" tapmode onclick="showDefault('loading')"><a href="{:mac_url('label/cctv14')}" class="leo-show leo-txt-c"><img src="{$maccms.path_tpl}asset/img/tv/c14.png" class="leo-img-ytv"/><span>CCTV14</span></a></li>
+			 <li class="leo-tv-li leo-left leo-col-4 leo-mr-20 leo-mb-20 leo-radius-s leo-over-hd" tapmode onclick="showDefault('loading')"><a href="{:mac_url('label/cctv15')}" class="leo-show leo-txt-c"><img src="{$maccms.path_tpl}asset/img/tv/c15.png" class="leo-img-ytv"/><span>CCTV15</span></a></li>
+			</ul></br>
+		</div>
+	</div>
+</section>
+<!--卫视频道-->
+<section class="leo-mod leo-left leo-col-12">
+	<div class="leo-bg-a leo-lh-l leo-fs-l">
+		<div class="leo-mod-title">
+			<svg class="icon leo-fs-icon-xl" aria-hidden="true">
+			    <use xlink:href="#icon-dong"></use>
+            </svg>卫视频道
+            <a class="leo-more leo-po-ab leo-color-b leo-lh-l leo-fs-m">
+			    <span class="iconfont icon-location leo-fs-m"></span>&nbsp;好看的直播&nbsp;
+			</a>
+		</div>
+	</div>
+	<div class="leo-po-re leo-bg-a leo-left leo-col-12">
+		<div class="leo-pr-20 leo-pl-20">
+			<ul class="leo-left leo-pb-30">
+			 <li class="leo-tv-li leo-left leo-col-4 leo-mr-20 leo-mb-20 leo-radius-s leo-over-hd" tapmode onclick="showDefault('loading')"><a href="{:mac_url('label/hunan')}" class="leo-show leo-txt-c"><img src="{$maccms.path_tpl}asset/img/tv/hn.png" class="leo-img-wtv"/><span>湖南卫视</span></a></li>
+			 <li class="leo-tv-li leo-left leo-col-4 leo-mr-20 leo-mb-20 leo-radius-s leo-over-hd" tapmode onclick="showDefault('loading')"><a href="{:mac_url('label/zj')}" class="leo-show leo-txt-c"><img src="{$maccms.path_tpl}asset/img/tv/zj.png" class="leo-img-wtv"/><span>浙江卫视</span></a></li>
+			 <li class="leo-tv-li leo-left leo-col-4 leo-mr-20 leo-mb-20 leo-radius-s leo-over-hd" tapmode onclick="showDefault('loading')"><a href="{:mac_url('label/js')}" class="leo-show leo-txt-c"><img src="{$maccms.path_tpl}asset/img/tv/js.png" class="leo-img-wtv"/><span>江苏卫视</span></a></li>
+			 <li class="leo-tv-li leo-left leo-col-4 leo-mr-20 leo-mb-20 leo-radius-s leo-over-hd" tapmode onclick="showDefault('loading')"><a href="{:mac_url('label/df')}" class="leo-show leo-txt-c"><img src="{$maccms.path_tpl}asset/img/tv/df.png" class="leo-img-wtv"/><span>东方卫视</span></a></li>
+			 <li class="leo-tv-li leo-left leo-col-4 leo-mr-20 leo-mb-20 leo-radius-s leo-over-hd" tapmode onclick="showDefault('loading')"><a href="{:mac_url('label/ah')}" class="leo-show leo-txt-c"><img src="{$maccms.path_tpl}asset/img/tv/ah.png" class="leo-img-wtv"/><span>安徽卫视</span></a></li>
+			 <li class="leo-tv-li leo-left leo-col-4 leo-mr-20 leo-mb-20 leo-radius-s leo-over-hd" tapmode onclick="showDefault('loading')"><a href="{:mac_url('label/bj')}" class="leo-show leo-txt-c"><img src="{$maccms.path_tpl}asset/img/tv/bj.png" class="leo-img-wtv"/><span>北京卫视</span></a></li>
+			 <li class="leo-tv-li leo-left leo-col-4 leo-mr-20 leo-mb-20 leo-radius-s leo-over-hd" tapmode onclick="showDefault('loading')"><a href="{:mac_url('label/hb')}" class="leo-show leo-txt-c"><img src="{$maccms.path_tpl}asset/img/tv/hub.png" class="leo-img-wtv"/><span>湖北卫视</span></a></li>
+			 <li class="leo-tv-li leo-left leo-col-4 leo-mr-20 leo-mb-20 leo-radius-s leo-over-hd" tapmode onclick="showDefault('loading')"><a href="{:mac_url('label/sc')}" class="leo-show leo-txt-c"><img src="{$maccms.path_tpl}asset/img/tv/sc.png" class="leo-img-wtv"/><span>四川卫视</span></a></li>
+			 <li class="leo-tv-li leo-left leo-col-4 leo-mr-20 leo-mb-20 leo-radius-s leo-over-hd" tapmode onclick="showDefault('loading')"><a href="{:mac_url('label/dn')}" class="leo-show leo-txt-c"><img src="{$maccms.path_tpl}asset/img/tv/dn.png" class="leo-img-wtv"/><span>东南卫视</span></a></li>
+			 <li class="leo-tv-li leo-left leo-col-4 leo-mr-20 leo-mb-20 leo-radius-s leo-over-hd" tapmode onclick="showDefault('loading')"><a href="{:mac_url('label/tj')}" class="leo-show leo-txt-c"><img src="{$maccms.path_tpl}asset/img/tv/tj.png" class="leo-img-wtv"/><span>天津卫视</span></a></li>
+			 <li class="leo-tv-li leo-left leo-col-4 leo-mr-20 leo-mb-20 leo-radius-s leo-over-hd" tapmode onclick="showDefault('loading')"><a href="{:mac_url('label/sz')}" class="leo-show leo-txt-c"><img src="{$maccms.path_tpl}asset/img/tv/sz.png" class="leo-img-wtv"/><span>深圳卫视</span></a></li>
+			 <li class="leo-tv-li leo-left leo-col-4 leo-mr-20 leo-mb-20 leo-radius-s leo-over-hd" tapmode onclick="showDefault('loading')"><a href="{:mac_url('label/gz')}" class="leo-show leo-txt-c"><img src="{$maccms.path_tpl}asset/img/tv/gz.png" class="leo-img-wtv"/><span>贵州卫视</span></a></li>
+			 <li class="leo-tv-li leo-left leo-col-4 leo-mr-20 leo-mb-20 leo-radius-s leo-over-hd" tapmode onclick="showDefault('loading')"><a href="{:mac_url('label/gd')}" class="leo-show leo-txt-c"><img src="{$maccms.path_tpl}asset/img/tv/gd.png" class="leo-img-wtv"/><span>广东卫视</span></a></li>
+			 <li class="leo-tv-li leo-left leo-col-4 leo-mr-20 leo-mb-20 leo-radius-s leo-over-hd" tapmode onclick="showDefault('loading')"><a href="{:mac_url('label/sd')}" class="leo-show leo-txt-c"><img src="{$maccms.path_tpl}asset/img/tv/sd.png" class="leo-img-wtv"/><span>山东卫视</span></a></li>
+			 <li class="leo-tv-li leo-left leo-col-4 leo-mr-20 leo-mb-20 leo-radius-s leo-over-hd" tapmode onclick="showDefault('loading')"><a href="{:mac_url('label/hlj')}" class="leo-show leo-txt-c"><img src="{$maccms.path_tpl}asset/img/tv/hlj.png" class="leo-img-wtv"/><span>黑龙江卫视</span></a></li>
+			 <li class="leo-tv-li leo-left leo-col-4 leo-mr-20 leo-mb-20 leo-radius-s leo-over-hd" tapmode onclick="showDefault('loading')"><a href="{:mac_url('label/ln')}" class="leo-show leo-txt-c"><img src="{$maccms.path_tpl}asset/img/tv/ln.png" class="leo-img-wtv"/><span>辽宁卫视</span></a></li>
+			 <li class="leo-tv-li leo-left leo-col-4 leo-mr-20 leo-mb-20 leo-radius-s leo-over-hd" tapmode onclick="showDefault('loading')"><a href="{:mac_url('label/jl')}" class="leo-show leo-txt-c"><img src="{$maccms.path_tpl}asset/img/tv/jl.png" class="leo-img-wtv"/><span>吉林卫视</span></a></li>
+			 <li class="leo-tv-li leo-left leo-col-4 leo-mr-20 leo-mb-20 leo-radius-s leo-over-hd" tapmode onclick="showDefault('loading')"><a href="{:mac_url('label/jx')}" class="leo-show leo-txt-c"><img src="{$maccms.path_tpl}asset/img/tv/jx.png" class="leo-img-wtv"/><span>江西卫视</span></a></li>
+			 <li class="leo-tv-li leo-left leo-col-4 leo-mr-20 leo-mb-20 leo-radius-s leo-over-hd" tapmode onclick="showDefault('loading')"><a href="{:mac_url('label/heb')}" class="leo-show leo-txt-c"><img src="{$maccms.path_tpl}asset/img/tv/heb.png" class="leo-img-wtv"/><span>河北卫视</span></a></li>
+			 <li class="leo-tv-li leo-left leo-col-4 leo-mr-20 leo-mb-20 leo-radius-s leo-over-hd" tapmode onclick="showDefault('loading')"><a href="{:mac_url('label/gx')}" class="leo-show leo-txt-c"><img src="{$maccms.path_tpl}asset/img/tv/gx.png" class="leo-img-wtv"/><span>广西卫视</span></a></li>
+			 <li class="leo-tv-li leo-left leo-col-4 leo-mr-20 leo-mb-20 leo-radius-s leo-over-hd" tapmode onclick="showDefault('loading')"><a href="{:mac_url('label/sx')}" class="leo-show leo-txt-c"><img src="{$maccms.path_tpl}asset/img/tv/sx2.png" class="leo-img-wtv"/><span>陕西卫视</span></a></li>
+			 <li class="leo-tv-li leo-left leo-col-4 leo-mr-20 leo-mb-20 leo-radius-s leo-over-hd" tapmode onclick="showDefault('loading')"><a href="{:mac_url('label/sxr')}" class="leo-show leo-txt-c"><img src="{$maccms.path_tpl}asset/img/tv/sx1.png" class="leo-img-wtv"/><span>山西卫视</span></a></li>
+			 <li class="leo-tv-li leo-left leo-col-4 leo-mr-20 leo-mb-20 leo-radius-s leo-over-hd" tapmode onclick="showDefault('loading')"><a href="{:mac_url('label/hn')}" class="leo-show leo-txt-c"><img src="{$maccms.path_tpl}asset/img/tv/ha.png" class="leo-img-wtv"/><span>河南卫视</span></a></li>
+			 <li class="leo-tv-li leo-left leo-col-4 leo-mr-20 leo-mb-20 leo-radius-s leo-over-hd" tapmode onclick="showDefault('loading')"><a href="{:mac_url('label/cq')}" class="leo-show leo-txt-c"><img src="{$maccms.path_tpl}asset/img/tv/cq.png" class="leo-img-wtv"/><span>重庆卫视</span></a></li>
+			</ul></br>
+		</div>
+	</div>
+</section>
+{include file="public/footer"}

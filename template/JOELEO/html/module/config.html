@@ -1,0 +1,24 @@
+{php}require('template/JOELEO/config.php');{/php}
+<script >
+var maccms = {
+    "path": "__ROOT__",
+    "mid": "{$maccms['mid']}",
+    "swd": "{$param.wd}",
+    "tpl": "{$maccms.path_tpl}",
+    "url": "{$maccms['site_url']}",
+    "surl": "{$maccms.path_tpl}asset/inc/",
+    "wapurl": "{$maccms['site_wapurl']}",
+    "mob_status": "{$maccms['mob_status']}"
+};
+var dialogs = {
+    "copyright": "{$muchoConfig['dialogs'][0]['copyright']}",
+    "title": "{$muchoConfig['dialogs'][0]['title']}",
+    "msg": "{$muchoConfig['dialogs'][0]['msg']}",
+    "btn1": "{$muchoConfig['dialogs'][0]['btn1']}",
+    "btn2": "{$muchoConfig['dialogs'][0]['btn2']}",
+    "img1": "{$muchoConfig['dialogs'][0]['img1']}",
+    "img2": "{$muchoConfig['dialogs'][0]['img2']}"
+};
+var leo_logo = "{$muchoConfig['logo']}";
+var leo_theme_init = "{$muchoConfig['theme']}";
+</script>

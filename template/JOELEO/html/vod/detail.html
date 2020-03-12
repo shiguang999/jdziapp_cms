@@ -1,0 +1,135 @@
+{include file="public/header"}
+<!--影片详情-->
+<div class="leo-detail-wrap leo-po-re leo-col-12">
+	<div class="leo-blur">
+	    <img class="leo-detail-cover leo-lazy leo-po-ab" src={if$muchoConfig['islazy']==1}"{$maccms.path_tpl}asset/img/lazy.png" data-original={/if}"{$obj.vod_pic|mac_url_img}" alt="{$obj.vod_name}">
+	</div>
+	<div class="leo-detail-img leo-left leo-po-re">
+	    <img class="leo-lazy leo-radius-s" src={if$muchoConfig['islazy']==1}"{$maccms.path_tpl}asset/img/lazy.png" data-original={/if}"{$obj.vod_pic|mac_url_img}" alt="{$obj.vod_name}">
+	</div>
+	<div class="leo-detail-media leo-po-re">
+		<h1 class="leo-color-a leo-fs-l leo-ellipsis-1">{$obj.vod_name} | {$obj.vod_remarks|mac_default='内详'}</h1>
+		<ul class="leo-mt-20 leo-color-a">
+			<li class="leo-ellipsis-1 leo-fs-s leo-lh-ss">导演：{$obj.vod_director|mac_url_create='director','vod','search'}</li>
+			<li class="leo-ellipsis-1 leo-fs-s leo-lh-ss">主演：{$obj.vod_actor|mac_url_create='actor','vod','search'}</li>
+			<li class="leo-ellipsis-1 leo-fs-s leo-lh-ss">年代：{$obj.vod_year|mac_url_create='year','vod','search'}    分类：<a href="{:mac_url_type($obj.type)}" target="_blank">{$obj.type.type_name}</a></li>
+			<li class="leo-ellipsis-1 leo-fs-s leo-lh-ss">地区：{$obj.vod_area|mac_url_create='area','vod','search'}     播放量：{$obj.vod_hits}<span class="mac_hits hits leo-hide" data-mid="{$maccms.mid}" data-id="{$obj.vod_id}" data-type="hits"></span></li>
+		</ul>
+		<div class="leo-po-ab leo-mt-15">
+		{php}$num=1;{/php}{maccms:foreach name="obj.vod_play_list" key="play"}{if$num==1}
+		  <a href="{:mac_url_vod_play($obj,['sid'=>$vo.sid,'nid'=>1])}" class="leo-dis-ib leo-lh-s leo-pl-30 leo-pr-30 leo-color-a leo-fs-m leo-bg-b leo-mr-20 leo-radius-m" tapmode onclick="showDefault('loading')"><span class="iconfont icon-video leo-fs-m"></span>&nbsp;立即播放</a>
+		{/if}{php}$num++;{/php}{/maccms:foreach}
+		  <a tapmode onclick="openDialog('shang')" class="leo-dis-ib leo-lh-s leo-pl-30 leo-pr-30 leo-color-a leo-fs-m leo-bg-b leo-mr-20 leo-radius-m"><span class="iconfont icon-sponsor leo-fs-m"></span>&nbsp;赞赏</a></div>
+	</div>
+</div>
+{include file="module/gonggao"}
+<!--影片简介-->
+<div class="leo-bg-a leo-pr-20 leo-pl-20 leo-pt-30" id="leo-detail-info">
+	<p class="leo-color-e leo-fs-s leo-ellipsis-2">影片简介：{$obj.vod_content|mac_filter_html}</p>
+	<div class="leo-txt-c leo-color-e"><span class="iconfont icon-unfold"></span></div>
+</div>
+{include file="module/advert"}
+<!--播放源-->
+<section class="leo-mod leo-left leo-col-12">
+	<div class="leo-bg-a leo-lh-l leo-fs-l">
+		<div class="leo-mod-title">
+			<svg class="icon leo-fs-icon-xl" aria-hidden="true">
+			    <use xlink:href="#icon-dong"></use>
+            </svg>片源选择
+            <a class="leo-more leo-po-ab leo-color-b leo-lh-l leo-fs-m leo-hide" id="leo-play-btn-cho" href="javascript:void(0);">展开剧集</a>
+		</div>
+	</div>
+	<div class="leo-po-re leo-bg-a leo-left leo-col-12">
+		<div class="leo-pr-20 leo-pl-20">
+			<div class="leo-po-re leo-over-hd leo-pb-30" id="leo-source-cho">
+			    <ul class="swiper-wrapper leo-source-cho" >
+			        {php}$num=1;{/php}{maccms:foreach name="obj.vod_play_list" id="vo"}
+                    <li class="swiper-slide {if$num==1}active{/if}"><span class="iconfont icon-selection leo-fs-m"></span>&nbsp;{$vo.player_info.show|mac_default='云播放器'}</li>
+                    {php}$num++;{/php}{/maccms:foreach}
+                </ul>
+            </div>
+        </div>
+        <div class="leo-col-12 leo-pb-30 leo-po-re leo-show" id="leo-play-mores">
+            {php}$num=1;{/php}{maccms:foreach name="obj.vod_play_list" id="vo"}
+            <div class="leo-over-hd leo-play-slide-mores {if$num==1}leo-show{else/}leo-hide{/if}">
+                <ul class="leo-play-num">
+                    {maccms:foreach name="vo.urls" id="vo2"}
+                    <li class="leo-mb-20 {if$param.sid==$vo.sid && $param.nid==$vo2.nid}active{/if}" style="width: 30%!important;margin-left:.1rem;" tapmode onclick="showDefault('loading')">
+                        <a href="{:mac_url_vod_play($obj,['sid'=>$vo.sid,'nid'=>$vo2.nid])}" rel="nofollow">{$vo2.name}</a>
+                    </li>
+                    {/maccms:foreach}
+                </ul>
+            </div>
+            {php}$num++;{/php}{/maccms:foreach}
+        </div>
+    </div>
+</section>
+{notempty name="$obj.vod_down_from"}
+<!--下载源-->
+<section class="leo-mod leo-left leo-col-12">
+	<div class="leo-bg-a leo-lh-l leo-fs-l">
+		<div class="leo-mod-title">
+			<svg class="icon leo-fs-icon-xl" aria-hidden="true">
+			    <use xlink:href="#icon-dong"></use>
+            </svg>下载选择
+            <a class="leo-more leo-po-ab leo-color-b leo-lh-l leo-fs-m">
+			    <span class="iconfont icon-location leo-fs-m"></span>&nbsp;向右滑动更多选择
+			</a>
+		</div>
+	</div>
+	<div class="leo-po-re leo-bg-a leo-left leo-col-12">
+		<div class="leo-pr-20 leo-pl-20">
+			<div class="leo-po-re leo-over-hd leo-pb-30" id="leo-down-cho">
+			    <ul class="swiper-wrapper leo-source-cho" >
+                    {maccms:foreach name="obj.vod_down_list" id="vo"}
+                    <li class="swiper-slide {if$key==1}active{/if}"><span class="iconfont icon-ticket leo-fs-m"></span>&nbsp;{$vo.player_info.show|mac_default='本地下载'}</li>
+                    {/maccms:foreach}
+                </ul>
+            </div>
+        </div>
+        <div class="leo-col-12 leo-pb-30 leo-po-re">
+            {maccms:foreach name="obj.vod_down_list" id="vo" by="num"}
+            <div class="leo-over-hd leo-down-slide {if$key==1}leo-show{else/}leo-hide{/if}">
+                <div id="leo-down-num-{$key}">  
+                    <ul class="swiper-wrapper leo-play-num">
+                        {maccms:foreach name="vo.urls" id="vo2" key="key2"}
+                        <li class="swiper-slide {if$param.sid==$vo.sid && $param.nid==$vo2.nid}active{/if}" tapmode onclick="showDefault('loading')">
+                            <a download="{$vo2.url}" href="{$vo2.url}" rel="nofollow">下载{$vo2.name}</a>
+                        </li>
+                        {/maccms:foreach}
+                    </ul>
+                </div>
+            </div>
+            <script>
+                var leo_down_num_{$key} = new Swiper('#leo-down-num-{$key}',{freeMode : true,slidesPerView : 'auto',observer:true,observeParents:true,});if ($("#leo-down-num-{$key} ul li").hasClass("active")){leo_play_down_{$key}.slideTo($("#leo-down-num-{$key} ul li.active").index()-1);}
+            </script>
+            {/maccms:foreach}
+        </div>
+    </div>
+</section>
+{/notempty}
+<!--影片评论-->
+<section class="leo-mod leo-left leo-col-12">
+	<div class="leo-bg-a leo-lh-l leo-fs-l">
+		<div class="leo-mod-title">
+			<svg class="icon leo-fs-icon-xl" aria-hidden="true">
+			    <use xlink:href="#icon-dong"></use>
+            </svg>影片评论
+            <a class="leo-more leo-po-ab leo-color-b leo-lh-l leo-fs-m">
+			    <span class="iconfont icon-location leo-fs-m"></span>&nbsp;下一个神评就是你
+			</a>
+		</div>
+	</div>
+    <div class="mac_comment leo-left leo-col-12 leo-bg-a leo-pr-20 leo-pl-20" data-id="{$obj.vod_id}" data-mid="{$maccms.mid}" ></div>
+    <script>
+        $(function(){
+            MAC.Comment.Login = {$comment.login};
+            MAC.Comment.Verify = {$comment.verify};
+            MAC.Comment.Init();
+            MAC.Comment.Show(1);
+        });
+    </script>
+</section>
+<span class="mac_ulog_set leo-hide" data-type="1" data-mid="{$maccms.mid}" data-id="{$obj.vod_id}" data-sid="{$param.sid}" data-nid="{$param.nid}"></span>
+{include file="module/relate"}
+{include file="public/footer"}

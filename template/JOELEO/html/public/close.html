@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>网站维护中...</title>
+<meta name="viewport" content="initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<script src="/static/js/jquery.js"></script>
+<script>function count(){$(".leo-close-time").each(function(){var i=new Date($(this).attr("endtime")).getTime(),e=(new Date).getTime(),t=(i-e)/1e3,n=Math.floor(t/60),o=Math.floor(n/60);if(i<=e)$(this).html("<li><div>请稍候</div></li>");else{var a="";a+="<li><span>"+cover(Math.floor(o/24))+"</span><div>days</div></li>",a+="<li><span>"+cover(o%24)+"</span><div>hrs</div></li>",a+="<li><span>"+cover(n%60)+"</span><div>min</div></li>",a+="<li><span>"+cover(Math.floor(t%60))+"</span><div>sec</div></li>",$(this).html(a)}}),setTimeout("count()",1e3)}function cover(i){return i<10?"0"+i:i}$(function(){count()});</script>
+<style>body .center-box{left:0;right:0;top:20px;height:250px;width:100%;max-width:600px;position:absolute;margin:auto;z-index:10;text-align:left;box-sizing:border-box;padding:10px}body .loader_overlay{width:150px;height:150px;background:transparent;box-shadow:0 0 0 1000px rgba(255,255,255,0.67),0px 0 19px 0 rgba(0,0,0,0.16) inset;border-radius:100%;z-index:-1;position:absolute;left:0;right:0;top:0;bottom:0;margin:auto}body .loader_cogs{z-index:-2;width:100px;height:100px;top:-120px !important;position:absolute;left:0;right:0;top:0;bottom:0;margin:auto}body .loader_cogs__top{position:relative;width:100px;height:100px;-webkit-transform-origin:50px 50px;transform-origin:50px 50px;-webkit-animation:rotate 6s infinite linear;animation:rotate 6s infinite linear}body .loader_cogs__top div:nth-of-type(1){-webkit-transform:rotate(30deg);transform:rotate(30deg)}body .loader_cogs__top div:nth-of-type(2){-webkit-transform:rotate(60deg);transform:rotate(60deg)}body .loader_cogs__top div:nth-of-type(3){-webkit-transform:rotate(90deg);transform:rotate(90deg)}body .loader_cogs__top div.top_part{width:100px;border-radius:10px;position:absolute;height:100px;background:#f98db9}body .loader_cogs__top div.top_hole{width:50px;height:50px;border-radius:100%;background:white;position:absolute;position:absolute;left:0;right:0;top:0;bottom:0;margin:auto}body .loader_cogs__left{position:relative;width:80px;-webkit-transform:rotate(16deg);transform:rotate(16deg);top:28px;-webkit-transform-origin:40px 40px;transform-origin:40px 40px;-webkit-animation:rotate_left 3s .1s infinite reverse linear;animation:rotate_left 3s .1s infinite reverse linear;left:-24px;height:80px}body .loader_cogs__left div:nth-of-type(1){-webkit-transform:rotate(30deg);transform:rotate(30deg)}body .loader_cogs__left div:nth-of-type(2){-webkit-transform:rotate(60deg);transform:rotate(60deg)}body .loader_cogs__left div:nth-of-type(3){-webkit-transform:rotate(90deg);transform:rotate(90deg)}body .loader_cogs__left div.left_part{width:80px;border-radius:6px;position:absolute;height:80px;background:#97ddff}body .loader_cogs__left div.left_hole{width:40px;height:40px;border-radius:100%;background:white;position:absolute;position:absolute;left:0;right:0;top:0;bottom:0;margin:auto}body .loader_cogs__bottom{position:relative;width:60px;top:-65px;-webkit-transform-origin:30px 30px;transform-origin:30px 30px;-webkit-animation:rotate_left 2s infinite linear;animation:rotate_left 2s infinite linear;-webkit-transform:rotate(4deg);transform:rotate(4deg);left:79px;height:60px}body .loader_cogs__bottom div:nth-of-type(1){-webkit-transform:rotate(30deg);transform:rotate(30deg)}body .loader_cogs__bottom div:nth-of-type(2){-webkit-transform:rotate(60deg);transform:rotate(60deg)}body .loader_cogs__bottom div:nth-of-type(3){-webkit-transform:rotate(90deg);transform:rotate(90deg)}body .loader_cogs__bottom div.bottom_part{width:60px;border-radius:5px;position:absolute;height:60px;background:#ffcd66}body .loader_cogs__bottom div.bottom_hole{width:30px;height:30px;border-radius:100%;background:white;position:absolute;position:absolute;left:0;right:0;top:0;bottom:0;margin:auto}.loading-text{font-size:20px;position:absolute;bottom:-60px;text-align:center;left:0;right:0;color:#b9b9b9}@-webkit-keyframes rotate{from{-webkit-transform:rotate(0deg);transform:rotate(0deg)}to{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@keyframes rotate{from{-webkit-transform:rotate(0deg);transform:rotate(0deg)}to{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@-webkit-keyframes rotate_left{from{-webkit-transform:rotate(16deg);transform:rotate(16deg)}to{-webkit-transform:rotate(376deg);transform:rotate(376deg)}}@keyframes rotate_left{from{-webkit-transform:rotate(16deg);transform:rotate(16deg)}to{-webkit-transform:rotate(376deg);transform:rotate(376deg)}}@-webkit-keyframes rotate_right{from{-webkit-transform:rotate(4deg);transform:rotate(4deg)}to{-webkit-transform:rotate(364deg);transform:rotate(364deg)}}@keyframes rotate_right{from{-webkit-transform:rotate(4deg);transform:rotate(4deg)}to{-webkit-transform:rotate(364deg);transform:rotate(364deg)}}</style><style>*{margin:0;padding:0}h2{color:#fff;font-size:28px;font-weight:normal;text-transform:capitalize;margin:0 0 30px}li{display:inline-block;font-size:42px;font-weight:normal;text-align:center;height:100px;text-shadow:none;vertical-align:middle;color:#666;margin:10px 0;height:auto;padding-bottom:15px;background:transparent;width:23%;border-right:2px dashed rgba(51,51,51,0.26)}li:last-child{border:0}li span{line-height:70px}li div{display:block;font-size:16px;margin-top:0;text-align:center;background:rgba(51,51,51,0.06);color:#666;padding:0;height:45px;line-height:45px}.leo-close-time{margin-top:300px;padding-left:8%}.leo-close-foot{position:fixed;text-align:center;width:100%;bottom:40px;color:#666}</style>
+</head>
+<body>
+<div class='center-box'>
+    <div class='loader_overlay'></div>
+    <div class='loader_cogs'>
+        <div class='loader_cogs__top'>
+            <div class='top_part'></div>
+            <div class='top_part'></div>
+            <div class='top_part'></div>
+            <div class='top_hole'></div>
+        </div>
+        <div class='loader_cogs__left'>
+            <div class='left_part'></div>
+            <div class='left_part'></div>
+            <div class='left_part'></div>
+            <div class='left_hole'></div>
+        </div>
+        <div class='loader_cogs__bottom'>
+            <div class='bottom_part'></div>
+            <div class='bottom_part'></div>
+            <div class='bottom_part'></div>
+            <div class='bottom_hole'></div>
+        </div>
+    </div>
+    <p class="loading-text">网站维护中，请稍后访问</p>
+    <ul class="leo-close-time" endtime="{if(strstr($close_tip,'请稍后')==true)}{:date('Y-m-d',strtotime('+1 day')).' '.'00:00:00'}{else}{$close_tip|mac_default=date('Y-m-d',strtotime('+1 day')).' '.'00:00:00'}{/if}"></ul>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+{include file="public/header"}
+{include file="module/slides"}
+{include file="module/filter"}
+{include file="module/advert"}
+<!--片库中心-->
+<section class="leo-mod leo-left leo-col-12 leo-mt-15">
+	<div class="leo-bg-a leo-lh-l leo-fs-l">
+		<div class="leo-mod-title leo-pl-20 leo-pr-20 leo-pb-10">
+		<a href="{:mac_url_type($obj,['area'=>$param['area'],'lang'=>$param['lang'],'year'=>$param['year'],'level'=>$param['level'],'letter'=>$param['letter'],'state'=>$param['state'],'tag'=>$param['tag'],'class'=>$param['class'],'order'=>$param['order'],'by'=>'time' ],'show')}" class="{if$param.by==''||$param.by=='time'}leo-active-font leo-select-one{/if} leo-pb-10 leo-mr-20"><span>按时间</span></a>
+    	<a href="{:mac_url_type($obj,['area'=>$param['area'],'lang'=>$param['lang'],'year'=>$param['year'],'level'=>$param['level'],'letter'=>$param['letter'],'state'=>$param['state'],'tag'=>$param['tag'],'class'=>$param['class'],'order'=>$param['order'],'by'=>'hits' ],'show')}" class="{if$param.by=='hits'}leo-active-font leo-select-one{/if} leo-pb-10 leo-mr-20"><span>按人气</span></a>
+    	<a href="{:mac_url_type($obj,['area'=>$param['area'],'lang'=>$param['lang'],'year'=>$param['year'],'level'=>$param['level'],'letter'=>$param['letter'],'state'=>$param['state'],'tag'=>$param['tag'],'class'=>$param['class'],'order'=>$param['order'],'by'=>'score' ],'show')}" class="{if$param.by=='score'}leo-active-font leo-select-one{/if} leo-pb-10 leo-mr-20"><span>按评分</span></a>
+			<span class="leo-color-d leo-right leo-fs-m">共有<span class="mac_total"></span>个片片</span>
+		</div>
+	</div>
+	<div class="leo-po-re leo-bg-a leo-left leo-col-12">
+		<div class="leo-pr-20 leo-pl-20">
+		    <ul>{maccms:vod num="24" pageurl="vod/show" paging="yes" half="1" type="current" order="desc" by="time"}
+				<li class="leo-video-item leo-col-4 leo-left leo-mb-30 leo-mr-20" tapmode onclick="showDefault('loading')">
+					<a class="leo-show" href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}">
+						<div class="leo-video-tips leo-po-ab leo-fs-s leo-color-a leo-pl-20 leo-bg-b">片库</div>
+					    <img class="leo-lazy leo-pic leo-radius-s" src={if$muchoConfig['islazy']==1}"{$maccms.path_tpl}asset/img/lazy.png" data-original={/if}"{$vo.vod_pic|mac_url_img}">
+                        <div class="leo-video-remark leo-po-re leo-fs-s leo-color-a leo-right leo-ellipsis-1">{$vo.vod_remarks|mac_default='内详'}</div>
+						<div class="leo-mt-15">
+							<h2 class="leo-fs-m leo-ellipsis-1">{$vo.vod_name}</h2>
+						</div>
+					</a>
+				</li>{/maccms:vod}
+			</ul>
+		</div>
+	</div>
+</section>
+{include file="module/paging"}
+{include file="public/footer"}

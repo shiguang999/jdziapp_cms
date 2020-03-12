@@ -1,0 +1,117 @@
+{include file="public/include"}
+    <div class="leo-auth-wrap leo-po-ab leo-bg-o">
+        <div class="leo-auth-index leo-over-hd leo-bg-b leo-color-a">
+		<a class="leo-left leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" href="{:url('user/index')}">
+			<span class="iconfont icon-back  leo-fs-icon-s leo-color-a"></span>
+		</a>
+		<font class="leo-left leo-col-6 leo-lh-l leo-fs-l leo-ellipsis-1">在线支付</font>
+		<a class="leo-right leo-lh-l leo-pl-20 leo-pr-20 leo-dis-fl" href="{:url('user/info')}" tapmode onclick="showDefault('loading')">
+		    <span class="iconfont icon-settings leo-fs-icon-s leo-color-a"></span>
+		</a>
+        <a class="leo-right username leo-mt-20 leo-dis-fl" href="{:url('user/index')}" rel="nofollow">
+            <span class="leo-user-name leo-fs-m leo-pr-30 leo-pl-30 leo-radius-m leo-col-0 leo-txt-c leo-color-a leo-lh-vs">
+                {$obj.user_name}
+            </span>
+        </a>
+		</div>
+        <div class="leo-form-box leo-po-ab leo-bg-a">
+            {include file="user/head"}
+            <div class="leo-auth-form">
+                <form method="post" target="_blank" action="{:mac_url('user/gopay')}" id="leo-auth-pay">
+                	<input type="hidden" name="order_id" value="{$info.order_id}">
+                	<input type="hidden" name="order_code" value="{$info.order_code}">
+                	<div class="leo-auth-info leo-fs-m leo-mt-20 leo-mb-10 leo-mr-20 leo-ml-20 leo-pb-30">
+                        <span>订单编号：</span>
+                    </div>
+                	<div class="leo-auth-info leo-fs-m leo-mt-20 leo-mb-10 leo-mr-20 leo-ml-20 leo-pb-30">
+                        <span class="leo-color-e">{$info.order_code}</span>
+                    </div>
+                    <div class="leo-auth-info leo-fs-m leo-mt-20 leo-mb-10 leo-mr-20 leo-ml-20 leo-pb-30">
+                        <span>订单金额:</span>
+                        <span class="leo-right leo-color-c">￥{$info.order_price}元</span>
+                    </div>
+                    <div class="leo-auth-info leo-fs-m leo-mt-20 leo-mb-10 leo-mr-20 leo-ml-20 leo-pb-30">
+                        <span>支付方式：</span>
+                        <span class="leo-right leo-color-e">选择支付方式</span>
+                    </div>
+                    <div class="leo-auth-info leo-fs-m leo-mt-20 leo-mb-10 leo-mr-20 leo-ml-20 leo-pb-30">
+                        {if$config['alipay']['appid']!=''}
+                            <label class="leo-lh-m leo-mr-50">
+                                <input type="radio" name="payment" value="alipay"  checked>支付宝
+                            </label>
+                        {/if}
+                		{if$config['weixin']['appid']!=''}
+                		    <label class="leo-lh-m leo-mr-50">
+                		        <input type="radio" name="payment" value="weixin"  checked>微信
+                            </label>
+                		{/if}
+                		{if$config['codepay']['appid']!=''}
+                		    <label class="leo-lh-m leo-mr-50">
+                		        <input type="radio" name="payment" value="codepay"  checked>码支付
+                		    </label>
+                		{/if}
+                		{if$config['zhapay']['appid']!=''}
+                		    <label class="leo-lh-m leo-mr-50">
+                		        <input type="radio" name="payment" value="zhapay" checked>幻兮支付
+                		    </label>
+                		{/if}
+                		{if$config['alipay']['appid']==''&&$config['weixin']['appid']==''&&$config['codepay']['appid']==''&&$config['zhapay']['appid']==''}
+                		    <span>抱歉，支付未启用</span>
+                		{/if}
+                    </div>
+                	{if$config['codepay']['appid']!=''}
+                	<div class="leo-hide" id="codepay">
+                        <div class="leo-auth-info leo-fs-m leo-mt-20 leo-mb-10 leo-mr-20 leo-ml-20 leo-pb-30">
+                            <span>码支付：</span>
+                            <span class="leo-right leo-color-e">选择支付途径</span>
+                        </div>
+                		<div class="leo-auth-info leo-fs-m leo-mt-20 leo-mb-10 leo-mr-20 leo-ml-20 leo-pb-30">
+                                <label class="leo-lh-m leo-mr-50">
+                                    <input type="radio" name="paytype" value="1" checked />支付宝
+                                </label>
+                                <label class="leo-lh-m leo-mr-50">
+                                    <input type="radio" name="paytype" value="2" checked />QQ钱包
+                                </label>
+                                <label class="leo-lh-m leo-mr-50">
+                                    <input type="radio" name="paytype" value="3" checked />微信
+                                </label>
+                        </div>
+                	</div>
+                	{/if} 
+                	{if$config['zhapay']['appid']!=''}
+                		<div id="zhapay">
+                        <div class="leo-auth-info leo-fs-m leo-mt-20 leo-mb-10 leo-mr-20 leo-ml-20 leo-pb-30">
+                            <span>幻兮支付：</span>
+                            <span class="leo-right leo-color-e">选择支付途径</span>
+                        </div>
+                		<div class="leo-auth-info leo-fs-m leo-mt-20 leo-mb-10 leo-mr-20 leo-ml-20 leo-pb-30">
+                                <label class="leo-lh-m leo-mr-50">
+                                    <input type="radio" name="paytype" value="1" checked />微信
+                                </label>
+                                <label class="leo-lh-m leo-mr-50">
+                                    <input type="radio" name="paytype" value="2" checked />支付宝
+                                </label>
+                        </div>
+                	</div>
+                	{/if}
+                	<a class="leo-col-6 leo-dis-ib leo-mt-30 leo-txt-c leo-fs-m leo-radius-m leo-lh-m leo-color-c leo-bg-o">共￥{$info.order_price}元</a>
+                	<a class="leo-col-6 leo-dis-ib leo-mt-30 leo-txt-c leo-fs-m leo-radius-m leo-lh-m leo-color-a leo-bg-b" onclick="$('#leo-auth-pay').submit();"><span class="iconfont icon-sponsor leo-fs-m"></span>&nbsp;确认充值</a>
+                </form>
+            </div>
+        {include file="user/foot"}
+        </div>
+    </div>
+<script>
+ $(document).ready(function() {
+             $("#codepay").css("display","block");
+$("#zhapay").css("display","none");
+          }
+          else if (this.value == 'zhapay') {
+             $("#codepay").css("display","none");
+$("#zhapay").css("display","block");
+$("#zhapay").css("display","none");
+         }
+    });
+ });
+</script>
+{include file="public/footer"}

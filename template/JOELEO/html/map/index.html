@@ -1,0 +1,55 @@
+{include file="public/header"}
+    <div class="btn-bar">
+        <div class="btn-box" id="btn-area"> 
+            <span class="btn" data-action="player" hidden>播放器</span>
+            <span class="btn" data-action="playing" title="正在播放列表">正在播放</span>
+            <span class="btn" data-action="sheet" title="音乐播放列表">播放列表</span>
+            <span class="btn" data-action="search" title="点击搜索音乐">歌曲搜索</span>
+        </div>
+    </div>
+    <div class="data-area">
+        <div id="sheet" class="data-box" hidden></div>
+        <div id="main-list" class="music-list data-box"></div>
+    </div>
+    <div class="player" id="player">
+        <div class="cover">
+            <img src="{$maccms.path_tpl}asset/inc/leeleo/f-leeleo.jpg" class="music-cover" id="music-cover">
+        </div>
+        <div class="lyric">
+            <ul id="lyric"></ul>
+        </div>
+        <div id="music-info" title="点击查看歌曲信息"></div>
+    </div>
+</div>
+<div class="footer">
+    <div class="container">
+        <div class="con-btn">
+            <a href="javascript:;" class="player-btn btn-prev" title="上一首"></a>
+            <a href="javascript:;" class="player-btn btn-play" title="暂停/继续"></a>
+            <a href="javascript:;" class="player-btn btn-next" title="下一首"></a>
+            <a href="javascript:;" class="player-btn btn-order" title="循环控制"></a>
+        </div>
+        <div class="vol">
+            <div class="quiet">
+                <a href="javascript:;" class="player-btn btn-quiet" title="静音"></a>
+            </div>
+            <div class="volume">
+                <div class="volume-box">
+                    <div id="volume-progress" class="mkpgb-area"></div>
+                </div>
+            </div>
+        </div>
+        <div class="progress">
+            <div class="progress-box">
+                <div id="music-progress" class="mkpgb-area"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="{$maccms.path_tpl}asset/inc/plugns/layer/layer.js"></script>
+<script src="{$maccms.path_tpl}asset/inc/js/ajax.js"></script>
+<script src="{$maccms.path_tpl}asset/inc/js/lyric.js"></script>
+<script src="{$maccms.path_tpl}asset/inc/js/musicList.js"></script>
+<script src="{$maccms.path_tpl}asset/inc/js/functions.js?v=2.0"></script>
+<script src="{$maccms.path_tpl}asset/inc/js/player.js"></script>
+{include file="public/footer"}
